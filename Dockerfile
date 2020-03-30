@@ -1,25 +1,25 @@
-# Setup and build the client
+# Setup and build the frontend
 
-FROM node:12.10.0 as client
+FROM node:12.10.0 as frontend
 
-WORKDIR /usr/app/client/
-COPY client/package*.json ./
+WORKDIR /usr/app/frontend/
+COPY frontend/package*.json ./
 RUN npm install -qy
-COPY client/ ./
+COPY frontend/ ./
 RUN npm run build
 
 
-# Setup the server
+# Setup the backend
 
 FROM node:9.4.0-alpine
 
 WORKDIR /usr/app/
-COPY --from=client /usr/app/client/build/ ./client/build/
+COPY --from=frontend /usr/app/frontend/build/ ./frontend/build/
 
-WORKDIR /usr/app/server/
-COPY server/package*.json ./
+WORKDIR /usr/app/backend/
+COPY backend/package*.json ./
 RUN npm install -qy
-COPY server/ ./
+COPY backend/ ./
 
 ENV PORT 3000
 
