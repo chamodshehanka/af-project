@@ -9,7 +9,7 @@ services:
       - /usr/app/node_modules
     ports:
       - "4000:4000"
-    env_file: ./backend/.env # TODO - uncomment this to auto-load your .env file!
+    # env_file: ./backend/.env # TODO - uncomment this to auto-load your .env file!
     environment:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
