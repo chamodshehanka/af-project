@@ -1,12 +1,8 @@
 import * as mongoose from "mongoose";
-
-export interface IClient extends mongoose.Document {
-  name: string;
-  email:string;
-  contactNo: number;
-}
+import { IClient } from "./client.interface";
 
 export const ClientSchema = new mongoose.Schema({
+  id: { type: String, required: true },
   name: { type: String, required: true },
   email: String,
   contactNo: Number

@@ -1,16 +1,18 @@
-const express = require("express");
+import express from "express";
 const app = express();
-const bodyParser = require("body-parser");
+import { urlencoded, json } from "body-parser";
 const PORT = 4000;
-const cors = require("cors");
-const fetch = require("node-fetch");
+import cors from "cors";
+import fetch from "node-fetch";
+
+import { clientController } from "./controller/client.controller";
 
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(urlencoded({ extended: true }));
+app.use(json());
 
 // Use all controller APIs here
-// app.use('/', )
+app.use("/", clientController);
 
 app.listen(PORT, function() {
   console.log("server is running on port : ", PORT);
