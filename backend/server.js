@@ -9,6 +9,9 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// Use all controller APIs here
+// app.use('/', )
+
 app.listen(PORT, function() {
   console.log("server is running on port : ", PORT);
 });
