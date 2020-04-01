@@ -5,7 +5,7 @@ const clients: Router = Router();
 const controller = new Controller();
 
 // Add Client
-clients.post("/credits/add", controller.addClient);
+clients.post("/client/add", controller.addClient);
 
 // Get Client List
 // clients.post("/list", controller.getUsers);
