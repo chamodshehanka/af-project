@@ -8,6 +8,6 @@ const controller = new Controller();
 clients.post("/client/add", controller.addClient);
 
 // Get Client List
-clients.post("/list", controller.getClients);
+clients.post("/client/list", controller.getClients);
 
 export default clients;
