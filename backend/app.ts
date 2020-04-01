@@ -1,8 +1,8 @@
 import * as bodyParser from "body-parser";
 import * as cors from "cors";
 import * as express from "express";
-import * as errorHandler from "./helpers/error.handler";
-import api from "./api";
+import * as errorHandler from "./src/helpers/error.handler";
+import api from "./src/api";
 
 class App {
   public express: express.Application;
