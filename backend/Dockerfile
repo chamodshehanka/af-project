@@ -1,12 +1,21 @@
-FROM node:12.10.0-alpine
+FROM node:12-slim 
 
-WORKDIR /usr/app
+RUN npm set progress=false && npm config set depth 0 && npm cache clean --force
+
+RUN npm i -g ts-node typescript
+
+RUN npm install ts-nats@next
+
+RUN mkdir /app
+
+WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci -qy
+
+RUN npm i
 
 COPY . .
 
-EXPOSE 4000
+EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD [ "npm", "run", "prod" ]
