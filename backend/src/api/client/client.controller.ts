@@ -7,8 +7,6 @@ const getCollection = () => {
 };
 
 export default class ClientController {
-  // private getCollection: MongoHelper.client.db('').collection();
-  // private collection : any = MongoHelper.client.db("ShopDB").collection("clients");
 
   /**
    * Add Client
@@ -21,7 +19,7 @@ export default class ClientController {
   public addClient = async (req: Request, res: Response): Promise<any> => {
     const { clientID, name, email, contactNo } = req.body;
     const collection: any = getCollection();
-
+    console.log(req.body);
     collection.insert({
       _id: clientID,
       name: name,
@@ -71,6 +69,15 @@ export default class ClientController {
     const { clientID } = req.body;
     collection.remove({ _id: new mongodb.ObjectId(clientID) });
   };
+
+  /**
+   * Get client by id
+   * @param clientID id of client
+   * @returns client json
+   */
+  public getClientByID = async (req: Request, res: Response): Promise<any> => {
+    
+  }
 
   /**
    * Get Clients

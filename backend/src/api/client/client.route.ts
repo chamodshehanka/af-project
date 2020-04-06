@@ -4,10 +4,24 @@ import Controller from "./client.controller";
 const clients: Router = Router();
 const controller = new Controller();
 
+// need to remove
+clients.get("/", (req, res) => {
+  res.send("Response from Client NodeTS Server");
+});
+
 // Add Client
-clients.post("/client/add", controller.addClient);
+clients.post("/add", controller.addClient);
+
+// Update Client
+clients.put("/update", controller.updateClient);
+
+// Delete Client
+clients.delete("/client/delete", controller.deleteClient);
+
+// Get Client By ID
+clients.get("/get", controller.getClientByID);
 
 // Get Client List
-clients.post("/client/list", controller.getClients);
+clients.get("/list", controller.getClients);
 
 export default clients;
