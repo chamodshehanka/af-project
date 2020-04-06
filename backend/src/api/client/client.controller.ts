@@ -7,7 +7,6 @@ const getCollection = () => {
 };
 
 export default class ClientController {
-
   /**
    * Add Client
    * @param clientID id of the client
@@ -76,8 +75,8 @@ export default class ClientController {
    * @returns client json
    */
   public getClientByID = async (req: Request, res: Response): Promise<any> => {
-    
-  }
+    const { clientID } = req.body;
+  };
 
   /**
    * Get Clients
