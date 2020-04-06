@@ -16,7 +16,7 @@ clients.post("/add", controller.addClient);
 clients.put("/update", controller.updateClient);
 
 // Delete Client
-clients.delete("/client/delete", controller.deleteClient);
+clients.delete("/delete", controller.deleteClient);
 
 // Get Client By ID
 clients.get("/get", controller.getClientByID);

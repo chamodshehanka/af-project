@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import * as mongodb from "mongodb";
 import { MongoHelper } from "../../config/mongodb.config";
+import ClientSchema from "./client.class";
 
 const getCollection = () => {
   return MongoHelper.client.db("ShopDB").collection("clients");
@@ -18,16 +19,24 @@ export default class ClientController {
   public addClient = async (req: Request, res: Response): Promise<any> => {
     const { clientID, name, email, contactNo } = req.body;
     const collection: any = getCollection();
-    console.log(req.body);
-    collection.insert({
-      _id: clientID,
-      name: name,
-      email: email,
-      contactNo: contactNo,
-    });
+    //  ClientSchema client = new ClientSchema(clientID, name, email, contactNo);
 
-    res.send({ message: "Successfully Added" });
-    res.end();
+    collection
+      .insertOne({
+        _id: clientID,
+        name: name,
+        email: email,
+        contactNo: contactNo,
+      })
+      .then((result) => {
+        console.log(result);
+        res.send({ message: "Successfully Added" });
+        res.end();
+      })
+      .catch((err) => {
+        res.send({message: "Unable to Add"})
+        console.error(err);
+      });
   };
 
   /**
@@ -66,7 +75,16 @@ export default class ClientController {
   public deleteClient = async (req: Request, res: Response): Promise<any> => {
     const collection: any = getCollection();
     const { clientID } = req.body;
-    collection.remove({ _id: new mongodb.ObjectId(clientID) });
+    collection
+      .remove({ _id: new mongodb.ObjectId(clientID) })
+      .then((result) => {
+        console.log(result);
+        res.send("Successfully Deleted!");
+      })
+      .catch((err) => {
+        res.send("Unable to delete!");
+        console.error(err);
+      });
   };
 
   /**
@@ -76,6 +94,9 @@ export default class ClientController {
    */
   public getClientByID = async (req: Request, res: Response): Promise<any> => {
     const { clientID } = req.body;
+    const collection: any = getCollection();
+
+    collection.find();
   };
 
   /**
@@ -84,14 +105,19 @@ export default class ClientController {
    */
   public getClients = async (req: Request, res: Response): Promise<any> => {
     const collection: any = getCollection();
-    const result = collection.find({}).toArray((err, items) => {
+    collection.find({}).toArray((err, items) => {
       if (err) {
         res.status(500);
         res.end();
         console.error("Caught error", err);
       } else {
         items = items.map((item) => {
-          return { id: item._id, description: item.description };
+          return {
+            id: item._id,
+            name: item.name,
+            email: item.email,
+            contactNo: item.contactNo,
+          };
         });
         res.json(items);
       }
