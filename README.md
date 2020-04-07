@@ -14,3 +14,9 @@ code .
 2. Publish changes to dev branch
 3. Make a PR and wait for the CI build pass
 4. Merge your PR
+
+## Backend Technologies
+* Node with Typescript
+
+## Frontend Technologies
+* React Material UI
