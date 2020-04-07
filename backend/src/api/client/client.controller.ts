@@ -17,24 +17,18 @@ export default class ClientController {
    * @returns success or failure message
    */
   public addClient = async (req: Request, res: Response): Promise<any> => {
-    const { clientID, name, email, contactNo } = req.body;
+    const requestData = req.body;
     const collection: any = getCollection();
-    //  ClientSchema client = new ClientSchema(clientID, name, email, contactNo);
+    const client = new ClientSchema(requestData);
 
     collection
-      .insertOne({
-        _id: clientID,
-        name: name,
-        email: email,
-        contactNo: contactNo,
-      })
-      .then((result) => {
-        console.log(result);
+      .insertOne(client)
+      .then(() => {
         res.send({ message: "Successfully Added" });
         res.end();
       })
       .catch((err) => {
-        res.send({message: "Unable to Add"})
+        res.send({ message: "Unable to Add" });
         console.error(err);
       });
   };
@@ -51,21 +45,26 @@ export default class ClientController {
     const { clientID, name, email, contactNo } = req.body;
     const collection: any = getCollection();
 
-    collection.findOneAndUpdate(
-      {
-        _id: new mongodb.ObjectId(clientID),
-      },
-      {
-        $set: {
-          name: name,
-          email: email,
-          contactNo: contactNo,
+    collection
+      .findOneAndUpdate(
+        {
+          _id: new mongodb.ObjectId(clientID),
         },
-      }
-    );
-
-    res.send({ message: "Succesfully Updated" });
-    res.end();
+        {
+          $set: {
+            name: name,
+            email: email,
+            contactNo: contactNo,
+          },
+        }
+      )
+      .then(() => {
+        res.send({ message: "Succesfully Updated" });
+      })
+      .catch((err) => {
+        res.send({ message: "Unable to Update" });
+        console.error(err);
+      });
   };
 
   /**
@@ -96,7 +95,14 @@ export default class ClientController {
     const { clientID } = req.body;
     const collection: any = getCollection();
 
-    collection.find();
+    collection
+      .findById(clientID)
+      .then((client) => {
+        res.send(client);
+      })
+      .catch((err) => {
+        console.error("Unable to find this client");
+      });
   };
 
   /**
@@ -105,22 +111,28 @@ export default class ClientController {
    */
   public getClients = async (req: Request, res: Response): Promise<any> => {
     const collection: any = getCollection();
-    collection.find({}).toArray((err, items) => {
-      if (err) {
-        res.status(500);
-        res.end();
-        console.error("Caught error", err);
-      } else {
-        items = items.map((item) => {
-          return {
-            id: item._id,
-            name: item.name,
-            email: item.email,
-            contactNo: item.contactNo,
-          };
-        });
-        res.json(items);
-      }
-    });
+    collection
+      .find({})
+      .toArray((err, items) => {
+        if (err) {
+          res.status(500);
+          res.end();
+          console.error("Caught error", err);
+        } else {
+          items = items.map((item) => {
+            return {
+              id: item._id,
+              name: item.name,
+              email: item.email,
+              contactNo: item.contactNo,
+            };
+          });
+          res.json(items);
+        }
+      })
+      .catch((err) => {
+        res.send("Unable to get clients");
+        console.log(err);
+      });
   };
 }
