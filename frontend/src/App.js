@@ -1,12 +1,12 @@
 import React from "react";
-import "./App.css";
 import "typeface-roboto";
-import NavBar from "./components/common/Navbar/Navbar";
+import "./App.css";
+import HomePage from "./pages/home/HomePage";
 
 function App() {
   return (
     <div className="App">
-      <NavBar />
+      <HomePage />
     </div>
   );
 }
