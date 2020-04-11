@@ -11,7 +11,7 @@ class HomePage extends Component {
       <div>
         <NavBar />
         <LandingContainer />
-        <Chat />
+        <Chat style={{ position: "relative", zIndex: "9999" }} />
         <NewArrivalsContainer />
       </div>
     );

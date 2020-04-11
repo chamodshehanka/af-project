@@ -25,7 +25,7 @@ class Carousel extends Component {
                 src={
                   "https://s3.ap-south-1.amazonaws.com/www.kellyfelder.com/banners/4f587420069060f35438cdb84b8e11273b054d6d.jpg"
                 }
-                alt="Landing Images"
+                alt=""
               />
             </div>
 
@@ -35,7 +35,7 @@ class Carousel extends Component {
                 src={
                   "https://s3.ap-south-1.amazonaws.com/www.kellyfelder.com/banners/7ac0e3b09c981296236a27e92e613be8c98bb6aa.jpg"
                 }
-                alt="Landing Images"
+                alt=""
               />
             </div>
 
@@ -45,7 +45,7 @@ class Carousel extends Component {
                 src={
                   "https://s3.ap-south-1.amazonaws.com/www.kellyfelder.com/banners/49d4b9979f0f8e8feee32a595796156abe64ee96.png"
                 }
-                alt="Landing Images"
+                alt=""
               />
             </div>
 
@@ -55,7 +55,7 @@ class Carousel extends Component {
                 src={
                   "https://s3.ap-south-1.amazonaws.com/www.kellyfelder.com/banners/e242fbef31680c194bf85ee2be46bb7824d02e0f.jpg"
                 }
-                alt="Landing Images"
+                alt=""
               />
             </div>
           </OwlCarousel>
