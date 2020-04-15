@@ -133,6 +133,7 @@ export default function NavBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
+
         <IconButton aria-label="show * new items" color="inherit">
           <Badge badgeContent={0} color="secondary">
             <ShoppingCartIcon />
