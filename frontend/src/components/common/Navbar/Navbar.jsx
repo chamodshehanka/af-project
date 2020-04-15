@@ -14,6 +14,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -132,6 +133,14 @@ export default function NavBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
+
+        <IconButton aria-label="show * new items" color="inherit">
+          <Badge badgeContent={0} color="secondary">
+            <ShoppingCartIcon />
+          </Badge>
+        </IconButton>
+      </MenuItem>
+      <MenuItem>
         <IconButton aria-label="show 0 new mails" color="inherit">
           <Badge badgeContent={0} color="secondary">
             <MailIcon />
@@ -191,6 +200,11 @@ export default function NavBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
+            <IconButton aria-label="show 4 new items" color="inherit">
+              <Badge badgeContent={4} color="secondary">
+                <ShoppingCartIcon />
+              </Badge>
+            </IconButton>
             <IconButton aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="secondary">
                 <MailIcon />
