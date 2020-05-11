@@ -4,7 +4,7 @@ import product from './product/product.route';
 
 const router: Router = Router();
 
-router.get('/', (req, res) => {
+router.get('/', (_req, res) => {
   res.send('Response from NodeTS Server');
 });
 
