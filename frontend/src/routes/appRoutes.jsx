@@ -3,6 +3,7 @@ import CartPage from '../pages/cart/CartPage';
 import SignUp from '../pages/SignUp/SignUp';
 import SignIn from '../pages/SignIn/SignIn';
 import ClientPage from '../pages/Client/ClientPage';
+import ClientAccount from '../pages/Client/ClientAccount';
 
 export const routes = [
   { path: '/', component: HomePage },
@@ -10,4 +11,5 @@ export const routes = [
   { path: '/signIn', component: SignIn },
   { path: '/cart', component: CartPage },
   { path: '/clients', component: ClientPage },
+  { path: '/clientAccount', component: ClientAccount },
 ];

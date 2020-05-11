@@ -10,6 +10,10 @@ export function createNewClient() {
 
 export function removeClient(id) {}
 
+export function updateClient() {}
+
+export function getClientById(id) {}
+
 export function getAllClients() {
   Axios.get('http://localhost:4000/api/client/list')
     .then((e) => {
