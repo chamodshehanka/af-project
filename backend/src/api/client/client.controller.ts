@@ -1,10 +1,10 @@
-import { Request, Response } from "express";
-import * as mongodb from "mongodb";
-import { MongoHelper } from "../../config/mongodb.config";
-import ClientSchema from "./client.class";
+import { Request, Response } from 'express';
+import * as mongodb from 'mongodb';
+import { MongoHelper } from '../../config/mongodb.config';
+import ClientSchema from './client.class';
 
 const getCollection = () => {
-  return MongoHelper.client.db("ShopDB").collection("clients");
+  return MongoHelper.client.db('ShopDB').collection('clients');
 };
 
 export default class ClientController {
@@ -24,11 +24,11 @@ export default class ClientController {
     collection
       .insertOne(client)
       .then(() => {
-        res.send({ message: "Successfully Added" });
+        res.send({ message: 'Successfully Added' });
         res.end();
       })
       .catch((err) => {
-        res.send({ message: "Unable to Add" });
+        res.send({ message: 'Unable to Add' });
         console.error(err);
       });
   };
@@ -59,10 +59,10 @@ export default class ClientController {
         }
       )
       .then(() => {
-        res.send({ message: "Succesfully Updated" });
+        res.send({ message: 'Succesfully Updated' });
       })
       .catch((err) => {
-        res.send({ message: "Unable to Update" });
+        res.send({ message: 'Unable to Update' });
         console.error(err);
       });
   };
@@ -78,10 +78,10 @@ export default class ClientController {
       .remove({ _id: new mongodb.ObjectId(clientID) })
       .then((result) => {
         console.log(result);
-        res.send("Successfully Deleted!");
+        res.send('Successfully Deleted!');
       })
       .catch((err) => {
-        res.send("Unable to delete!");
+        res.send('Unable to delete!');
         console.error(err);
       });
   };
@@ -101,7 +101,7 @@ export default class ClientController {
         res.send(client);
       })
       .catch((err) => {
-        console.error("Unable to find this client");
+        console.error('Unable to find this client');
       });
   };
 
@@ -117,7 +117,7 @@ export default class ClientController {
         if (err) {
           res.status(500);
           res.end();
-          console.error("Caught error", err);
+          console.error('Caught error', err);
         } else {
           items = items.map((item) => {
             return {
@@ -131,8 +131,8 @@ export default class ClientController {
         }
       })
       .catch((err) => {
-        res.send("Unable to get clients");
-        console.log(err);
+        res.send('Unable to get clients');
+        console.error(err);
       });
   };
 }
