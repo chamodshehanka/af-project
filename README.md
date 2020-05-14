@@ -1,9 +1,11 @@
-# AF Group Project 
+# AF Group Project
+
 ![Docker Image CI](https://github.com/Shehanka/af-project/workflows/Docker%20Image%20CI/badge.svg)
 
-### How to contribute to project 
+### How to contribute to project
 
 1. Setup the project
+
 ```
 git clone https://github.com/Shehanka/af-project.git
 cd af-project
@@ -16,7 +18,18 @@ code .
 4. Merge your PR
 
 ## Backend Technologies
-* Node with Typescript
+
+- Node with Typescript
+- MongoDB
+- JWT
 
 ## Frontend Technologies
-* React Material UI
+
+- React Material UI
+- Google Cloud
+
+## Developers
+
+- Stocks Part - [Sam](https://github.com/deSamds)
+- Clients Part - [Chamod](https://github.com/Shehanka) & [Dureksha](https://github.com/dcjc29)
+- Show Owner Part - [Randu](https://github.com/Randud)
