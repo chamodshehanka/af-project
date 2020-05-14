@@ -33,3 +33,9 @@ code .
 - Stocks Part - [Sam](https://github.com/deSamds)
 - Clients Part - [Chamod](https://github.com/Shehanka) & [Dureksha](https://github.com/dcjc29)
 - Show Owner Part - [Randu](https://github.com/Randud)
+
+# Docker run backend 
+
+```
+docker run -p 4000:4000 af-back
+```
