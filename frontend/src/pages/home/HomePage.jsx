@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Chat from '../../components/common/Chat/Chat';
 import LandingContainer from '../../containers/LandingContainer';
 import NewArrivalsContainer from '../../containers/NewArrivalsContainer';
+import FeaturedSection from '../../components/common/FeaturedSection/FeaturedSection';
 import Footer from '../../components/common/Footer/Footer';
 
 class HomePage extends Component {
@@ -12,6 +13,7 @@ class HomePage extends Component {
         <LandingContainer />
         <Chat />
         <NewArrivalsContainer />
+        <FeaturedSection />
         <Footer />
       </div>
     );

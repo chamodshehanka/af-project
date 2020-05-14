@@ -1,13 +1,15 @@
-FROM node:12.10.0
+FROM node:12-alpine as build-stage
 
-WORKDIR /usr/app
+WORKDIR /app
 
-COPY package*.json ./
+COPY package*.json /app/
 
-RUN npm ci -qy
+RUN npm install react-scripts@3.4.1 -g --silent
 
-COPY . .
+RUN npm install
 
-EXPOSE 3000
+COPY ./ /app/
+
+RUN npm run build
 
 CMD ["npm", "start"]

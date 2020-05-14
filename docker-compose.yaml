@@ -1,25 +1,25 @@
-version: '2'
+version: "2"
 services:
   backend:
     build:
       context: ./backend/
-    command: /usr/app/node_modules/.bin/nodemon src/index.js
+    command: /app/node_modules/.bin/nodemon src/index.js
     volumes:
-      - ./backend/:/usr/app
-      - /usr/app/node_modules
+      - ./backend/:/app
+      - /app/node_modules
     ports:
       - "4000:4000"
     # env_file: ./backend/.env # TODO - uncomment this to auto-load your .env file!
-    environment:
-      - NODE_ENV=development
-      - CHOKIDAR_USEPOLLING=true
+    # environment:
+    #   - NODE_ENV=development
+    #   - CHOKIDAR_USEPOLLING=true
   frontend:
     build:
       context: ./frontend/
     command: npm start
     volumes:
-      - ./frontend/:/usr/app
-      - /usr/app/node_modules
+      - ./frontend/:app
+      - /app/node_modules
     depends_on:
       - backend
     ports:

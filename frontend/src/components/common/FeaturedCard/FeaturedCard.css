@@ -1,0 +1,8 @@
+.featureImage{
+    position: relative;
+    height: 50vh;
+}
+
+.featurContent{
+    position: absolute;
+}
