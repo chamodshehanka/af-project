@@ -2,7 +2,7 @@ import React from 'react';
 import 'typeface-roboto';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { routes } from './routes/AppRoutes';
+import { routes } from './routes/appRoutes';
 import NavBar from './components/common/Navbar/Navbar';
 
 function App() {
