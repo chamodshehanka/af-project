@@ -6,7 +6,7 @@ class CartItem extends Component {
   render() {
     const { id, product, image, price, quantity } = this.props.item;
     return (
-      <TableRow>
+      <TableRow key={id}>
         <TableCell>
           <img
             src={image}
