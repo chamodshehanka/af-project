@@ -6,6 +6,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 import CartItem from './CartItem';
 
 class CartPage extends Component {
@@ -43,32 +45,44 @@ class CartPage extends Component {
         <h1 className='cart-title' style={{ fontFamily: 'Assistant' }}>
           Shopping Cart
         </h1>
+        <Grid container spacing={3}>
+          <Grid item xs={1}></Grid>
+          <Grid item xs={10}>
+            <TableContainer component={Paper}>
+              <Table aria-label='simple table'>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Product</TableCell>
+                    <TableCell></TableCell>
+                    <TableCell align='right'>Price</TableCell>
+                    <TableCell align='right'>Quantity</TableCell>
+                    <TableCell align='right'>Total</TableCell>
+                  </TableRow>
+                </TableHead>
 
-        <TableContainer component={Paper} style={{ width: '90%' }}>
-          <Table aria-label='simple table'>
-            <TableHead>
-              <TableRow>
-                <TableCell>Product</TableCell>
-                <TableCell></TableCell>
-                <TableCell align='right'>Price</TableCell>
-                <TableCell align='right'>Quantity</TableCell>
-                <TableCell align='right'>Total</TableCell>
-              </TableRow>
-            </TableHead>
+                <TableBody>
+                  {this.state.items.map((item) => (
+                    <CartItem key={item.id} item={item} />
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
 
-            <TableBody>
-              {this.state.items.map((item) => (
-                <CartItem key={item.id} item={item} />
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-
-        <div style={{ paddingRight: '5px', margin: 'auto' }}>
-          <h3>Subtotal 45.00 LKR</h3>
-          <br />
-          Shipping and taxes calculated at checkout
-        </div>
+            <div style={{ paddingRight: '5px', margin: 'auto' }}>
+              <h3>Subtotal 45.00 LKR</h3>
+              <br />
+              Shipping and taxes calculated at checkout
+              <br />
+              <Button color='primary' variant='contained'>
+                Update Cart
+              </Button>{' '}
+              <Button color='primary' variant='outlined'>
+                Check Out
+              </Button>
+            </div>
+          </Grid>
+          <Grid item xs={1}></Grid>
+        </Grid>
       </div>
     );
   }
