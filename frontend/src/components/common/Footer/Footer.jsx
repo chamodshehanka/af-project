@@ -6,7 +6,7 @@ class Footer extends Component {
   render() {
     return (
       <footer className='footer'>
-        <h3 style={{ color: 'white' }}>// Change the footer later</h3>
+        <h3 style={{ color: 'white' }}>Change the footer later</h3>
       </footer>
     );
   }
