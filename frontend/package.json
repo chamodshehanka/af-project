@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/react-components": "^3.1.5",
     "@material-ui/core": "^4.9.9",
     "@material-ui/icons": "^4.9.1",
     "@mui-treasury/styles": "^1.1.6",
@@ -20,6 +21,7 @@
     "react-owl-carousel": "^2.3.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
+    "recharts": "^1.8.5",
     "typeface-roboto": "0.0.75"
   },
   "scripts": {
