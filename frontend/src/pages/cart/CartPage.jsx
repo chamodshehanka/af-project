@@ -48,7 +48,7 @@ class CartPage extends Component {
 
   onRemove = (id) => {
     this.setState({
-      items: this.state.items.filter((item) => item.id != id),
+      items: this.state.items.filter((item) => item.id !== id),
     });
   };
 
