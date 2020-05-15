@@ -1,11 +1,10 @@
 import HomePage from '../pages/home/HomePage';
-import CartPage from '../pages/cart/CartPage';
+import CartPage from '../pages/Cart/CartPage';
 import SignUp from '../pages/SignUp/SignUp';
 import SignIn from '../pages/SignIn/SignIn';
 import ClientPage from '../pages/Client/ClientPage';
 import ClientAccount from '../pages/Client/ClientAccount';
-import Dashboard from'../pages/Admin/Dashboard';
-
+import Dashboard from '../pages/Admin/Dashboard';
 
 export const routes = [
   { path: '/', component: HomePage },
@@ -14,6 +13,5 @@ export const routes = [
   { path: '/cart', component: CartPage },
   { path: '/clients', component: ClientPage },
   { path: '/clientAccount', component: ClientAccount },
-  {path:'/Dashboard', component: Dashboard},
-
+  { path: '/Dashboard', component: Dashboard },
 ];

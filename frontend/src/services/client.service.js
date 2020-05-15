@@ -21,11 +21,18 @@ export function getClientById(id) {}
 
 // Get all clients
 export function getAllClients() {
+
+  var array ;
+
   Axios.get('http://localhost:4000/api/client/list')
     .then((e) => {
       console.log(e.data);
+
+      array = e.data;
+
+      return e.data;
     })
     .catch((err) => console.error(err));
 
-  return 'clientsla innawa';
+  return array;
 }
