@@ -46,6 +46,12 @@
     ]
   },
   "devDependencies": {
-    "expose-loader": "^0.7.5"
+    "expose-loader": "^0.7.5",
+    "husky": "^4.2.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": []
+    }
   }
 }
