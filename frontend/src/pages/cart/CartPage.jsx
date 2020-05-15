@@ -18,7 +18,7 @@ class CartPage extends Component {
         product: 'Belt Pant',
         image:
           'https://s3.ap-south-1.amazonaws.com/www.kellyfelder.com/gallery/58e1af95f81a0358169935c043984523409a51dc.jpg',
-        price: 10,
+        price: 1000,
         quantity: 2,
       },
       {
@@ -26,7 +26,7 @@ class CartPage extends Component {
         product: 'EMBROIDED SHIFT LINEN DRESS',
         image:
           'https://s3.ap-south-1.amazonaws.com/www.kellyfelder.com/gallery/39af33908cae1957c83a96d2d310a2b9ef22cee8.jpg',
-        price: 40,
+        price: 4000,
         quantity: 2,
       },
       {
@@ -34,11 +34,28 @@ class CartPage extends Component {
         product: 'Front tie knot top',
         image:
           'https://s3.ap-south-1.amazonaws.com/www.kellyfelder.com/gallery/d3b26487c1297af957dcd41c911877ea1e7534ae.jpg',
-        price: 10,
+        price: 1000,
         quantity: 2,
       },
     ],
   };
+
+  getSubTotal = () => {
+    var subTotal = 0;
+    this.state.items.map((item) => (subTotal += item.price * item.quantity));
+    return subTotal;
+  };
+
+  onRemove = (id) => {
+    this.setState({
+      items: this.state.items.filter((item) => item.id != id),
+    });
+  };
+
+  updateCart = () => {
+    console.log('upate cart pressed');
+  };
+
   render() {
     return (
       <div>
@@ -62,23 +79,35 @@ class CartPage extends Component {
 
                 <TableBody>
                   {this.state.items.map((item) => (
-                    <CartItem key={item.id} item={item} />
+                    <CartItem
+                      key={item.id}
+                      item={item}
+                      onRemove={this.onRemove.bind(this, item.id)}
+                    />
                   ))}
                 </TableBody>
               </Table>
             </TableContainer>
 
-            <div style={{ paddingRight: '5px', margin: 'auto' }}>
-              <h3>Subtotal 45.00 LKR</h3>
-              <br />
+            <div
+              style={{ paddingRight: '5px', margin: 'auto', float: 'right' }}
+            >
+              <h3>Subtotal {this.getSubTotal()}.00 LKR</h3>
               Shipping and taxes calculated at checkout
               <br />
-              <Button color='primary' variant='contained'>
-                Update Cart
-              </Button>{' '}
-              <Button color='primary' variant='outlined'>
-                Check Out
-              </Button>
+              <br />
+              <div>
+                <Button
+                  color='primary'
+                  variant='contained'
+                  onClick={this.updateCart.bind(this)}
+                >
+                  Update Cart
+                </Button>{' '}
+                <Button color='primary' variant='outlined'>
+                  Check Out
+                </Button>
+              </div>
             </div>
           </Grid>
           <Grid item xs={1}></Grid>
