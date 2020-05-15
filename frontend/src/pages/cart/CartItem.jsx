@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import TableRow from '@material-ui/core/TableRow';
 import { TableCell } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 class CartItem extends Component {
   render() {
     const { id, product, image, price, quantity } = this.props.item;
+
     return (
       <TableRow key={id}>
         <TableCell>
@@ -21,7 +24,13 @@ class CartItem extends Component {
             fontWeight: 'bold',
           }}
         >
-          {product}
+          {product} <br />
+          <Button
+            color='default'
+            onClick={() => this.props.onRemove(this.props.item.id)}
+          >
+            Remove <DeleteIcon color='action' />
+          </Button>
         </TableCell>
         <TableCell align='right'>{price}.00 LKR</TableCell>
         <TableCell align='right'>{quantity}</TableCell>
