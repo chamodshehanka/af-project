@@ -22,7 +22,8 @@
     "https": "^1.0.0",
     "mongodb": "^3.5.5",
     "mongoose": "^5.9.7",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "react-scripts": "^2.1.8"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.0",
