@@ -1,11 +1,15 @@
 import * as mongoose from "mongoose";
 import { IClient } from "./client.interface";
 
+
 export const ClientSchema = new mongoose.Schema({
   id: { type: String, required: true },
   name: { type: String, required: true },
-  email: String,
-  contactNo: Number
+  email: {type:String},
+  contactNo: {type:Number},
+  password: {type:String},
+  salt:{type:String},
+  hash:{type:String}
 });
 
 const Client = mongoose.model<IClient>("Client", ClientSchema);

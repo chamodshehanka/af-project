@@ -5,4 +5,5 @@ export interface IClient extends mongoose.Document {
   name: string;
   email: string;
   contactNo: number;
+  password: string
 }
