@@ -13,7 +13,7 @@ class HomePage extends Component {
         <LandingContainer />
         <Chat />
         <NewArrivalsContainer />
-        <FeaturedSection/>
+        <FeaturedSection />
         <Footer />
       </div>
     );

@@ -1,11 +1,11 @@
-import React,{ Component } from "react";
+import React, { Component } from 'react';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import './FeaturedCard.css';
-import { CardActions} from "@material-ui/core";
+import { CardActions } from '@material-ui/core';
 
 class FeatureCard extends Component{
 
@@ -18,16 +18,16 @@ class FeatureCard extends Component{
                 <CardContent className='featureContent'>
                 <Typography paragraph>Method:</Typography>
           <Typography paragraph>
-            Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-            minutes.
+            Heat 1/2 cup of the broth in a pot until simmering, add saffron and
+            set aside for 10 minutes.
           </Typography>
-                </CardContent>
-                <CardActions>
-                <Button size="small">Learn More</Button>
-                </CardActions>
-            </Card>
-        );
-    }
+        </CardContent>
+        <CardActions>
+          <Button size='small'>Learn More</Button>
+        </CardActions>
+      </Card>
+    );
+  }
 }
 
 export default FeatureCard;

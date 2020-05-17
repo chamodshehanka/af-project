@@ -14,8 +14,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker images
-      run: docker-compose up -d
-    - name: Test
-      run: docker ps -a
+    # - name: Build the Docker images
+      # run: docker-compose up -d
+    # - name: Test
+      # run: docker ps -a
 
