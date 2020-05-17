@@ -7,6 +7,13 @@ const getCollection = () => {
   return MongoHelper.client.db('ShopDB').collection('clients');
 };
 
+const { Storage } = require('@google-cloud/storage');
+
+const storage = new Storage({
+  keyFilename: './secrets/malbay-897368b28fe4.json',
+  projectId: 'malbay',
+});
+
 export default class ClientController {
   /**
    * Add Client
@@ -20,6 +27,13 @@ export default class ClientController {
     const requestData = req.body;
     const collection: any = getCollection();
     const client = new ClientSchema(requestData);
+
+    storage
+      .getBuckets()
+      .then((e) => console.log(e))
+      .catch((err) => console.error(err));
+
+    const malbayBucket = storage.bucket('malbay-bucket');
 
     collection
       .insertOne(client)
