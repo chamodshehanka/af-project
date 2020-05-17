@@ -1,9 +1,9 @@
 import * as mongoose from 'mongoose';
 
-export interface IClient extends mongoose.Document {
+export interface IstoreManager extends mongoose.Document {
   id: string;
   name: string;
   email: string;
+  password: string;
   contactNo: number;
-  password: string
 }

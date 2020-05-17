@@ -1,9 +1,9 @@
 import Axios from 'axios';
-
+import HomePage from '../pages/home/HomePage';
 // Create new client
 // TODO: Need add Client object as a param
-export function createNewClient() {
-  Axios.post('http://localhost:4000/api/client/add')
+export function createNewClient(data) {
+  Axios.post('http://localhost:4000/api/client/add',data)
     .then((e) => {
       console.log(e.data);
     })
@@ -35,4 +35,16 @@ export function getAllClients() {
     .catch((err) => console.error(err));
 
   return array;
+}
+
+//login function
+export function login(data) {
+  console.log(data)
+  Axios.post('http://localhost:4000/api/client/login',data)
+    .then((e) => {
+      console.log(e.data);
+    })
+    .catch((err) => console.error(err));
+
+  return HomePage;
 }
