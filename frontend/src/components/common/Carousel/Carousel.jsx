@@ -14,7 +14,6 @@ class Carousel extends Component {
             items={1}
             className='owl-theme'
             loop
-            nav
             margin={4}
             autoPlay={true}
             nav={false}

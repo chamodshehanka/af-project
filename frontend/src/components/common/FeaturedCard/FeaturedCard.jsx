@@ -13,7 +13,7 @@ class FeatureCard extends Component{
         return(
             <Card>
                 <CardMedia>
-                    <img className='featureImage' src={'https://s3.ap-south-1.amazonaws.com/www.kellyfelder.com/banners/4f587420069060f35438cdb84b8e11273b054d6d.jpg'}/>
+                    <img className='featureImage' alt="Category Feature Img" src={'https://s3.ap-south-1.amazonaws.com/www.kellyfelder.com/banners/4f587420069060f35438cdb84b8e11273b054d6d.jpg'}/>
                 </CardMedia>
                 <CardContent className='featureContent'>
                 <Typography paragraph>Method:</Typography>

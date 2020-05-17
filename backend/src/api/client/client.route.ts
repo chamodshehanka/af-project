@@ -24,4 +24,7 @@ clients.get("/get", controller.getClientByID);
 // Get Client List
 clients.get("/list", controller.getClients);
 
+// Client Login
+clients.post("/login",controller.signIn);
+
 export default clients;

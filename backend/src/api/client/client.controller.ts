@@ -3,6 +3,12 @@ import * as mongodb from 'mongodb';
 import { MongoHelper } from '../../config/mongodb.config';
 import ClientSchema from './client.class';
 
+const webtoken = require("jsonwebtoken")
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+
+process.env.SECRET_KEY = 'secret'
+
 const getCollection = () => {
   return MongoHelper.client.db('ShopDB').collection('clients');
 };
@@ -19,7 +25,12 @@ export default class ClientController {
   public addClient = async (req: Request, res: Response): Promise<any> => {
     const requestData = req.body;
     const collection: any = getCollection();
-    const client = new ClientSchema(requestData);
+    if(await collection.findOne({email:requestData.email})){
+      res.send({message: 'User Alredy Registered'})
+    }else{
+      const hashedPassword = await bcrypt.hash(requestData.password,10);
+      requestData.password = hashedPassword;
+      const client = new ClientSchema(requestData);
 
     collection
       .insertOne(client)
@@ -31,6 +42,7 @@ export default class ClientController {
         res.send({ message: 'Unable to Add' });
         console.error(err);
       });
+    }
   };
 
   /**
@@ -132,6 +144,39 @@ export default class ClientController {
       })
       .catch((err) => {
         res.send('Unable to get clients');
+        console.error(err);
+      });
+  };
+
+  /**
+   * SignIn Clients
+   * @param email
+   * @returns token or failure message
+   */
+  public signIn = async (req: Request, res: Response): Promise<any> => {
+    const collection: any = getCollection();
+    console.log(req.body)
+    collection
+      .findOne({email: req.body.email}).then(async user => {
+        console.log(user.password===req.body.password)
+        if(user != null){
+          if(await bcrypt.compareSync(req.body.password,user.password)){
+            const payload = {
+                id : user.id,
+                email: user.email,
+            }
+            console.log(payload)
+            let token = jwt.sign(payload,process.env.SECRET_KEY,{expiresIn:1140})
+            res.status(200).send(token);
+        }else{
+          res.status(400).json({error: "Incorrect Password"});
+        }
+      }else{
+        res.status(400).json({error: "User Does Not Exists"});
+      }
+    })
+      .catch((err) => {
+        res.send('Something Went Wrong');
         console.error(err);
       });
   };
