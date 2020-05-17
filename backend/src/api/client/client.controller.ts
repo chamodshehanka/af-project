@@ -34,6 +34,7 @@ export default class ClientController {
       .catch((err) => console.error(err));
 
     const malbayBucket = storage.bucket('malbay-bucket');
+    console.log(malbayBucket)
 
     collection
       .insertOne(client)
