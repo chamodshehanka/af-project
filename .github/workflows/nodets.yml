@@ -1,7 +1,7 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Node.js CI for Frontend
+name: NodeTS CI for Backend
 
 on:
   # push:
@@ -15,7 +15,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./frontend
+        working-directory: ./backend
 
     strategy:
       matrix:
@@ -28,5 +28,5 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }} 
     - run: npm ci
-    - run: npm run build --if-present
+    - run: npm run prod
     # - run: npm test
