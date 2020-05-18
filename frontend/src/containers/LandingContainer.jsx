@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import Carousel from "../components/common/Carousel/Carousel";
+import React, { Component } from 'react';
+import Carousel from '../components/common/Carousel/Carousel';
 
 class LandingContainer extends Component {
   state = {};

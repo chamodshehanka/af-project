@@ -26,15 +26,15 @@ class CartItem extends Component {
         >
           {product} <br />
           <Button
-            color='default'
+            color="default"
             onClick={() => this.props.onRemove(this.props.item.id)}
           >
-            Remove <DeleteIcon color='action' />
+            Remove <DeleteIcon color="action" />
           </Button>
         </TableCell>
-        <TableCell align='right'>{price}.00 LKR</TableCell>
-        <TableCell align='right'>{quantity}</TableCell>
-        <TableCell align='right'>{price * quantity}.00 LKR</TableCell>
+        <TableCell align="right">{price}.00 LKR</TableCell>
+        <TableCell align="right">{quantity}</TableCell>
+        <TableCell align="right">{price * quantity}.00 LKR</TableCell>
       </TableRow>
     );
   }

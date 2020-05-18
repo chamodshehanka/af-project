@@ -9,7 +9,7 @@ import NavBar from './components/common/Navbar/Navbar';
 
 function App() {
   return (
-    <div className='App'>
+    <div className="App">
       <NavBar />
       <Router>
         {routes.map((route) => (
