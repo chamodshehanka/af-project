@@ -19,10 +19,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from '../../components/admin/listItems';
-import Chart from '../../components/admin/Chart';
-import Deposits from '../../components/admin/Deposits';
-import Orders from '../../components/admin/Orders';
-
+import StoreManager from '../../components/admin/StoreManager'
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -117,7 +114,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Dashboard() {
+export default function StoreManagerDetails() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -173,26 +170,13 @@ export default function Dashboard() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            {/* Chart */}
-            <Grid item xs={12} md={8} lg={9}>
+            {/* StoreManager */}
+            <Grid item xs={12} md={8} lg={6}>
               <Paper className={fixedHeightPaper}>
-                <Chart />
-                
-              </Paper>
-       
-            </Grid>
-            {/* Recent Deposits */}
-            <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
-                <Deposits />
+                <StoreManager/>
               </Paper>
             </Grid>
-            {/* Recent Orders */}
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                <Orders />
-              </Paper>
-            </Grid>
+           
           </Grid>
          
           <Box pt={4}>
