@@ -20,9 +20,9 @@ export default function StoreManager() {
 
   return (
     <div>
-              <h2>Add new Manager</h2>
-    <form className={classes.root} noValidate autoComplete="off">
-    <TextField
+      <h2>Add new Manager</h2>
+      <form className={classes.root} noValidate autoComplete="off">
+        <TextField
           id="name"
           label="Name"
           style={{ margin: 8 }}
@@ -69,15 +69,15 @@ export default function StoreManager() {
           }}
         />
         <Button
-              type='submit'
-              fullWidth
-              variant='contained'
-              color='primary'
-              className={classes.submit}
-            >
-              Register
-            </Button>
-    </form>
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+          className={classes.submit}
+        >
+          Register
+        </Button>
+      </form>
     </div>
   );
 }
