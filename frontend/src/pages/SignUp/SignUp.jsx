@@ -15,9 +15,9 @@ import { ClientService } from '../../services';
 
 function Copyright() {
   return (
-    <Typography variant='body2' color='textSecondary' align='center'>
+    <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color='inherit' href='malbay.com'>
+      <Link color="inherit" href="malbay.com">
         MalBay
       </Link>{' '}
       {new Date().getFullYear()}
@@ -50,18 +50,18 @@ export default function SignUp() {
   const classes = useStyles();
   const onSubmit = (data) => {
     ClientService.createNewClient(data);
-  }
+  };
 
-  const {register, handleSubmit} = useForm();
+  const { register, handleSubmit } = useForm();
 
   return (
-    <Container component='main' maxWidth='xs'>
+    <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography component='h1' variant='h5'>
+        <Typography component="h1" variant="h5">
           Sign up
         </Typography>
         <form
@@ -72,74 +72,78 @@ export default function SignUp() {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete='fname'
-                name='firstName'
-                variant='outlined'
+                autoComplete="fname"
+                name="firstName"
+                variant="outlined"
                 required
                 fullWidth
-                id='firstName'
-                label='First Name'
+                id="firstName"
+                label="First Name"
                 autoFocus
                 inputRef={register}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                variant='outlined'
+                variant="outlined"
                 required
                 fullWidth
-                id='lastName'
-                label='Last Name'
-                name='lastName'
-                autoComplete='lname'
-                inputRef={register}              />
+                id="lastName"
+                label="Last Name"
+                name="lastName"
+                autoComplete="lname"
+                inputRef={register}
+              />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                variant='outlined'
+                variant="outlined"
                 required
                 fullWidth
-                id='email'
-                label='Email Address'
-                name='email'
-                autoComplete='email'
-                inputRef={register}              />
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                inputRef={register}
+              />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                variant='outlined'
+                variant="outlined"
                 required
                 fullWidth
-                name='password'
-                label='Password'
-                type='password'
-                id='password'
-                inputRef={register}              />
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                inputRef={register}
+              />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                variant='outlined'
+                variant="outlined"
                 required
                 fullWidth
-                name='confirmPassword'
-                label='Confirm Password'
-                type='password'
-                id='confirmPassword'
-                inputRef={register}              />
+                name="confirmPassword"
+                label="Confirm Password"
+                type="password"
+                id="confirmPassword"
+                inputRef={register}
+              />
             </Grid>
           </Grid>
           <Button
-            type='submit'
+            type="submit"
             fullWidth
-            variant='contained'
-            color='primary'
+            variant="contained"
+            color="primary"
             className={classes.submit}
           >
             Sign Up
           </Button>
-          <Grid container justify='flex-end'>
+          <Grid container justify="flex-end">
             <Grid item>
-              <Link href='#' variant='body2'>
+              <Link href="#" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>

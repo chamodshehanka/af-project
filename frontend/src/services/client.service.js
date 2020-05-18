@@ -1,9 +1,10 @@
+/* eslint-disable no-console */
 import Axios from 'axios';
 import HomePage from '../pages/home/HomePage';
 // Create new client
 // TODO: Need add Client object as a param
 export function createNewClient(data) {
-  Axios.post('http://localhost:4000/api/client/add',data)
+  Axios.post('http://localhost:4000/api/client/add', data)
     .then((e) => {
       console.log(e.data);
     })
@@ -11,18 +12,21 @@ export function createNewClient(data) {
 }
 
 // Need to impl
-export function removeClient(id) {}
+export function removeClient(id) {
+  console.log(id);
+}
 
 // Need to impl
 export function updateClient() {}
 
 // Need to impl
-export function getClientById(id) {}
+export function getClientById(id) {
+  console.log(id);
+}
 
 // Get all clients
 export function getAllClients() {
-
-  var array ;
+  var array;
 
   Axios.get('http://localhost:4000/api/client/list')
     .then((e) => {
@@ -39,8 +43,8 @@ export function getAllClients() {
 
 //login function
 export function login(data) {
-  console.log(data)
-  Axios.post('http://localhost:4000/api/client/login',data)
+  console.log(data);
+  Axios.post('http://localhost:4000/api/client/login', data)
     .then((e) => {
       console.log(e.data);
     })

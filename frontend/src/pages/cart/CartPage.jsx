@@ -59,21 +59,21 @@ class CartPage extends Component {
   render() {
     return (
       <div>
-        <h1 className='cart-title' style={{ fontFamily: 'Assistant' }}>
+        <h1 className="cart-title" style={{ fontFamily: 'Assistant' }}>
           Shopping Cart
         </h1>
         <Grid container spacing={3}>
           <Grid item xs={1}></Grid>
           <Grid item xs={10}>
             <TableContainer component={Paper}>
-              <Table aria-label='simple table'>
+              <Table aria-label="simple table">
                 <TableHead>
                   <TableRow>
                     <TableCell>Product</TableCell>
                     <TableCell></TableCell>
-                    <TableCell align='right'>Price</TableCell>
-                    <TableCell align='right'>Quantity</TableCell>
-                    <TableCell align='right'>Total</TableCell>
+                    <TableCell align="right">Price</TableCell>
+                    <TableCell align="right">Quantity</TableCell>
+                    <TableCell align="right">Total</TableCell>
                   </TableRow>
                 </TableHead>
 
@@ -98,13 +98,13 @@ class CartPage extends Component {
               <br />
               <div>
                 <Button
-                  color='primary'
-                  variant='contained'
+                  color="primary"
+                  variant="contained"
                   onClick={this.updateCart.bind(this)}
                 >
                   Update Cart
                 </Button>{' '}
-                <Button color='primary' variant='outlined'>
+                <Button color="primary" variant="outlined">
                   Check Out
                 </Button>
               </div>

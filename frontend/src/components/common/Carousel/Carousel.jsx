@@ -9,10 +9,10 @@ class Carousel extends Component {
   render() {
     return (
       <div>
-        <div className='container-fluid'>
+        <div className="container-fluid">
           <OwlCarousel
             items={1}
-            className='owl-theme'
+            className="owl-theme"
             loop
             margin={4}
             autoPlay={true}
@@ -20,41 +20,41 @@ class Carousel extends Component {
           >
             <div>
               <img
-                className='img'
+                className="img"
                 src={
                   'https://s3.ap-south-1.amazonaws.com/www.kellyfelder.com/banners/4f587420069060f35438cdb84b8e11273b054d6d.jpg'
                 }
-                alt=''
+                alt=""
               />
             </div>
 
             <div>
               <img
-                className='img'
+                className="img"
                 src={
                   'https://s3.ap-south-1.amazonaws.com/www.kellyfelder.com/banners/7ac0e3b09c981296236a27e92e613be8c98bb6aa.jpg'
                 }
-                alt=''
+                alt=""
               />
             </div>
 
             <div>
               <img
-                className='img'
+                className="img"
                 src={
                   'https://s3.ap-south-1.amazonaws.com/www.kellyfelder.com/banners/49d4b9979f0f8e8feee32a595796156abe64ee96.png'
                 }
-                alt=''
+                alt=""
               />
             </div>
 
             <div>
               <img
-                className='img'
+                className="img"
                 src={
                   'https://s3.ap-south-1.amazonaws.com/www.kellyfelder.com/banners/e242fbef31680c194bf85ee2be46bb7824d02e0f.jpg'
                 }
-                alt=''
+                alt=""
               />
             </div>
           </OwlCarousel>

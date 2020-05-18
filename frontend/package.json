@@ -13,6 +13,7 @@
     "axios": "^0.19.2",
     "chartist": "^0.11.4",
     "classnames": "^2.2.6",
+    "lint-staged": "^10.2.2",
     "react": "^16.13.1",
     "react-chartist": "^0.14.3",
     "react-chat-window": "^1.2.1",
@@ -29,7 +30,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "node_modules/.bin/webpack-dev-server --host 0.0.0.0"
+    "dev": "node_modules/.bin/webpack-dev-server --host 0.0.0.0",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|md|vue)\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -48,11 +52,25 @@
   },
   "devDependencies": {
     "expose-loader": "^0.7.5",
-    "husky": "^4.2.5"
+    "husky": "^4.2.5",
+    "prettier": "^2.0.5"
   },
   "husky": {
     "hooks": {
-      "pre-commit": []
+      "pre-commit": "npm run lint && npm run format"
     }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ],
+    "*.+(js|jsx)": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.+(json|css|md)": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

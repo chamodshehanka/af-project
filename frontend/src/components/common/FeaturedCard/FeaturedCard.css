@@ -1,8 +1,8 @@
-.featureImage{
-    position: relative;
-    height: 50vh;
+.featureImage {
+  position: relative;
+  height: 50vh;
 }
 
-.featurContent{
-    position: absolute;
+.featurContent {
+  position: absolute;
 }
