@@ -50,9 +50,9 @@ export default function SignUp() {
   const classes = useStyles();
   const onSubmit = (data) => {
     ClientService.createNewClient(data);
-  }
+  };
 
-  const {register, handleSubmit} = useForm();
+  const { register, handleSubmit } = useForm();
 
   return (
     <Container component='main' maxWidth='xs'>
@@ -92,7 +92,8 @@ export default function SignUp() {
                 label='Last Name'
                 name='lastName'
                 autoComplete='lname'
-                inputRef={register}              />
+                inputRef={register}
+              />
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -103,7 +104,8 @@ export default function SignUp() {
                 label='Email Address'
                 name='email'
                 autoComplete='email'
-                inputRef={register}              />
+                inputRef={register}
+              />
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -114,7 +116,8 @@ export default function SignUp() {
                 label='Password'
                 type='password'
                 id='password'
-                inputRef={register}              />
+                inputRef={register}
+              />
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -125,7 +128,8 @@ export default function SignUp() {
                 label='Confirm Password'
                 type='password'
                 id='confirmPassword'
-                inputRef={register}              />
+                inputRef={register}
+              />
             </Grid>
           </Grid>
           <Button

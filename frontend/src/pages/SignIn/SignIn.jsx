@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
   },
   image: {
-    backgroundImage: 'url(https://source.unsplash.com/random)',
+    backgroundImage: 'url(https://source.unsplash.com/random?fashion)',
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'light'
@@ -62,15 +62,26 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn() {
   const classes = useStyles();
   const onSubmit = (data) => {
-   ClientService.login(data);
-  }
+    ClientService.login(data);
+  };
 
-  const {register, handleSubmit} = useForm();
+  const { register, handleSubmit } = useForm();
 
   return (
     <Grid container component='main' className={classes.root}>
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image} />
+      <Grid item xs={false} sm={4} md={7} className={classes.image}>
+        <h3
+          style={{
+            color: 'white',
+            fontSize: '55px',
+            textShadow: '2px 2px 1px #111111',
+          }}
+        >
+          MalBay
+        </h3>
+        <p style={{ color: 'white' }}>Shop from Anywhere!</p>
+      </Grid>
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
@@ -79,7 +90,11 @@ export default function SignIn() {
           <Typography component='h1' variant='h5'>
             Sign in
           </Typography>
-          <form className={classes.form} noValidate onSubmit={handleSubmit(onSubmit)}>
+          <form
+            className={classes.form}
+            noValidate
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <TextField
               variant='outlined'
               margin='normal'
@@ -113,6 +128,7 @@ export default function SignIn() {
             >
               Sign In
             </Button>
+
             <Grid container>
               <Grid item xs>
                 <Link href='#' variant='body2'>
