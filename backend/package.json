@@ -6,6 +6,7 @@
   "scripts": {
     "start": "tsc && node dist/index.ts",
     "dev": "nodemon --exec 'ts-node' index.ts",
+    "build": "tsc",
     "prod": "npm run build && npm run start",
     "clean": "rm -rf node_modules coverage dist .nyc_output",
     "test": "echo \"Error: no test specified\" && exit 1"
