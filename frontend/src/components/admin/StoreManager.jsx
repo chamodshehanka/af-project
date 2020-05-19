@@ -2,6 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { useForm } from 'react-hook-form';
+import { AdminService } from '../../services';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,11 +19,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function StoreManager() {
   const classes = useStyles();
+  const onSubmit = (data) => {
+    AdminService.addStoreManager(data);
+  };
+
+  const {handleSubmit } = useForm();
 
   return (
     <div>
       <h2>Add new Manager</h2>
-      <form className={classes.root} noValidate autoComplete="off">
+      <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
         <TextField
           id="name"
           label="Name"
@@ -78,6 +85,7 @@ export default function StoreManager() {
           Register
         </Button>
       </form>
+      <div>{AdminService.getStoreManager()}</div>
     </div>
   );
 }

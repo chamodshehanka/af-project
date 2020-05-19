@@ -113,7 +113,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   fixedHeight: {
-    height: 240,
+    height: 420,
   },
 }));
 
@@ -183,6 +183,7 @@ export default function StoreManagerDetails() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
+        <h1>Store manager DEtails</h1>
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
             {/* StoreManager */}
