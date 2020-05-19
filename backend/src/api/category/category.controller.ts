@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import * as mongodb from 'mongodb';
 import { MongoHelper } from '../../config/mongodb.config';
-import ClientSchema from './category.class';
+import CategorySchema from './category.class';
 
 const getCollection = () => {
   return MongoHelper.client.db('ShopDB').collection('categories');
@@ -18,6 +18,25 @@ export default class CategoryController {
    * @param productCount no of Products is the category
    * @returns success or failure message
    */
+  public addCategoryList = async (req: Request, res: Response): Promise<any> => {
+    const requestData = req.body;
+    const collection: any = getCollection();
+    const categories = new CategorySchema(requestData);
+
+    collection
+      .insertOne(categories)
+      .then(() => {
+        res.send({ message: 'New category is successfully Added' });
+        res.end();
+      })
+      .catch((err) => {
+        res.send({ message: 'Unable to add category' });
+        console.error(err);
+      });
+  };
+
+
+
 
   /**
    * Get Categories

@@ -4,7 +4,7 @@ import SignUp from '../pages/SignUp/SignUp';
 import SignIn from '../pages/SignIn/SignIn';
 import ClientPage from '../pages/Client/ClientPage';
 import ClientAccount from '../pages/Client/ClientAccount';
-import Dashboard from '../pages/Admin/Dashboard';
+import Dashboard from '../pages/Admin/dashboard';
 import StoreManagerDetails from '../pages/Admin/StoreManagerDetails';
 
 export const routes = [
@@ -14,6 +14,6 @@ export const routes = [
   { path: '/cart', component: CartPage },
   { path: '/clients', component: ClientPage },
   { path: '/clientAccount', component: ClientAccount },
-  { path: '/Dashboard', component: Dashboard },
+  { path: '/dashboard', component: Dashboard },
   { path: '/StoreManagerDetails', component: StoreManagerDetails },
 ];
