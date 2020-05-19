@@ -85,6 +85,7 @@ export default function StoreManager() {
           Register
         </Button>
       </form>
+      <div>{AdminService.getStoreManager()}</div>
     </div>
   );
 }

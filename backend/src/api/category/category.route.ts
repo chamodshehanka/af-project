@@ -10,6 +10,8 @@ categories.get("/", (req, res) => {
 });
 
 
+ // Add Category List
+ categories.post("/add", controller.addCategoryList);
 
 // Get Category List
 categories.get("/list", controller.getCategories);
