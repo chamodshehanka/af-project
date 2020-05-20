@@ -13,6 +13,9 @@ categories.get("/", (req, res) => {
  // Add Category List
  categories.post("/add", controller.addCategoryList);
 
+ // Update Category List
+ categories.put("/update", controller.updateCategoryList);
+
 // Get Category List
 categories.get("/list", controller.getCategories);
 
