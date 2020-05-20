@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
+import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { useForm } from 'react-hook-form';
 import { ClientService } from '../../services';
+import { Hidden } from '@material-ui/core';
 
 function Copyright() {
   return (
@@ -44,25 +45,33 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  large: {
+    width: theme.spacing(25),
+    height: theme.spacing(25),
+  },
 }));
 
 export default function SignUp() {
   const classes = useStyles();
   const onSubmit = (data) => {
-    ClientService.createNewClient(data);
+    ClientService.createNewClient(data, imageFile);
   };
 
   const { register, handleSubmit } = useForm();
+  const [profileImage, setProfileImage] = useState();
+  const [imageFile, setImageFile] = useState();
+
+  const chooseImage = (e) => {
+    setProfileImage(URL.createObjectURL(e.target.files[0]));
+    setImageFile(e.target.files[0]);
+  };
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
         <Typography component="h1" variant="h5">
-          Sign up
+          Sign Up
         </Typography>
         <form
           className={classes.form}
@@ -70,6 +79,30 @@ export default function SignUp() {
           noValidate
         >
           <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <input
+                id="filePicker"
+                type="file"
+                name="image"
+                onChange={chooseImage}
+                style={{
+                  opacity: 0,
+                  overflow: Hidden,
+                }}
+              />
+              <label htmlFor="image">
+                <IconButton
+                  onClick={() => {
+                    // eslint-disable-next-line no-undef
+                    document.getElementById('filePicker').click();
+                  }}
+                >
+                  <Avatar src={profileImage} className={classes.large}>
+                    <p>Add Photo</p>
+                  </Avatar>
+                </IconButton>
+              </label>
+            </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
