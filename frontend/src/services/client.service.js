@@ -5,20 +5,18 @@ import FormData from 'form-data';
 // Create new client
 // TODO: Need add Client object as a param
 export function createNewClient(data, image) {
-  console.log(image);
   const fd = new FormData();
-  fd.append('image', 'chamod');
-  // fd.append('firstName', data.firstName);
+  fd.append('image', image, image.name);
+  fd.append('firstName', data.firstName);
+  fd.append('lastName', data.lastName);
 
-  console.log(fd);
+  for (var key of fd.entries()) {
+    console.log('form data : ', key[0], key[1]);
+  }
 
   Axios.post(
     'http://localhost:4000/api/client/add',
-    {
-      firstName: data.firstName,
-      lastName: data.lastName,
-      image: fd,
-    },
+    fd ,
     {
       onUploadProgress: (progressEvent) => {
         console.log(
@@ -27,6 +25,7 @@ export function createNewClient(data, image) {
             '%'
         );
       },
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     }
   )
     .then((res) => {
