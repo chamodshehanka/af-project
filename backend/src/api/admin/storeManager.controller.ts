@@ -25,11 +25,11 @@ export default class storeManagerController {
     collection
       .insertOne(storeManager)
       .then(() => {
-        res.send({ message: 'Successfully Added' });
+        res.send({ message: 'New store Manager is successfully assigned' });
         res.end();
       })
       .catch((err) => {
-        res.send({ message: 'Unable to Add' });
+        res.send({ message: 'Unable to assign' });
         console.error(err);
       });
   };
@@ -104,7 +104,7 @@ export default class storeManagerController {
         res.send(storeManager);
       })
       .catch((err) => {
-        console.error('Unable to find this client');
+        console.error('Unable to find this storeManager');
       });
   };
 
@@ -135,7 +135,7 @@ export default class storeManagerController {
         }
       })
       .catch((err) => {
-        res.send('Unable to get clients');
+        res.send('Unable to get storeManagers');
         console.error(err);
       });
   };
