@@ -2,6 +2,7 @@
 import Axios from 'axios';
 import HomePage from '../pages/home/HomePage';
 import FormData from 'form-data';
+import { environment } from '../configs/environment';
 // Create new client
 // TODO: Need add Client object as a param
 export function createNewClient(data, image) {
@@ -14,7 +15,7 @@ export function createNewClient(data, image) {
     console.log('form data : ', key[0], key[1]);
   }
 
-  Axios.post('http://localhost:4000/api/client/add', fd, {
+  Axios.post(environment.baseURL + 'client/add', fd, {
     onUploadProgress: (progressEvent) => {
       console.log(
         'Upload Progress : ' +
@@ -47,7 +48,7 @@ export function getClientById(id) {
 export function getAllClients() {
   var array;
 
-  Axios.get('http://localhost:4000/api/client/list')
+  Axios.get(environment.baseURL + 'client/list')
     .then((e) => {
       console.log(e.data);
 
@@ -63,7 +64,7 @@ export function getAllClients() {
 //login function
 export function login(data) {
   console.log(data);
-  Axios.post('http://localhost:4000/api/client/login', data)
+  Axios.post(environment.baseURL + 'client/login', data)
     .then((e) => {
       console.log(e.data);
     })
