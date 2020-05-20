@@ -183,7 +183,7 @@ export default function StoreManagerDetails() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <h1>Store manager DEtails</h1>
+        <h1>Store manager Details</h1>
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
             {/* StoreManager */}
