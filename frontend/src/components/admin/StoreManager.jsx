@@ -23,7 +23,7 @@ export default function StoreManager() {
     AdminService.addStoreManager(data);
   };
 
-  const {handleSubmit } = useForm();
+  const { handleSubmit } = useForm();
 
   return (
     <div>

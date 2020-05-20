@@ -1,9 +1,5 @@
 import Axios from 'axios';
 
-
-
-
-
 //get all store managers list
   export function getStoreManager() {
     var array;
