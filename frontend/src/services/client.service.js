@@ -14,20 +14,16 @@ export function createNewClient(data, image) {
     console.log('form data : ', key[0], key[1]);
   }
 
-  Axios.post(
-    'http://localhost:4000/api/client/add',
-    fd ,
-    {
-      onUploadProgress: (progressEvent) => {
-        console.log(
-          'Upload Progress : ' +
-            Math.round((progressEvent.loaded / progressEvent.total) * 100) +
-            '%'
-        );
-      },
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    }
-  )
+  Axios.post('http://localhost:4000/api/client/add', fd, {
+    onUploadProgress: (progressEvent) => {
+      console.log(
+        'Upload Progress : ' +
+          Math.round((progressEvent.loaded / progressEvent.total) * 100) +
+          '%'
+      );
+    },
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  })
     .then((res) => {
       console.log(res);
     })

@@ -23,12 +23,17 @@ export default function StoreManager() {
     AdminService.addStoreManager(data);
   };
 
-  const {handleSubmit } = useForm();
+  const { handleSubmit } = useForm();
 
   return (
     <div>
       <h2>Add new Manager</h2>
-      <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
+      <form
+        className={classes.root}
+        noValidate
+        autoComplete="off"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <TextField
           id="name"
           label="Name"
