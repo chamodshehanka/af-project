@@ -37,7 +37,7 @@ export default class CategoryController {
 
 
    /**
-   * Update Category
+   * Update Category List
    * @param categoryID id of the category
    * @param name name of the category
    * @param description description of the category
@@ -70,6 +70,26 @@ export default class CategoryController {
       })
       .catch((err) => {
         res.send({ message: 'Unable to Update' });
+        console.error(err);
+      });
+  };
+
+    /**
+   * Delete Category List
+   * @param categoryID id of the Category
+   * @returns success or error message
+   */
+  public deleteCategoryList = async (req: Request, res: Response): Promise<any> => {
+    const collection: any = getCollection();
+    const { categoryID } = req.body;
+    collection
+      .remove({ _id: new mongodb.ObjectId(categoryID) })
+      .then((result) => {
+        console.log(result);
+        res.send('Successfully Deleted!');
+      })
+      .catch((err) => {
+        res.send('Unable to delete!');
         console.error(err);
       });
   };

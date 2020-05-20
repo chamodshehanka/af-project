@@ -16,6 +16,9 @@ categories.get("/", (req, res) => {
  // Update Category List
  categories.put("/update", controller.updateCategoryList);
 
+ // Delete Category List
+ categories.delete("/delete", controller.deleteCategoryList);
+
 // Get Category List
 categories.get("/list", controller.getCategories);
 
