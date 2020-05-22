@@ -28,7 +28,11 @@ export default function StoreManager() {
   return (
     <div>
       <h2>Add new Manager</h2>
-      <form className={classes.root} noValidate onSubmit={handleSubmit(onSubmit)}>
+      <form
+        className={classes.root}
+        noValidate
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <TextField
           id="name"
           label="Name"
@@ -85,7 +89,6 @@ export default function StoreManager() {
           Register
         </Button>
       </form>
-    
     </div>
   );
 }
