@@ -8,10 +8,13 @@ const controller = new Controller();
 // Add Cart
 carts.post('/add', controller.addCart);
 
+// Get Cart Product
+carts.get('/get/:id', controller.getCart);
+
 // Update Cart
 carts.put('/update', controller.updateCart);
 
 // Delete Cart
-carts.delete('/delete', controller.deleteCart);
+carts.delete('/delete/:id', controller.deleteCart);
 
 export default carts;

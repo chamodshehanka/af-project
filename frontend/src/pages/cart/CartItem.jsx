@@ -2,19 +2,41 @@ import React, { Component } from 'react';
 import TableRow from '@material-ui/core/TableRow';
 import { TableCell } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Axios from 'axios';
+import { environment } from '../../configs/environment';
 
 class CartItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      productId: props.item.productId,
+      name: '',
+      image: '',
+      productPrice: props.item.productPrice,
+      quantity: props.item.quantity,
+    };
+  }
+
+  componentDidMount() {
+    Axios.get(
+      environment.baseURL + '/product/get/' + this.props.item.productId
+    ).then((e) => {
+      this.setState({ image: e.data.imageUrl, name: e.data.name });
+    });
+  }
+
   render() {
-    const { id, product, image, price, quantity } = this.props.item;
+    const { productId, name, image, productPrice, quantity } = this.state;
 
     return (
-      <TableRow key={id}>
+      <TableRow key={productId}>
         <TableCell>
           <img
             src={image}
-            alt={product}
-            style={{ width: '150px', height: '150px' }}
+            alt={name}
+            style={{ width: '150px', height: '200px' }}
           />
         </TableCell>
         <TableCell
@@ -25,17 +47,32 @@ class CartItem extends Component {
             fontFamily: 'Cabin',
           }}
         >
-          {product} <br />
+          {name} <br />
           <Button
             color="default"
-            onClick={() => this.props.onRemove(this.props.item.id)}
+            onClick={() => this.props.onRemove(this.props.item.productId)}
           >
             Remove <DeleteIcon color="action" />
           </Button>
         </TableCell>
-        <TableCell align="right">{price}.00 LKR</TableCell>
-        <TableCell align="right">{quantity}</TableCell>
-        <TableCell align="right">{price * quantity}.00 LKR</TableCell>
+        <TableCell align="right">{productPrice}.00 LKR</TableCell>
+        <TableCell align="right">
+          {quantity}
+          <br></br>
+          <ButtonGroup disableElevation variant="contained" color="primary">
+            <Button
+              onClick={() => this.props.onPlus(this.props.item.productId)}
+            >
+              +
+            </Button>
+            <Button
+              onClick={() => this.props.onMinus(this.props.item.productId)}
+            >
+              -
+            </Button>
+          </ButtonGroup>
+        </TableCell>
+        <TableCell align="right">{productPrice * quantity}.00 LKR</TableCell>
       </TableRow>
     );
   }

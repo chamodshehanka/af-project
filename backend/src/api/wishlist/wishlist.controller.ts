@@ -1,16 +1,16 @@
-import {Request,Response} from 'express';
+import { Request, Response } from 'express';
 import * as mongodb from 'mongodb';
-import {MongoHelper} from '../../config/mongodb.config';
+import { MongoHelper } from '../../config/mongodb.config';
 import WishListSchema from './wishlist.class';
 import ClientController from '../client/client.controller';
 import wishLists from './wishlist.route';
+import clients from '../client/client.route';
 
 const getCollection = () => {
-    return MongoHelper.client.db('ShopDB').collection('wishLists');
-}
+  return MongoHelper.client.db('ShopDB').collection('wishLists');
+};
 
-export default class WishListController{
-
+export default class WishListController {
 
     /**
      * Add Product To Wishlist
@@ -22,7 +22,6 @@ export default class WishListController{
         const collection: any =  getCollection();
         try{
             let wishList = await collection.findOne({clientId});
-            console.log(wishList)
             if (wishList!==null) {
                 //wish list exists for user
                 let itemIndex = wishList.items.findIndex(p => p.productId === productId);
@@ -60,51 +59,55 @@ export default class WishListController{
         }
     }
 
-     /**
-      * Get WishList
-      * @returns a wishlist
-      */
-     public getWishList = async(req:Request,res:Response): Promise<any>=>{
-            const {clientID} = req.body;
-            const collection: any = getCollection();
-            let wishList = await collection.findOne({clientID});
+  /**
+   * Get WishList
+   * @returns a wishlist
+   */
+  public getWishList = async (req: Request, res: Response): Promise<any> => {
+    const { clientID } = req.body;
+    const collection: any = getCollection();
+    let wishList = await collection.findOne({ clientID });
 
-            res.send(wishList);
-            
-     };
+    res.send(wishList);
+  };
 
-     /**
-      * Delete Product From Wish List
-      * @returns suddess or failure message
-      */
-     public removeProduct = async(req:Request,res:Response):Promise<any>=>{
-        const {clientId,productId} = req.body;
-        const collection: any =  getCollection();
-        try{
-            let wishList = await collection.findOne({clientId});
-            console.log(wishList)
-            if (wishList!==null) {
+  /**
+   * Delete Product From Wish List
+   * @returns suddess or failure message
+   */
+  public removeProduct = async (req: Request, res: Response): Promise<any> => {
+    const data  = req.body;
+    console.log(data)
+    const collection: any = getCollection();
+    try {
+      let wishList = await collection.findOne({clientId:data.clientId });
+      console.log(wishList);
+      if (wishList !== null) {
+        let itemIndex = wishList.items.findIndex(
+          (p) => p.productId === data.productId
+        );
 
-                let itemIndex = wishList.items.findIndex(p => p.productId === productId);
-
-                wishList.items.splice(itemIndex,1);
-                await collection.findOneAndUpdate({
-                    clientId:clientId
-                },
-                {
-                    $set:{
-                        items:wishList.items
-                    }
-                }).then(()=>{
-                  res.send(wishList);
-                })
-
-            }else{
-                res.send({message:'Unable to Find Wish List'})
+        wishList.items.splice(itemIndex, 1);
+        await collection
+          .findOneAndUpdate(
+            {
+              clientId: data.clientId,
+            },
+            {
+              $set: {
+                items: wishList.items,
+              },
             }
-        }catch(err){
-            console.error(err);
-            res.send({message:'Something Went Wrong'})
-        }
-     };
+          )
+          .then(() => {
+            res.send(wishList);
+          });
+      } else {
+        res.send({ message: 'Unable to Find Wish List' });
+      }
+    } catch (err) {
+      console.error(err);
+      res.send({ message: 'Something Went Wrong' });
+    }
+  };
 }

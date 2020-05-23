@@ -1,8 +1,12 @@
 import * as mongoose from 'mongoose';
-import { IProduct } from '../product/product.interface';
 
 export interface ICart extends mongoose.Document {
-  id: string;
-  clientId: string;
-  items: IProduct[];
+  clientId: mongoose.Schema.Types.String;
+  items: [
+    {
+      productId: { type: String };
+      productPrice: { type: Number };
+      quantity: { type: Number };
+    }
+  ];
 }

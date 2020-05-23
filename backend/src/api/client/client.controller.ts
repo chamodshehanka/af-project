@@ -36,7 +36,6 @@ export default class ClientController {
     console.log(req.body);
     res.send({ message: 'Successfully Added' });
 
-
     // if(await collection.findOne({email:requestData.email})){
     //   res.send({message: 'User Alredy Registered'})
     // }else{
@@ -124,11 +123,10 @@ export default class ClientController {
    * @returns client json
    */
   public getClientByID = async (req: Request, res: Response): Promise<any> => {
-
     const collection: any = getCollection();
 
     collection
-      .findOne({_id:req.body.clientId})
+      .findOne({ _id: req.body.clientId })
       .then((client) => {
         res.send(client);
       })
@@ -159,10 +157,11 @@ export default class ClientController {
               contactNo: item.contactNo,
             };
           });
+
           res.json(items);
         }
       })
-      .catch((err) => {
+      .catch((err: any) => {
         res.send('Unable to get clients');
         console.error(err);
       });
