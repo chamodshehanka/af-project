@@ -5,7 +5,7 @@ import { environment } from '../configs/environment';
 export function getWishListItems(clientId) {
   var array = [];
 
-  Axios.get(environment.baseURL + 'wishList/get', clientId)
+  Axios.get(environment.baseURL + 'wishList/get/' + clientId)
     .then((e) => {
       array = e.data.items;
       console.log(array);

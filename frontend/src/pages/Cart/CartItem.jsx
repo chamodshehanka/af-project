@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TableRow from '@material-ui/core/TableRow';
 import { TableCell } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Axios from 'axios';
 import { environment } from '../../configs/environment';
@@ -35,7 +36,7 @@ class CartItem extends Component {
           <img
             src={image}
             alt={name}
-            style={{ width: '150px', height: '150px' }}
+            style={{ width: '150px', height: '200px' }}
           />
         </TableCell>
         <TableCell
@@ -55,7 +56,22 @@ class CartItem extends Component {
           </Button>
         </TableCell>
         <TableCell align="right">{productPrice}.00 LKR</TableCell>
-        <TableCell align="right">{quantity}</TableCell>
+        <TableCell align="right">
+          {quantity}
+          <br></br>
+          <ButtonGroup disableElevation variant="contained" color="primary">
+            <Button
+              onClick={() => this.props.onPlus(this.props.item.productId)}
+            >
+              +
+            </Button>
+            <Button
+              onClick={() => this.props.onMinus(this.props.item.productId)}
+            >
+              -
+            </Button>
+          </ButtonGroup>
+        </TableCell>
         <TableCell align="right">{productPrice * quantity}.00 LKR</TableCell>
       </TableRow>
     );

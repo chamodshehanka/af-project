@@ -10,7 +10,6 @@ export function createCart() {
 }
 
 export function deleteCartItem(clientId, productId) {
-  console.log();
   Axios.delete(
     environment.baseURL + 'cart/delete/' + clientId + '?productId=' + productId,
     {
@@ -18,6 +17,18 @@ export function deleteCartItem(clientId, productId) {
       productId: productId,
     }
   )
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => console.error(err));
+}
+
+export function updateCartItem(clientId, productId, value) {
+  Axios.put(environment.baseURL + 'cart/update', {
+    clientId: clientId,
+    productId: productId,
+    value: value,
+  })
     .then((res) => {
       console.log(res);
     })
