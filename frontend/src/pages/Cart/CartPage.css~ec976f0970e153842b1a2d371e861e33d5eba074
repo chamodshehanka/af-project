@@ -1,9 +1,0 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap'); */
-
-.cart-title {
-  font-family: 'Pacifico', cursive;
-}
-
-.cart-item {
-  font-family: 'Cabin', sans-serif;
-}

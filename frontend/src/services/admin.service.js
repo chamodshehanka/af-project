@@ -1,5 +1,6 @@
 import Axios from 'axios';
 
+//add store manager
 export function addStoreManager(data) {
   Axios.post('http://localhost:4000/api/storeManager/add', data)
     .then((res) => {
@@ -8,3 +9,4 @@ export function addStoreManager(data) {
     })
     .catch((err) => console.error(err));
 }
+

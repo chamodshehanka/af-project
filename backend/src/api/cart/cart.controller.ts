@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import * as mongodb from 'mongodb';
 import { MongoHelper } from '../../config/mongodb.config';
-import CartSchema from './cart.class';
 
 const getCollection = () => {
   return MongoHelper.client.db('ShopDB').collection('carts');
@@ -96,7 +95,8 @@ export default class CartController {
    */
   public deleteCart = async (req: Request, res: Response): Promise<any> => {
     const collection: any = getCollection();
-    const { clientId, productId } = req.body;
+    const clientId = req.params.id;
+    const productId = req.query.productId;
 
     try {
       let cart = await collection.findOne({ clientId });
@@ -118,7 +118,7 @@ export default class CartController {
             res.send(cart);
           });
       } else {
-        res.send({ message: 'Unable to find the cart' });
+        res.send({ message: 'Unable to find the cart ' + clientId });
       }
     } catch (err) {
       console.error(err);
@@ -133,7 +133,7 @@ export default class CartController {
    */
   public getCart = async (req: Request, res: Response): Promise<any> => {
     const collection: any = getCollection();
-    const { clientId } = req.body;
+    const clientId = req.params.id;
 
     let cart = await collection.findOne({ clientId });
 

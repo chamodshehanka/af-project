@@ -5,9 +5,9 @@ import SignIn from '../pages/SignIn/SignIn';
 import ClientPage from '../pages/Client/ClientPage';
 import ClientAccount from '../pages/Client/ClientAccount';
 import Dashboard from '../pages/Admin/Dashboard';
+import DeliveryPage from '../pages/Delivery/DeliveryPage';
 import StoreManagerDetails from '../pages/Admin/StoreManagerDetails';
 import WishList from '../pages/WishList/WishList';
-import DeliveryPage from '../pages/Delivery/DeliveryPage';
 
 export const routes = [
   { path: '/', component: HomePage },
