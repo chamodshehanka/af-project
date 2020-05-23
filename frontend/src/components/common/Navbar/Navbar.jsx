@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
-    fontFamily: 'Pacifico', 
+    fontFamily: 'Pacifico',
   },
   search: {
     position: 'relative',
