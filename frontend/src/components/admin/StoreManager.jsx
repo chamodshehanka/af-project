@@ -24,14 +24,14 @@ export default function StoreManager() {
     console.log(data);
     AdminService.addStoreManager(data);
     reset({
-      name:'',
-      email:'',
-      contactNo:'',
-      password:''
+      name: '',
+      email: '',
+      contactNo: '',
+      password: '',
     });
   };
 
-  const {reset, errors, register, handleSubmit} = useForm();
+  const { reset, errors, register, handleSubmit } = useForm();
 
   return (
     <div>
@@ -53,7 +53,8 @@ export default function StoreManager() {
           fullWidth
           margin="normal"
           inputRef={register({
-            required: "Required"})}
+            required: 'Required',
+          })}
           InputLabelProps={{
             shrink: true,
           }}
@@ -71,11 +72,11 @@ export default function StoreManager() {
           fullWidth
           margin="normal"
           inputRef={register({
-            required: "Required",
+            required: 'Required',
             pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-              message: "invalid email address"
-            }
+              message: 'invalid email address',
+            },
           })}
           InputLabelProps={{
             shrink: true,
@@ -94,11 +95,11 @@ export default function StoreManager() {
           fullWidth
           margin="normal"
           inputRef={register({
-            required: "Required",
+            required: 'Required',
             minLength: {
               value: 10,
-              message: "Contact number must have at least 10 characters"
-            }
+              message: 'Contact number must have at least 10 characters',
+            },
           })}
           InputLabelProps={{
             shrink: true,
@@ -118,18 +119,18 @@ export default function StoreManager() {
           fullWidth
           margin="normal"
           inputRef={register({
-            required: "You must specify a password",
+            required: 'You must specify a password',
             minLength: {
               value: 8,
-              message: "Password must have at least 8 characters"
-            }
+              message: 'Password must have at least 8 characters',
+            },
           })}
           InputLabelProps={{
             shrink: true,
-          }}   
+          }}
         />
-           {errors.password && errors.password.message}
-          
+        {errors.password && errors.password.message}
+
         <Button
           type="submit"
           fullWidth
@@ -139,7 +140,6 @@ export default function StoreManager() {
         >
           Register
         </Button>
-        
       </form>
     </div>
   );

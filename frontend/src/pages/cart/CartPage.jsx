@@ -15,38 +15,13 @@ import { environment } from '../../configs/environment';
 
 class CartPage extends Component {
   state = {
-    items: [
-      // {
-      //   id: 1,
-      //   product: 'Belt Pant',
-      //   image:
-      //     'https://s3.ap-south-1.amazonaws.com/www.kellyfelder.com/gallery/58e1af95f81a0358169935c043984523409a51dc.jpg',
-      //   price: 1000,
-      //   quantity: 2,
-      // },
-      // {
-      //   id: 2,
-      //   product: 'EMBROIDED SHIFT LINEN DRESS',
-      //   image:
-      //     'https://s3.ap-south-1.amazonaws.com/www.kellyfelder.com/gallery/39af33908cae1957c83a96d2d310a2b9ef22cee8.jpg',
-      //   price: 4000,
-      //   quantity: 2,
-      // },
-      // {
-      //   id: 3,
-      //   product: 'Front tie knot top',
-      //   image:
-      //     'https://s3.ap-south-1.amazonaws.com/www.kellyfelder.com/gallery/d3b26487c1297af957dcd41c911877ea1e7534ae.jpg',
-      //   price: 1000,
-      //   quantity: 2,
-      // },
-    ],
+    items: [],
   };
 
   componentDidMount() {
     Axios.get(environment.baseURL + 'cart/get/' + 'C001')
       .then((cartData) => {
-        console.log(cartData.data.items);
+        // console.log(cartData.data.items);
         this.setState({ items: cartData.data.items });
       })
       .catch((err) => console.error(err));
@@ -54,13 +29,13 @@ class CartPage extends Component {
 
   getSubTotal = () => {
     var subTotal = 0;
-    this.state.items.map((item) => (subTotal += item.price * item.quantity));
+    this.state.items.map((item) => (subTotal += item.productPrice * item.quantity));
     return subTotal;
   };
 
   onRemove = (id) => {
     this.setState({
-      items: this.state.items.filter((item) => item.id !== id),
+      items: this.state.items.filter((item) => item.productId !== id),
     });
   };
 

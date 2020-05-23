@@ -7,30 +7,43 @@ import Axios from 'axios';
 import { environment } from '../../configs/environment';
 
 class CartItem extends Component {
+  constructor(props) {
+    super(props);
+    console.log(props)
+    this.state = {
+      productId: props.item.productId,
+      name: '',
+      image: '',
+      productPrice: props.item.productPrice,
+      quantity: props.item.quantity,
+    };
+  }
+
   componentDidMount() {
     Axios.get(
       environment.baseURL + '/product/get/' + this.props.item.productId
-    ).then((data) => {
-      // this.setState({item: {image}})
-      console.log(data);
+    ).then((e) => {
+      this.setState({image:e.data.imageUrl})
     });
   }
 
   render() {
-    const {
-      productId,
-      product,
-      image,
-      productPrice,
-      quantity,
-    } = this.props.item;
+    // const {
+    //   productId,
+    //   product,
+    //   image,
+    //   productPrice,
+    //   quantity,
+    // } = this.props.item;
+
+    const { productId, name, image, productPrice, quantity } = this.state;
 
     return (
       <TableRow key={productId}>
         <TableCell>
           <img
             src={image}
-            alt={product}
+            alt={name}
             style={{ width: '150px', height: '150px' }}
           />
         </TableCell>
@@ -42,7 +55,7 @@ class CartItem extends Component {
             fontFamily: 'Cabin',
           }}
         >
-          {product} <br />
+          {name} <br />
           <Button
             color="default"
             onClick={() => this.props.onRemove(this.props.item.productId)}
