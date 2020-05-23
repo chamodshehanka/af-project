@@ -95,7 +95,8 @@ export default class CartController {
    */
   public deleteCart = async (req: Request, res: Response): Promise<any> => {
     const collection: any = getCollection();
-    const { clientId, productId } = req.body;
+    const clientId = req.params.id;
+    const productId = req.query.productId;
 
     try {
       let cart = await collection.findOne({ clientId });

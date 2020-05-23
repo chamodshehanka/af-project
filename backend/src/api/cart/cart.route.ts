@@ -15,6 +15,6 @@ carts.get('/get/:id', controller.getCart);
 carts.put('/update', controller.updateCart);
 
 // Delete Cart
-carts.delete('/delete', controller.deleteCart);
+carts.delete('/delete/:id', controller.deleteCart);
 
 export default carts;

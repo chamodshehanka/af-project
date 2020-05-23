@@ -10,11 +10,14 @@ export function createCart() {
 }
 
 export function deleteCartItem(clientId, productId) {
-  console.log()
-  Axios.delete(environment.baseURL + 'cart/delete/', {
-    clientId: clientId,
-    productId: productId,
-  })
+  console.log();
+  Axios.delete(
+    environment.baseURL + 'cart/delete/' + clientId + '?productId=' + productId,
+    {
+      clientId: clientId,
+      productId: productId,
+    }
+  )
     .then((res) => {
       console.log(res);
     })

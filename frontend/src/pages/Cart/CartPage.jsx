@@ -22,7 +22,6 @@ class CartPage extends Component {
   componentDidMount() {
     Axios.get(environment.baseURL + 'cart/get/' + 'C001')
       .then((cartData) => {
-        // console.log(cartData.data.items);
         this.setState({ items: cartData.data.items });
       })
       .catch((err) => console.error(err));
@@ -37,11 +36,10 @@ class CartPage extends Component {
   };
 
   onRemove = (productId) => {
-    // console.log('REmove id : ' + id);
     CartService.deleteCartItem('C001', productId);
-    // this.setState({
-    //   items: this.state.items.filter((item) => item.productId !== id),
-    // });
+    this.setState({
+      items: this.state.items.filter((item) => item.productId !== productId),
+    });
   };
 
   updateCart = () => {
