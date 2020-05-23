@@ -65,27 +65,21 @@ export default class CartController {
    * @returns sucess or error message
    */
   public updateCart = async (req: Request, res: Response): Promise<any> => {
-    const { cartId } = req.body;
+    const { clientId, productId, value } = req.body;
     const collection: any = getCollection();
 
-    collection
-      .fundOneAndUpdate(
-        {
-          _id: new mongodb.ObjectId(cartId),
-        },
-        {
-          $set: {
-            // TODO:add rest fields
-          },
-        }
-      )
-      .then(() => {
-        res.send({ message: 'Succesfully Updated' });
-      })
-      .catch((err) => {
-        res.send({ message: 'Unable to Update' });
-        console.error(err);
-      });
+    // console.log(clientId +'Awa' + productId + ' ' + value);
+
+    try {
+      let cart = await collection.findOne({ clientId });
+
+      if (cart !== null) {
+        let itemIndex = cart.items.findIndex((p) => p.productId === productId);
+      }
+    } catch (err) {
+      console.error(err);
+      res.send('something went wrong');
+    }
   };
 
   /**
