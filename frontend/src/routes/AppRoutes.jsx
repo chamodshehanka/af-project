@@ -15,5 +15,6 @@ export const routes = [
   { path: '/clients', component: ClientPage },
   { path: '/clientAccount', component: ClientAccount },
   { path: '/dashboard', component: Dashboard },
+  { path: '/delivery', component: DeliveryPage },
   { path: '/StoreManagerDetails', component: StoreManagerDetails },
 ];
