@@ -4,7 +4,7 @@ import { MongoHelper } from '../../config/mongodb.config';
 import CartSchema from './cart.class';
 
 const getCollection = () => {
-  return MongoHelper.client.db('ShopDB').collection('cart');
+  return MongoHelper.client.db('ShopDB').collection('carts');
 };
 
 export default class CartController {
@@ -15,12 +15,11 @@ export default class CartController {
    * @returns sucess or error message
    */
   public addCart = async (req: Request, res: Response): Promise<any> => {
-    const { clientId, productId, productPrice,quantity } = req.body;
+    const { clientId, productId, productPrice, quantity } = req.body;
     const collection: any = getCollection();
 
     try {
       let cart = await collection.findOne({ clientId });
-      console.log(cart);
 
       if (cart !== null) {
         // Cart list exists for user
@@ -30,27 +29,29 @@ export default class CartController {
           let productItem = cart.items[itemIndex];
           cart.items[itemIndex] = productItem;
         } else {
-          cart.items.push({ productId, productPrice });
+          cart.items.push({ productId, productPrice, quantity });
         }
 
-        await collection.findOneAndUpdate({
-          clientId: clientId,
-        }, 
-        {
-          $set: {
-            items: cart.items,
-          }
-        }).then(() => {
-          res.send(cart);
-        })
+        await collection
+          .findOneAndUpdate(
+            {
+              clientId: clientId,
+            },
+            {
+              $set: {
+                items: cart.items,
+              },
+            }
+          )
+          .then(() => {
+            res.send(cart);
+          });
       } else {
         // no cart for user
         const newCart = await collection.insertOne({
           clientId,
-          items:[{productId, productPrice, quantity}]
-        })
-
-        
+          items: [{ productId, productPrice, quantity }],
+        });
       }
     } catch (err) {
       console.error(err);
@@ -90,21 +91,52 @@ export default class CartController {
 
   /**
    * Delete Cart
-   * @param cartId
-   * @returns sucess or error message
+   * @param clientId
+   * @returns success or error message
    */
   public deleteCart = async (req: Request, res: Response): Promise<any> => {
     const collection: any = getCollection();
-    const { cartId } = req.body;
+    const { clientId, productId } = req.body;
 
-    collection
-      .remove({ _id: new mongodb.ObjectId(cartId) })
-      .then((result) => {
-        res.send(result);
-      })
-      .catch((err) => {
-        res.send('Unable to delete!');
-        console.error(err);
-      });
+    try {
+      let cart = await collection.findOne({ clientId });
+      if (cart !== null) {
+        let itemIndex = cart.items.findIndex((p) => p.productId === productId);
+
+        cart.items.splice(itemIndex, 1);
+
+        await collection
+          .findOneAndUpdate(
+            { clientId: clientId },
+            {
+              $set: {
+                items: cart.items,
+              },
+            }
+          )
+          .then(() => {
+            res.send(cart);
+          });
+      } else {
+        res.send({ message: 'Unable to find the cart' });
+      }
+    } catch (err) {
+      console.error(err);
+      res.send('something went wrong');
+    }
+  };
+
+  /**
+   * Get Cart by Client ID
+   * @param clientId
+   * @returns cart
+   */
+  public getCart = async (req: Request, res: Response): Promise<any> => {
+    const collection: any = getCollection();
+    const { clientId } = req.body;
+
+    let cart = await collection.findOne({ clientId });
+
+    res.send(cart);
   };
 }
