@@ -49,11 +49,13 @@ class CartPage extends Component {
 
   onPlus = (productId) => {
     // console.log(productId);
+    this.componentDidMount();
     CartService.updateCartItem(this.state.clientId, productId, 1);
   };
 
   onMinus = (productId) => {
-    console.log(productId);
+    // console.log(productId);
+    CartService.updateCartItem(this.state.clientId, productId, -1);
   };
 
   render() {
