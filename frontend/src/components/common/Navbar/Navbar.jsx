@@ -191,9 +191,19 @@ export default function NavBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
+
+          <Typography
+            className={classes.title}
+            variant="h6"
+            noWrap
+            onClick={() => {
+              document.location.href = '/';
+            }}
+            style={{ cursor: 'pointer' }}
+          >
             MalBay
           </Typography>
+
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
