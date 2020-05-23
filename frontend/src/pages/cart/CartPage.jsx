@@ -17,10 +17,11 @@ import { CartService } from '../../services/index';
 class CartPage extends Component {
   state = {
     items: [],
+    clientId: 'C001',
   };
 
   componentDidMount() {
-    Axios.get(environment.baseURL + 'cart/get/' + 'C001')
+    Axios.get(environment.baseURL + 'cart/get/' + this.state.clientId)
       .then((cartData) => {
         this.setState({ items: cartData.data.items });
       })
@@ -36,14 +37,23 @@ class CartPage extends Component {
   };
 
   onRemove = (productId) => {
-    CartService.deleteCartItem('C001', productId);
+    CartService.deleteCartItem(this.state.clientId, productId);
     this.setState({
       items: this.state.items.filter((item) => item.productId !== productId),
     });
   };
 
   updateCart = () => {
-    console.log('upate cart pressed');
+    this.componentDidMount();
+  };
+
+  onPlus = (productId) => {
+    // console.log(productId);
+    CartService.updateCartItem(this.state.clientId, productId, 1);
+  };
+
+  onMinus = (productId) => {
+    console.log(productId);
   };
 
   render() {
@@ -71,6 +81,8 @@ class CartPage extends Component {
                       key={item.productId}
                       item={item}
                       onRemove={this.onRemove.bind(this, item.productId)}
+                      onPlus={this.onPlus.bind(this, item.productId)}
+                      onMinus={this.onMinus.bind(this, item.productId)}
                     />
                   ))}
                 </TableBody>
@@ -86,7 +98,7 @@ class CartPage extends Component {
               }}
             >
               <h3>Subtotal {this.getSubTotal()}.00 LKR</h3>
-              Shipping and taxes calculated at checkout
+              Delivery and taxes calculated at checkout
               <br />
               <br />
               <div>
