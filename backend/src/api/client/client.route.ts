@@ -19,7 +19,7 @@ clients.put("/update", controller.updateClient);
 clients.delete("/delete", controller.deleteClient);
 
 // Get Client By ID
-clients.get("/get", controller.getClientByID);
+clients.post("/get", controller.getClientByID);
 
 // Get Client List
 clients.get("/list", controller.getClients);

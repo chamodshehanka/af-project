@@ -14,7 +14,7 @@ products.put("/update", controller.updateProduct);
 products.delete("/delete", controller.deleteProduct);
 
 //Get product by id
-products.get("/get", controller.getProductByID);
+products.get("/get/:id", controller.getProductByID);
 
 //Get All Products
 products.get("/list", controller.getProducts);

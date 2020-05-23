@@ -7,6 +7,7 @@ import ClientAccount from '../pages/Client/ClientAccount';
 import Dashboard from '../pages/Admin/dashboard';
 import DeliveryPage from '../pages/Delivery/DeliveryPage';
 import StoreManagerDetails from '../pages/Admin/StoreManagerDetails';
+import WishList from '../pages/WishList/WishList';
 
 export const routes = [
   { path: '/', component: HomePage },
@@ -18,4 +19,5 @@ export const routes = [
   { path: '/dashboard', component: Dashboard },
   { path: '/delivery', component: DeliveryPage },
   { path: '/StoreManagerDetails', component: StoreManagerDetails },
+  { path: '/wishList', component: WishList },
 ];
