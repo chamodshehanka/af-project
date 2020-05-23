@@ -15,21 +15,47 @@ export default class CartController {
    * @returns sucess or error message
    */
   public addCart = async (req: Request, res: Response): Promise<any> => {
-    const requestData = req.body;
+    const { clientId, productId, productPrice,quantity } = req.body;
     const collection: any = getCollection();
-    const cart = new CartSchema(requestData);
 
-    collection
-      .insertOne(cart)
-      .then(() => {
-        res.send({ message: 'New cart is successfully created' });
-        res.end();
-      })
-      .catch((err) => {
-        res.send({ message: 'Unable to create cart' });
-        console.log(err);
-        res.end();
-      });
+    try {
+      let cart = await collection.findOne({ clientId });
+      console.log(cart);
+
+      if (cart !== null) {
+        // Cart list exists for user
+        let itemIndex = cart.items.findIndex((p) => p.productId === productId);
+
+        if (itemIndex > -1) {
+          let productItem = cart.items[itemIndex];
+          cart.items[itemIndex] = productItem;
+        } else {
+          cart.items.push({ productId, productPrice });
+        }
+
+        await collection.findOneAndUpdate({
+          clientId: clientId,
+        }, 
+        {
+          $set: {
+            items: cart.items,
+          }
+        }).then(() => {
+          res.send(cart);
+        })
+      } else {
+        // no cart for user
+        const newCart = await collection.insertOne({
+          clientId,
+          items:[{productId, productPrice, quantity}]
+        })
+
+        
+      }
+    } catch (err) {
+      console.error(err);
+      res.send({ message: 'Unable to Add' });
+    }
   };
 
   /**
