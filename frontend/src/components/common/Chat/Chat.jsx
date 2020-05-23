@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { Launcher } from "react-chat-window";
-import "./Chat.css";
+import React, { Component } from 'react';
+import { Launcher } from 'react-chat-window';
+import './Chat.css';
 
 class Chat extends Component {
   state = {};
@@ -24,8 +24,8 @@ class Chat extends Component {
         messageList: [
           ...this.state.messageList,
           {
-            author: "them",
-            type: "text",
+            author: 'them',
+            type: 'text',
             data: { text },
           },
         ],
@@ -38,9 +38,9 @@ class Chat extends Component {
       <div className="chat">
         <Launcher
           agentProfile={{
-            teamName: "Skybirds",
+            teamName: 'Skybirds',
             imageUrl:
-              "https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png",
+              'https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png',
           }}
           onMessageWasSent={this._onMessageWasSent.bind(this)}
           messageList={this.state.messageList}

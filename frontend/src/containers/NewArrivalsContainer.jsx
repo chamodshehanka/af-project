@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class NewArrivalsContainer extends Component {
   state = {};
@@ -6,10 +6,9 @@ class NewArrivalsContainer extends Component {
     return (
       <>
         <div className="container">
-            <p align="center">
-                <h1 autoCapitalize>New Arrivals</h1>
-                
-            </p>
+          <p align="center">
+            <h1 autoCapitalize>New Arrivals</h1>
+          </p>
         </div>
       </>
     );

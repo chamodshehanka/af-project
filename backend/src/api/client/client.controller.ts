@@ -3,11 +3,11 @@ import * as mongodb from 'mongodb';
 import { MongoHelper } from '../../config/mongodb.config';
 import ClientSchema from './client.class';
 
-const webtoken = require("jsonwebtoken")
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
+const webtoken = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
-process.env.SECRET_KEY = 'secret'
+process.env.SECRET_KEY = 'secret';
 
 const getCollection = () => {
   return MongoHelper.client.db('ShopDB').collection('clients');
@@ -32,32 +32,37 @@ export default class ClientController {
   public addClient = async (req: Request, res: Response): Promise<any> => {
     const requestData = req.body;
     const collection: any = getCollection();
-    if(await collection.findOne({email:requestData.email})){
-      res.send({message: 'User Alredy Registered'})
-    }else{
-      const hashedPassword = await bcrypt.hash(requestData.password,10);
-      requestData.password = hashedPassword;
-      const client = new ClientSchema(requestData);
 
-    storage
-      .getBuckets()
-      .then((e) => console.log(e))
-      .catch((err) => console.error(err));
+    console.log(req.body);
+    res.send({ message: 'Successfully Added' });
 
-    const malbayBucket = storage.bucket('malbay-bucket');
-    console.log(malbayBucket)
 
-    collection
-      .insertOne(client)
-      .then(() => {
-        res.send({ message: 'Successfully Added' });
-        res.end();
-      })
-      .catch((err) => {
-        res.send({ message: 'Unable to Add' });
-        console.error(err);
-      });
-    }
+    // if(await collection.findOne({email:requestData.email})){
+    //   res.send({message: 'User Alredy Registered'})
+    // }else{
+    //   const hashedPassword = await bcrypt.hash(requestData.password,10);
+    //   requestData.password = hashedPassword;
+    //   const client = new ClientSchema(requestData);
+
+    // storage
+    //   .getBuckets()
+    //   .then((e) => console.log(e))
+    //   .catch((err) => console.error(err));
+
+    // const malbayBucket = storage.bucket('malbay-bucket');
+    // console.log(malbayBucket)
+
+    // collection
+    //   .insertOne(client)
+    //   .then(() => {
+    //     res.send({ message: 'Successfully Added' });
+    //     res.end();
+    //   })
+    //   .catch((err) => {
+    //     res.send({ message: 'Unable to Add' });
+    //     console.error(err);
+    //   });
+    // }
   };
 
   /**
@@ -170,26 +175,29 @@ export default class ClientController {
    */
   public signIn = async (req: Request, res: Response): Promise<any> => {
     const collection: any = getCollection();
-    console.log(req.body)
+    console.log(req.body);
     collection
-      .findOne({email: req.body.email}).then(async user => {
-        console.log(user.password===req.body.password)
-        if(user != null){
-          if(await bcrypt.compareSync(req.body.password,user.password)){
+      .findOne({ email: req.body.email })
+      .then(async (user) => {
+        console.log(user.password === req.body.password);
+        if (user != null) {
+          if (await bcrypt.compareSync(req.body.password, user.password)) {
             const payload = {
-                id : user.id,
-                email: user.email,
-            }
-            console.log(payload)
-            let token = jwt.sign(payload,process.env.SECRET_KEY,{expiresIn:1140})
+              id: user.id,
+              email: user.email,
+            };
+            console.log(payload);
+            let token = jwt.sign(payload, process.env.SECRET_KEY, {
+              expiresIn: 1140,
+            });
             res.status(200).send(token);
-        }else{
-          res.status(400).json({error: "Incorrect Password"});
+          } else {
+            res.status(400).json({ error: 'Incorrect Password' });
+          }
+        } else {
+          res.status(400).json({ error: 'User Does Not Exists' });
         }
-      }else{
-        res.status(400).json({error: "User Does Not Exists"});
-      }
-    })
+      })
       .catch((err) => {
         res.send('Something Went Wrong');
         console.error(err);

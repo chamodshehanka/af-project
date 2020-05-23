@@ -1,6 +1,8 @@
 # AF Group Project
 
 ![Docker Image CI](https://github.com/Shehanka/af-project/workflows/Docker%20Image%20CI/badge.svg)
+![Node.js CI for Frontend](https://github.com/Shehanka/af-project/workflows/Node.js%20CI%20for%20Frontend/badge.svg)
+![NodeTS CI for Backend](https://github.com/Shehanka/af-project/workflows/NodeTS%20CI%20for%20Backend/badge.svg)
 
 ### How to contribute to project
 
