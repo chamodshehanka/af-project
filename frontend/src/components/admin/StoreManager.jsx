@@ -24,18 +24,17 @@ export default function StoreManager() {
     console.log(data);
     AdminService.addStoreManager(data);
   };
- 
+
   const { register, handleSubmit } = useForm();
 
   return (
     <div>
       <h2>Add new Manager</h2>
-      <form 
-        className={classes.root} 
+      <form
+        className={classes.root}
         onSubmit={handleSubmit(onSubmit)}
         noValidate
       >
-
         <TextField
           id="name"
           label="Name"

@@ -13,6 +13,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 import { useForm } from 'react-hook-form';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import './DeliveryPage.css';
 
 const useStyles = makeStyles((theme) => ({
@@ -131,15 +133,49 @@ const DeliveryPage = () => {
 
                   <br />
 
-                  {/* <Grid container xs */}
+                  <Grid container spacing={2}>
+                    <Grid item xs={6}>
+                      <TextField
+                        label="City"
+                        variant="outlined"
+                        required
+                        fullWidth
+                      />
+                    </Grid>
 
+                    <Grid item xs={6}>
+                      <TextField
+                        label="Postal Code"
+                        variant="outlined"
+                        required
+                        fullWidth
+                      />
+                    </Grid>
+                  </Grid>
+                  <br />
                   <Grid item xs={12}>
                     <TextField
-                      label="City"
+                      label="Phone Number"
                       variant="outlined"
                       required
                       fullWidth
                     />
+                  </Grid>
+                  <br />
+                  <Grid container spacing={2}>
+                    <Grid item xs={6}>
+                      <Button variant="outlined" color="primary">
+                          <ShoppingCartIcon />
+                        Return to Cart
+                      </Button>
+                    </Grid>
+
+                    <Grid item xs={6}>
+                      <Button variant="contained" color="primary">
+                          <AttachMoneyIcon />
+                        Continue to Payment
+                      </Button>
+                    </Grid>
                   </Grid>
                 </form>
               </Paper>
