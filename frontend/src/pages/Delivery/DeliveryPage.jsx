@@ -165,14 +165,14 @@ const DeliveryPage = () => {
                   <Grid container spacing={2}>
                     <Grid item xs={6}>
                       <Button variant="outlined" color="primary">
-                          <ShoppingCartIcon />
+                        <ShoppingCartIcon />
                         Return to Cart
                       </Button>
                     </Grid>
 
                     <Grid item xs={6}>
                       <Button variant="contained" color="primary">
-                          <AttachMoneyIcon />
+                        <AttachMoneyIcon />
                         Continue to Payment
                       </Button>
                     </Grid>
