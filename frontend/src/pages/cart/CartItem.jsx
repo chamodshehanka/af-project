@@ -8,12 +8,12 @@ import { environment } from '../../configs/environment';
 
 class CartItem extends Component {
   componentDidMount() {
-    Axios.get(environment.baseURL + '/product/get/' + this.props.item.productId).then(
-      (data) => {
-        // this.setState({item: {image}})
-        console.log(data);
-      }
-    );
+    Axios.get(
+      environment.baseURL + '/product/get/' + this.props.item.productId
+    ).then((data) => {
+      // this.setState({item: {image}})
+      console.log(data);
+    });
   }
 
   render() {

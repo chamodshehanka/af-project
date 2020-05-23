@@ -47,7 +47,7 @@ class CartPage extends Component {
     Axios.get(environment.baseURL + 'cart/get/' + 'C001')
       .then((cartData) => {
         console.log(cartData.data.items);
-        this.setState({ items: cartData.data.items});
+        this.setState({ items: cartData.data.items });
       })
       .catch((err) => console.error(err));
   }
