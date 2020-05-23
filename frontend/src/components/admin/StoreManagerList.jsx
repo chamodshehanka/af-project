@@ -33,9 +33,9 @@ export default class storeManagerList extends Component {
           <table className="table table-striped" style={{ marginTop: 20 }}>
             <thead>
               <tr>
-                <th>Person</th>
-                <th>Business</th>
-                <th>GST Number</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact Number</th>
                 <th colSpan="2">Action</th>
               </tr>
             </thead>
