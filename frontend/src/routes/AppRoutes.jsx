@@ -4,7 +4,7 @@ import SignUp from '../pages/SignUp/SignUp';
 import SignIn from '../pages/SignIn/SignIn';
 import ClientPage from '../pages/Client/ClientPage';
 import ClientAccount from '../pages/Client/ClientAccount';
-import Dashboard from '../pages/Admin/Dashboard';
+import Dashboard from '../pages/Admin/dashboard';
 import DeliveryPage from '../pages/Delivery/DeliveryPage';
 import StoreManagerDetails from '../pages/Admin/StoreManagerDetails';
 import Category from '../pages/Admin/Category';

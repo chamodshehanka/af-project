@@ -5,9 +5,8 @@ import Button from '@material-ui/core/Button';
 import { useForm } from 'react-hook-form';
 import { CategoryService } from '../../services';
 import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -111,14 +110,16 @@ export default function AddCategory() {
         />
         {errors.image && errors.image.message}
 
-      <FormControl className={classes.formControl}>
+      <InputLabel>Featured Category</InputLabel>
+      <FormControl className={classes.formControl}>   
         <select 
         name="featured"
         labelId="demo-simple-select-placeholder-label-label"
         id="demo-simple-select-placeholder-label"  
         displayEmpty
         className={classes.selectEmpty} 
-        ref={register}>
+        ref={register}
+        >
         <option value={true}>True</option>
         <option value={false}>False</option>
       </select>
