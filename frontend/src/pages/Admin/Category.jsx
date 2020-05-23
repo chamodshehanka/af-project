@@ -22,7 +22,7 @@ import {
   mainListItems,
   secondaryListItems,
 } from '../../components/admin/listItems';
-import StoreManager from '../../components/admin/StoreManager';
+import AddCategory from '../../components/admin/AddCategory';
 import StoreManagerList from '../../components/admin/StoreManagerList';
 
 function Copyright() {
@@ -119,7 +119,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function StoreManagerDetails() {
+export default function Category() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -185,13 +185,13 @@ export default function StoreManagerDetails() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <h1>Store manager Details</h1>
+        <h1>Category List Details</h1>
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            {/* StoreManager */}
+            {/* Category */}
             <Grid item xs={12} md={8} lg={6}>
               <Paper className={fixedHeightPaper}>
-                <StoreManager />
+                <AddCategory />
               </Paper>
             </Grid>
             {/* StoreManagerList */}

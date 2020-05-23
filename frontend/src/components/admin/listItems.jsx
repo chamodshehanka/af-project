@@ -34,7 +34,7 @@ export const mainListItems = (
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
-      <ListItemText primary="Reports" />
+      <ListItemText primary="Category" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
