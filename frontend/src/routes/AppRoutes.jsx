@@ -8,6 +8,7 @@ import Dashboard from '../pages/Admin/Dashboard';
 import DeliveryPage from '../pages/Delivery/DeliveryPage';
 import StoreManagerDetails from '../pages/Admin/StoreManagerDetails';
 import WishList from '../pages/WishList/WishList';
+import ShopPage from '../pages/Shop/Shop';
 
 export const routes = [
   { path: '/', component: HomePage },
@@ -21,4 +22,5 @@ export const routes = [
   { path: '/StoreManagerDetails', component: StoreManagerDetails },
   { path: '/wishList', component: WishList },
   { path: '/delivery', component: DeliveryPage },
+  { path: '/shop', component: ShopPage },
 ];
