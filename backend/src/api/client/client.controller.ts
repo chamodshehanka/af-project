@@ -119,11 +119,11 @@ export default class ClientController {
    * @returns client json
    */
   public getClientByID = async (req: Request, res: Response): Promise<any> => {
-    const { clientID } = req.body;
+
     const collection: any = getCollection();
 
     collection
-      .findById(clientID)
+      .findOne({_id:req.body.clientId})
       .then((client) => {
         res.send(client);
       })
