@@ -18,13 +18,15 @@ export default class storeManagerController {
    * @returns success or failure message
    */
   public addStoreManager = async (req: Request, res: Response): Promise<any> => {
+    
     const requestData = req.body;
     const collection: any = getCollection();
     const storeManager = new storeManagerSchema(requestData);
-
+    
     collection
       .insertOne(storeManager)
       .then(() => {
+        console.log(req.body);
         res.send({ message: 'New store Manager is successfully assigned' });
         res.end();
       })
@@ -34,6 +36,7 @@ export default class storeManagerController {
       });
   };
 
+  
   /**
    * Update storeManager
    * @param storeManagerId id of the storeManager

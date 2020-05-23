@@ -4,8 +4,7 @@ import SignUp from '../pages/SignUp/SignUp';
 import SignIn from '../pages/SignIn/SignIn';
 import ClientPage from '../pages/Client/ClientPage';
 import ClientAccount from '../pages/Client/ClientAccount';
-import Dashboard from '../pages/Admin/Dashboard';
-import DeliveryPage from '../pages/Delivery/DeliveryPage';
+import Dashboard from '../pages/Admin/dashboard';
 import StoreManagerDetails from '../pages/Admin/StoreManagerDetails';
 
 export const routes = [
