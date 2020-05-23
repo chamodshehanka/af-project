@@ -9,4 +9,3 @@ export function addStoreManager(data) {
     })
     .catch((err) => console.error(err));
 }
-
