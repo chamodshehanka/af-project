@@ -16,6 +16,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import './Navbar.css';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -29,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
+    fontFamily: 'Pacifico',
   },
   search: {
     position: 'relative',
@@ -179,7 +181,7 @@ export default function NavBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar position="static" style={{ backgroundColor: '#673ab7' }}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -189,9 +191,19 @@ export default function NavBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
+
+          <Typography
+            className={classes.title}
+            variant="h6"
+            noWrap
+            onClick={() => {
+              document.location.href = '/';
+            }}
+            style={{ cursor: 'pointer' }}
+          >
             MalBay
           </Typography>
+
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />

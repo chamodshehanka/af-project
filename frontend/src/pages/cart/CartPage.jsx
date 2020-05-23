@@ -9,6 +9,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import CartItem from './CartItem';
+import './CartPage.css';
 
 class CartPage extends Component {
   state = {
@@ -59,14 +60,12 @@ class CartPage extends Component {
   render() {
     return (
       <div>
-        <h1 className="cart-title" style={{ fontFamily: 'Assistant' }}>
-          Shopping Cart
-        </h1>
+        <h1 className="cart-title">Shopping Cart</h1>
         <Grid container spacing={3}>
           <Grid item xs={1}></Grid>
           <Grid item xs={10}>
             <TableContainer component={Paper}>
-              <Table aria-label="simple table">
+              <Table aria-label="cart table">
                 <TableHead>
                   <TableRow>
                     <TableCell>Product</TableCell>
@@ -90,7 +89,12 @@ class CartPage extends Component {
             </TableContainer>
 
             <div
-              style={{ paddingRight: '5px', margin: 'auto', float: 'right' }}
+              style={{
+                paddingRight: '5px',
+                margin: 'auto',
+                float: 'right',
+                fontFamily: 'Cabin',
+              }}
             >
               <h3>Subtotal {this.getSubTotal()}.00 LKR</h3>
               Shipping and taxes calculated at checkout
@@ -104,7 +108,7 @@ class CartPage extends Component {
                 >
                   Update Cart
                 </Button>{' '}
-                <Button color="primary" variant="outlined">
+                <Button color="primary" variant="outlined" href="/delivery">
                   Check Out
                 </Button>
               </div>

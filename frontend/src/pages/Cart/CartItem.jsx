@@ -19,9 +19,10 @@ class CartItem extends Component {
         </TableCell>
         <TableCell
           style={{
-            fontSize: '25px',
+            fontSize: '18px',
             textTransform: 'uppercase',
             fontWeight: 'bold',
+            fontFamily: 'Cabin',
           }}
         >
           {product} <br />
