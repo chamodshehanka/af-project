@@ -23,6 +23,9 @@ import {
   secondaryListItems,
 } from '../../components/admin/listItems';
 import StoreManager from '../../components/admin/StoreManager';
+import StoreManagerList from '../../components/admin/StoreManagerList'
+
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -192,8 +195,13 @@ export default function StoreManagerDetails() {
                 <StoreManager />
               </Paper>
             </Grid>
-          </Grid>
-
+             {/* StoreManagerList */}
+             <Grid item xs={12} md={8} lg={8}>
+              <Paper className={fixedHeightPaper}>
+              {/* <StoreManagerList /> */}
+              </Paper>
+            </Grid>
+          </Grid> 
           <Box pt={4}>
             <Copyright />
           </Box>
