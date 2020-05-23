@@ -3,13 +3,30 @@ import TableRow from '@material-ui/core/TableRow';
 import { TableCell } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Axios from 'axios';
+import { environment } from '../../configs/environment';
 
 class CartItem extends Component {
+  componentDidMount() {
+    Axios.get(environment.baseURL + '/product/get/' + this.props.item.productId).then(
+      (data) => {
+        // this.setState({item: {image}})
+        console.log(data);
+      }
+    );
+  }
+
   render() {
-    const { id, product, image, price, quantity } = this.props.item;
+    const {
+      productId,
+      product,
+      image,
+      productPrice,
+      quantity,
+    } = this.props.item;
 
     return (
-      <TableRow key={id}>
+      <TableRow key={productId}>
         <TableCell>
           <img
             src={image}
@@ -28,14 +45,14 @@ class CartItem extends Component {
           {product} <br />
           <Button
             color="default"
-            onClick={() => this.props.onRemove(this.props.item.id)}
+            onClick={() => this.props.onRemove(this.props.item.productId)}
           >
             Remove <DeleteIcon color="action" />
           </Button>
         </TableCell>
-        <TableCell align="right">{price}.00 LKR</TableCell>
+        <TableCell align="right">{productPrice}.00 LKR</TableCell>
         <TableCell align="right">{quantity}</TableCell>
-        <TableCell align="right">{price * quantity}.00 LKR</TableCell>
+        <TableCell align="right">{productPrice * quantity}.00 LKR</TableCell>
       </TableRow>
     );
   }

@@ -10,36 +10,47 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import CartItem from './CartItem';
 import './CartPage.css';
+import Axios from 'axios';
+import { environment } from '../../configs/environment';
 
 class CartPage extends Component {
   state = {
     items: [
-      {
-        id: 1,
-        product: 'Belt Pant',
-        image:
-          'https://s3.ap-south-1.amazonaws.com/www.kellyfelder.com/gallery/58e1af95f81a0358169935c043984523409a51dc.jpg',
-        price: 1000,
-        quantity: 2,
-      },
-      {
-        id: 2,
-        product: 'EMBROIDED SHIFT LINEN DRESS',
-        image:
-          'https://s3.ap-south-1.amazonaws.com/www.kellyfelder.com/gallery/39af33908cae1957c83a96d2d310a2b9ef22cee8.jpg',
-        price: 4000,
-        quantity: 2,
-      },
-      {
-        id: 3,
-        product: 'Front tie knot top',
-        image:
-          'https://s3.ap-south-1.amazonaws.com/www.kellyfelder.com/gallery/d3b26487c1297af957dcd41c911877ea1e7534ae.jpg',
-        price: 1000,
-        quantity: 2,
-      },
+      // {
+      //   id: 1,
+      //   product: 'Belt Pant',
+      //   image:
+      //     'https://s3.ap-south-1.amazonaws.com/www.kellyfelder.com/gallery/58e1af95f81a0358169935c043984523409a51dc.jpg',
+      //   price: 1000,
+      //   quantity: 2,
+      // },
+      // {
+      //   id: 2,
+      //   product: 'EMBROIDED SHIFT LINEN DRESS',
+      //   image:
+      //     'https://s3.ap-south-1.amazonaws.com/www.kellyfelder.com/gallery/39af33908cae1957c83a96d2d310a2b9ef22cee8.jpg',
+      //   price: 4000,
+      //   quantity: 2,
+      // },
+      // {
+      //   id: 3,
+      //   product: 'Front tie knot top',
+      //   image:
+      //     'https://s3.ap-south-1.amazonaws.com/www.kellyfelder.com/gallery/d3b26487c1297af957dcd41c911877ea1e7534ae.jpg',
+      //   price: 1000,
+      //   quantity: 2,
+      // },
     ],
   };
+
+  componentDidMount() {
+    Axios.get(environment.baseURL + 'cart/get/' + 'C001')
+      .then((cartData) => {
+        console.log(cartData.data.items);
+        this.setState({ items: cartData.data.items});
+      })
+      .catch((err) => console.error(err));
+  }
 
   getSubTotal = () => {
     var subTotal = 0;
@@ -79,9 +90,9 @@ class CartPage extends Component {
                 <TableBody>
                   {this.state.items.map((item) => (
                     <CartItem
-                      key={item.id}
+                      key={item.productId}
                       item={item}
-                      onRemove={this.onRemove.bind(this, item.id)}
+                      onRemove={this.onRemove.bind(this, item.productId)}
                     />
                   ))}
                 </TableBody>

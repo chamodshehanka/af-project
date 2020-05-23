@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import * as mongodb from 'mongodb';
 import { MongoHelper } from '../../config/mongodb.config';
-import CartSchema from './cart.class';
 
 const getCollection = () => {
   return MongoHelper.client.db('ShopDB').collection('carts');
@@ -133,7 +132,7 @@ export default class CartController {
    */
   public getCart = async (req: Request, res: Response): Promise<any> => {
     const collection: any = getCollection();
-    const { clientId } = req.body;
+    const clientId = req.params.id;
 
     let cart = await collection.findOne({ clientId });
 
