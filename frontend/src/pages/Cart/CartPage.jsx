@@ -29,7 +29,9 @@ class CartPage extends Component {
 
   getSubTotal = () => {
     var subTotal = 0;
-    this.state.items.map((item) => (subTotal += item.productPrice * item.quantity));
+    this.state.items.map(
+      (item) => (subTotal += item.productPrice * item.quantity)
+    );
     return subTotal;
   };
 

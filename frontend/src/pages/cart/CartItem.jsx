@@ -9,7 +9,7 @@ import { environment } from '../../configs/environment';
 class CartItem extends Component {
   constructor(props) {
     super(props);
-    console.log(props)
+    console.log(props);
     this.state = {
       productId: props.item.productId,
       name: '',
@@ -23,7 +23,7 @@ class CartItem extends Component {
     Axios.get(
       environment.baseURL + '/product/get/' + this.props.item.productId
     ).then((e) => {
-      this.setState({image:e.data.imageUrl})
+      this.setState({ image: e.data.imageUrl });
     });
   }
 
