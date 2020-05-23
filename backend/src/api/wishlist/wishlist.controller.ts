@@ -76,21 +76,22 @@ export default class WishListController {
    * @returns suddess or failure message
    */
   public removeProduct = async (req: Request, res: Response): Promise<any> => {
-    const { clientId, productId } = req.body;
+    const data  = req.body;
+    console.log(data)
     const collection: any = getCollection();
     try {
-      let wishList = await collection.findOne({ clientId });
+      let wishList = await collection.findOne({clientId:data.clientId });
       console.log(wishList);
       if (wishList !== null) {
         let itemIndex = wishList.items.findIndex(
-          (p) => p.productId === productId
+          (p) => p.productId === data.productId
         );
 
         wishList.items.splice(itemIndex, 1);
         await collection
           .findOneAndUpdate(
             {
-              clientId: clientId,
+              clientId: data.clientId,
             },
             {
               $set: {
