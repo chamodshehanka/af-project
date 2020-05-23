@@ -3,7 +3,7 @@ import FormData from 'form-data';
 
 export function addStoreManager(data) {
   const SM = new FormData();
-  
+
   SM.append('name', data.name);
   SM.append('email', data.email);
   SM.append('contactNo', data.contactNo);
@@ -23,7 +23,6 @@ export function addStoreManager(data) {
 
 
 //get all store managers list
-<<<<<<< HEAD
   export function getStoreManager() {
     
   
@@ -41,20 +40,3 @@ export function addStoreManager(data) {
   
     // return array;
   }
-=======
-export function getStoreManager() {
-  var array;
-
-  Axios.get('http://localhost:4000/api/storeManager/list')
-    .then((e) => {
-      console.log(e.data);
-
-      array = e.data;
-
-      return e.data;
-    })
-    .catch((err) => console.error(err));
-
-  return array;
-}
->>>>>>> 992f8ae891f6f7c7c9a88883a94427fd60b87cfd

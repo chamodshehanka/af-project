@@ -198,7 +198,7 @@ export default function StoreManagerDetails() {
              {/* StoreManagerList */}
              <Grid item xs={12} md={8} lg={8}>
               <Paper className={fixedHeightPaper}>
-              {/* <StoreManagerList /> */}
+              <StoreManagerList />
               </Paper>
             </Grid>
           </Grid> 

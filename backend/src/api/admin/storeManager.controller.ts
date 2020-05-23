@@ -18,6 +18,7 @@ export default class storeManagerController {
    * @returns success or failure message
    */
   public addStoreManager = async (req: Request, res: Response): Promise<any> => {
+    
     const requestData = req.body;
     const collection: any = getCollection();
     const storeManager = new storeManagerSchema(requestData);

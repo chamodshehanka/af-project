@@ -85,7 +85,6 @@ export default function StoreManager() {
           id="password"
           label="Password"
           name="password"
-          autoComplete="password"
           required
           style={{ margin: 8 }}
           placeholder="Enter password"
