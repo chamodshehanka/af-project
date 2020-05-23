@@ -13,11 +13,7 @@ class ClientPage extends Component {
 
         <Button
           onClick={() => {
-            Axios.post(
-              'http://localhost:4000/api/client/get',
-              { id: 'C001' },
-       
-            )
+            Axios.post('http://localhost:4000/api/client/get', { id: 'C001' })
               .then((result) => {
                 console.log(result.data);
               })
