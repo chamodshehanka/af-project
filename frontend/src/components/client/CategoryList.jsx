@@ -15,10 +15,11 @@ const useStyles = makeStyles((theme) => ({
 
 const CategoryList = (props) => {
   const classes = useStyles();
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
+  //   const [selectedIndex, setSelectedIndex] = React.useState(1);
 
   const handleListItemClick = (event, index) => {
-    setSelectedIndex(index);
+    console.log(index);
+    //setSelectedIndex(index);
   };
 
   var displayList = (props) => {

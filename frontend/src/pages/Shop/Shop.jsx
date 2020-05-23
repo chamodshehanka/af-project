@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Grid, Paper } from '@material-ui/core';
 import CategoryList from '../../components/client/CategoryList';
-import { CategoryService } from '../../services';
 import Axios from 'axios';
 
 class ShopPage extends Component {
