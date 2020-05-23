@@ -11,6 +11,6 @@ wishLists.get("/get/:id",controller.getWishList);
 wishLists.post("/add",controller.addProduct);
 
 //Remove Prduct From WishList
-wishLists.delete("/delete",controller.removeProduct);
+wishLists.post("/delete",controller.removeProduct);
 
 export default wishLists

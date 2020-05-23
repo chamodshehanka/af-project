@@ -19,7 +19,7 @@ class App {
   private setMiddlewares(): void {
     this.express.use(cors());
     // this.express.use(morgan('dev'));
-    this.express.use(bodyParser.urlencoded({ extended: false }));
+    this.express.use(bodyParser.urlencoded({ extended: true }));
     this.express.use(bodyParser.json());
 
     // this.express.use(helmet());

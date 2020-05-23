@@ -20,4 +20,5 @@ export const routes = [
   { path: '/delivery', component: DeliveryPage },
   { path: '/StoreManagerDetails', component: StoreManagerDetails },
   { path: '/wishList', component: WishList },
+  { path: '/delivery', component: DeliveryPage },
 ];
