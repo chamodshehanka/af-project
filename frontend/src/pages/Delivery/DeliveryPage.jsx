@@ -84,6 +84,8 @@ const DeliveryPage = () => {
                     variant="outlined"
                     required
                     fullWidth
+                    inputRef={register}
+                    name="email"
                   />
                   <FormControlLabel
                     control={<Checkbox name="newletter" color="primary" />}
@@ -99,6 +101,8 @@ const DeliveryPage = () => {
                         variant="outlined"
                         required
                         fullWidth
+                        inputRef={register}
+                        name="firstName"
                       />
                     </Grid>
 
@@ -108,12 +112,20 @@ const DeliveryPage = () => {
                         variant="outlined"
                         required
                         fullWidth
+                        inputRef={register}
+                        name="lastName"
                       />
                     </Grid>
                   </Grid>
                   <br />
                   <Grid item xs={12}>
-                    <TextField label="Company" variant="outlined" fullWidth />
+                    <TextField
+                      label="Company"
+                      variant="outlined"
+                      fullWidth
+                      inputRef={register}
+                      name="company"
+                    />
                   </Grid>
                   <br />
                   <Grid item xs={12}>
@@ -122,13 +134,21 @@ const DeliveryPage = () => {
                       variant="outlined"
                       required
                       fullWidth
+                      inputRef={register}
+                      name="address"
                     />
                   </Grid>
 
                   <br />
 
                   <Grid item xs={12}>
-                    <TextField label="Apartment" variant="outlined" fullWidth />
+                    <TextField
+                      label="Apartment"
+                      variant="outlined"
+                      fullWidth
+                      inputRef={register}
+                      name="apartment"
+                    />
                   </Grid>
 
                   <br />
@@ -140,6 +160,8 @@ const DeliveryPage = () => {
                         variant="outlined"
                         required
                         fullWidth
+                        inputRef={register}
+                        name="city"
                       />
                     </Grid>
 
@@ -149,6 +171,8 @@ const DeliveryPage = () => {
                         variant="outlined"
                         required
                         fullWidth
+                        inputRef={register}
+                        name="postalCode"
                       />
                     </Grid>
                   </Grid>
@@ -159,6 +183,8 @@ const DeliveryPage = () => {
                       variant="outlined"
                       required
                       fullWidth
+                      inputRef={register}
+                      name="phoneNumber"
                     />
                   </Grid>
                   <br />

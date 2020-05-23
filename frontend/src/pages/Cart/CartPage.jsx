@@ -21,6 +21,10 @@ class CartPage extends Component {
   };
 
   componentDidMount() {
+    this.loadCartItems();
+  }
+
+  loadCartItems() {
     Axios.get(environment.baseURL + 'cart/get/' + this.state.clientId)
       .then((cartData) => {
         this.setState({ items: cartData.data.items });
@@ -44,16 +48,18 @@ class CartPage extends Component {
   };
 
   updateCart = () => {
-    this.componentDidMount();
+    this.setState({ items: [] });
+    this.loadCartItems();
   };
 
   onPlus = (productId) => {
-    // console.log(productId);
     CartService.updateCartItem(this.state.clientId, productId, 1);
+    this.updateCart();
   };
 
   onMinus = (productId) => {
-    console.log(productId);
+    CartService.updateCartItem(this.state.clientId, productId, -1);
+    this.updateCart();
   };
 
   render() {

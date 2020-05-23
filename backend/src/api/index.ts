@@ -18,6 +18,5 @@ router.use('/category',category);
 router.use('/storeManager',storeManager);
 router.use('/wishList',wishLists);
 router.use('/cart', carts);
-router.use('/category', category);
 
 export default router;
