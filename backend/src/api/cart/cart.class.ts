@@ -5,7 +5,7 @@ import Product from '../product/product.class';
 export const CartSchema = new mongoose.Schema({
   id: { type: String, required: true },
   clientId: { type: String, required: true },
-  items: { type: Product, required: false },
+  //items: { type: Product, required: false },
 });
 
 const Cart = mongoose.model<ICart>('Cart', CartSchema);

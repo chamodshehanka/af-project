@@ -46,7 +46,7 @@ export default function StoreManager() {
           placeholder="Enter full Name"
           fullWidth
           margin="normal"
-          ref={register}
+          inputRef={register}
           InputLabelProps={{
             shrink: true,
           }}
@@ -61,7 +61,7 @@ export default function StoreManager() {
           placeholder="Enter Email Address"
           fullWidth
           margin="normal"
-          ref={register}
+          inputRef={register}
           InputLabelProps={{
             shrink: true,
           }}
@@ -76,7 +76,7 @@ export default function StoreManager() {
           placeholder="Enter Contact Number"
           fullWidth
           margin="normal"
-          ref={register}
+          inputRef={register}
           InputLabelProps={{
             shrink: true,
           }}
@@ -92,7 +92,7 @@ export default function StoreManager() {
           autoComplete="current-password"
           fullWidth
           margin="normal"
-          ref={register}
+          inputRef={register}
           InputLabelProps={{
             shrink: true,
           }}
