@@ -33,34 +33,36 @@ export default class ClientController {
     const requestData = req.body;
     const collection: any = getCollection();
 
-    console.log(requestData);
-    
-    if(await collection.findOne({email:requestData.email})){
-      res.send({message: 'User Alredy Registered'})
-    }else{
-      const hashedPassword = await bcrypt.hash(requestData.password,10);
-      requestData.password = hashedPassword;
-      const client = new ClientSchema(requestData);
+    console.log(req.body);
+    res.send({ message: 'Successfully Added' });
 
-    storage
-      .getBuckets()
-      .then((e) => console.log(e))
-      .catch((err) => console.error(err));
 
-    const malbayBucket = storage.bucket('malbay-bucket');
-    console.log(malbayBucket)
+    // if(await collection.findOne({email:requestData.email})){
+    //   res.send({message: 'User Alredy Registered'})
+    // }else{
+    //   const hashedPassword = await bcrypt.hash(requestData.password,10);
+    //   requestData.password = hashedPassword;
+    //   const client = new ClientSchema(requestData);
 
-    collection
-      .insertOne(client)
-      .then(() => {
-        res.send({ message: 'Successfully Added' });
-        res.end();
-      })
-      .catch((err) => {
-        res.send({ message: 'Unable to Add' });
-        console.error(err);
-      });
-    }
+    // storage
+    //   .getBuckets()
+    //   .then((e) => console.log(e))
+    //   .catch((err) => console.error(err));
+
+    // const malbayBucket = storage.bucket('malbay-bucket');
+    // console.log(malbayBucket)
+
+    // collection
+    //   .insertOne(client)
+    //   .then(() => {
+    //     res.send({ message: 'Successfully Added' });
+    //     res.end();
+    //   })
+    //   .catch((err) => {
+    //     res.send({ message: 'Unable to Add' });
+    //     console.error(err);
+    //   });
+    // }
   };
 
   /**
@@ -122,11 +124,11 @@ export default class ClientController {
    * @returns client json
    */
   public getClientByID = async (req: Request, res: Response): Promise<any> => {
-    const { clientID } = req.body;
+
     const collection: any = getCollection();
 
     collection
-      .findById(clientID)
+      .findOne({_id:req.body.clientId})
       .then((client) => {
         res.send(client);
       })

@@ -10,5 +10,5 @@ export const ProductSchema = new mongoose.Schema({
   imageGallery: { type: String, required: true },
 });
 
-const Client = mongoose.model<IProduct>('Product', ProductSchema);
-export default Client;
+const Product = mongoose.model<IProduct>('Product', ProductSchema);
+export default Product;
