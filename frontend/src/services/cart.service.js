@@ -1,8 +1,20 @@
 import Axios from 'axios';
-// import { environment } from '../configs/environment';
+import { environment } from '../configs/environment';
 
 export function createCart() {
-  Axios.post('')
+  Axios.post(environment.baseURL)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => console.error(err));
+}
+
+export function deleteCartItem(clientId, productId) {
+  console.log()
+  Axios.delete(environment.baseURL + 'cart/delete/', {
+    clientId: clientId,
+    productId: productId,
+  })
     .then((res) => {
       console.log(res);
     })

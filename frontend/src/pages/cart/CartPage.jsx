@@ -12,6 +12,7 @@ import CartItem from './CartItem';
 import './CartPage.css';
 import Axios from 'axios';
 import { environment } from '../../configs/environment';
+import { CartService } from '../../services/index';
 
 class CartPage extends Component {
   state = {
@@ -35,10 +36,12 @@ class CartPage extends Component {
     return subTotal;
   };
 
-  onRemove = (id) => {
-    this.setState({
-      items: this.state.items.filter((item) => item.productId !== id),
-    });
+  onRemove = (productId) => {
+    // console.log('REmove id : ' + id);
+    CartService.deleteCartItem('C001', productId);
+    // this.setState({
+    //   items: this.state.items.filter((item) => item.productId !== id),
+    // });
   };
 
   updateCart = () => {

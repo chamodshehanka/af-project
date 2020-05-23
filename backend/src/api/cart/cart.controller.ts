@@ -117,7 +117,7 @@ export default class CartController {
             res.send(cart);
           });
       } else {
-        res.send({ message: 'Unable to find the cart' });
+        res.send({ message: 'Unable to find the cart ' + clientId });
       }
     } catch (err) {
       console.error(err);
