@@ -1,6 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@600&family=Merriweather+Sans:wght@700&family=Roboto+Slab&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap'); */
 
 .cart-title {
-  font-family: 'Assistant', sans-serif;
-  color: rebeccapurple;
+  font-family: 'Pacifico', cursive;
+}
+
+.cart-item {
+  font-family: 'Cabin', sans-serif;
 }

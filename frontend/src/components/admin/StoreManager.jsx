@@ -108,7 +108,6 @@ export default function StoreManager() {
           Register
         </Button>
       </form>
-    
     </div>
   );
 }
