@@ -5,7 +5,7 @@ const wishLists: Router = Router();
 const controller = new Controller();
 
 //Get WishList By Client ID
-wishLists.get("/get",controller.getWishList);
+wishLists.get("/get/:id",controller.getWishList);
 
 //Add Product To WishList
 wishLists.post("/add",controller.addProduct);

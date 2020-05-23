@@ -4,6 +4,7 @@ import {MongoHelper} from '../../config/mongodb.config';
 import WishListSchema from './wishlist.class';
 import ClientController from '../client/client.controller';
 import wishLists from './wishlist.route';
+import clients from '../client/client.route';
 
 const getCollection = () => {
     return MongoHelper.client.db('ShopDB').collection('wishLists');
@@ -22,7 +23,6 @@ export default class WishListController{
         const collection: any =  getCollection();
         try{
             let wishList = await collection.findOne({clientId});
-            console.log(wishList)
             if (wishList!==null) {
                 //wish list exists for user
                 let itemIndex = wishList.items.findIndex(p => p.productId === productId);
@@ -65,9 +65,10 @@ export default class WishListController{
       * @returns a wishlist
       */
      public getWishList = async(req:Request,res:Response): Promise<any>=>{
-            const {clientID} = req.body;
+            const clientID = req.params.id;
+            console.log(clientID);
             const collection: any = getCollection();
-            let wishList = await collection.findOne({clientID});
+            let wishList = await collection.findOne({clientId:clientID});
 
             res.send(wishList);
             
