@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import * as mongodb from "mongodb";
 import { MongoHelper } from "../../config/mongodb.config";
 import ProductSchema from "./product.class";
+import products from "./product.route";
 
 const getCollection = () => {
     return MongoHelper.client.db("ShopDB").collection("products");
@@ -92,15 +93,15 @@ export default class ProductController {
 
    /**
    * Get Product by Id
-   * @param productID id of the product
+   * @param productId id of the product
    * @returns product json
    */
   public getProductByID = async (req: Request, res: Response): Promise<any> => {
-    const { productID } = req.body;
+    const product = req.params.id;
     const collection: any = getCollection();
-
+    console.log(product)
     collection
-      .findById(productID)
+      .findOne({productId:product})
       .then((product) => {
         res.send(product);
       })
