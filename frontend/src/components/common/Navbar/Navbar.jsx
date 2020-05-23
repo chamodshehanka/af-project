@@ -181,7 +181,7 @@ export default function NavBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar position="static" style={{ backgroundColor: '#673ab7' }}>
         <Toolbar>
           <IconButton
             edge="start"

@@ -5,6 +5,7 @@ import SignIn from '../pages/SignIn/SignIn';
 import ClientPage from '../pages/Client/ClientPage';
 import ClientAccount from '../pages/Client/ClientAccount';
 import Dashboard from '../pages/Admin/Dashboard';
+import DeliveryPage from '../pages/Delivery/DeliveryPage';
 import StoreManagerDetails from '../pages/Admin/StoreManagerDetails';
 
 export const routes = [
@@ -15,5 +16,6 @@ export const routes = [
   { path: '/clients', component: ClientPage },
   { path: '/clientAccount', component: ClientAccount },
   { path: '/dashboard', component: Dashboard },
+  { path: '/delivery', component: DeliveryPage },
   { path: '/StoreManagerDetails', component: StoreManagerDetails },
 ];

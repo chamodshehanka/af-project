@@ -108,7 +108,7 @@ class CartPage extends Component {
                 >
                   Update Cart
                 </Button>{' '}
-                <Button color="primary" variant="outlined">
+                <Button color="primary" variant="outlined" href="/delivery">
                   Check Out
                 </Button>
               </div>

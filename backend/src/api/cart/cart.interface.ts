@@ -4,5 +4,5 @@ import { IProduct } from '../product/product.interface';
 export interface ICart extends mongoose.Document {
   id: string;
   clientId: string;
-  items: IProduct[];
+  // items: IProduct[];
 }
