@@ -82,9 +82,9 @@ export default class ProductController {
    */
    public deleteProduct = async (req: Request, res: Response): Promise<any> => {
        const collection: any = getCollection();
-       const { productID } = req.body;
+       const { productId } = req.body;
 
-       collection.remove({ _id: new mongodb.ObjectId(productID) }).then( (result) => {
+       collection.remove({productId:productId}).then( (result) => {
            console.log(result);
            res.send("Successfully Deleted!");
        }).catch( (err) => {

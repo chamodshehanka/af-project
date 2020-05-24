@@ -76,25 +76,27 @@ export default class storeManagerController {
         console.error(err);
       });
   };
+  
+  
 
   /**
-   * @param storeManagerId id of the storeManager
-   * @returns success or error message
+   * Delete Store Manager
+   * @param storeManagerId id of the product
+   * @returns success or failure message
    */
   public deleteStoreManager = async (req: Request, res: Response): Promise<any> => {
     const collection: any = getCollection();
-    const { storeManagerId } = req.body;
-    collection
-      .remove({ _id: new mongodb.ObjectId(storeManagerId) })
-      .then((result) => {
-        console.log(result);
-        res.send('Successfully Deleted!');
-      })
-      .catch((err) => {
-        res.send('Unable to delete!');
+    const {storeManagerId} = req.body;
+
+    collection.remove({storeManagerId:storeManagerId}).then( (result) => {
+        res.send("Successfully Deleted!");
+    }).catch( (err) => {
+        res.send("Unable to delete!");
         console.error(err);
-      });
-  };
+    });
+};
+
+  
 
   /**
    * Get storeManager by id
@@ -185,4 +187,8 @@ export default class storeManagerController {
         console.error(err);
       });
   };
+
+
+
+  
 }
