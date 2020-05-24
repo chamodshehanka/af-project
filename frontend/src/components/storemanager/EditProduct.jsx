@@ -10,31 +10,63 @@ import { ProductService } from '../../services';
 
 const categories = [
   {
-    value: 'Saare',
-    label: 'Saare',
+    value: 'Ladies',
+    label: 'Ladies',
   },
   {
-    value: 'Casual',
-    label: 'Casual',
+    value: 'Under Garments',
+    label: 'Under Garments',
+  },
+  {
+    value: 'Men',
+    label: 'Men',
+  },
+  {
+    value: 'Kids',
+    label: 'Kids',
+  },
+  {
+    value: 'Jwellery',
+    label: 'Jwellery',
+  },
+  {
+    value: 'Shoes',
+    label: 'Shoes',
   },
 ];
 
 export default function EditProduct() {
   const [category, setCategory] = React.useState('');
   const [productId, setProductId] = React.useState('');
-  const [productData, setProductData] = React.useState([]);
+
+  const initialState = {
+    productId: null,
+    name: "",
+    category: "",
+    description: "",
+    stocks: "",
+    price: ""
+  }
+  
+  const [productData, setProductData] = React.useState(initialState);
 
   const handleSearch = () => {
-    setProductData(ProductService.getProductById(productId));
-    console.log(productId);
-    console.log(productData);
-    // setValue([
-    //   { name: productData.name, },
-    //   { category: productData.category, },
-    //   { descripton: productData.description, },
-    //   { stocks: productData.stocks, },
-    //   { price: productData.price, },
-    // ]);
+    ProductService.getSearchProducts(productId)
+    .then(productData => {
+      setProductData(productData);
+      console.log(productData);
+      setValue([
+        { name: productData.name, },
+        { category: productData.category, },
+        { description: productData.description, },
+        { stocks: productData.stocks, },
+        { price: productData.price, },
+      ]);
+    })
+    .catch(e => {
+      console.log(e);
+    });
+  
   };
 
   const handleSelectChange = (event) => {
@@ -74,13 +106,14 @@ export default function EditProduct() {
                 style={{ marginLeft: '30px', marginRight: '30px' }}
               >
                 <TextField
-                  id="searchProduct"
-                  name="searchProduct"
-                  label="Search Product"
+                  id="productId"
+                  name="productId"
+                  placeholder="Search Product"
                   fullWidth
                   onChange={(e) => {
                     setProductId(e.target.value);
                   }}
+                  inputRef={register}
                   variant="outlined"
                 />
               </Grid>
@@ -105,9 +138,9 @@ export default function EditProduct() {
               >
                 <TextField
                   required
-                  id="productName"
+                  id="name"
                   name="name"
-                  label="Product Name"
+                  placeholder="Product Name"
                   fullWidth
                   autoComplete="pname"
                   inputRef={register}
@@ -120,10 +153,10 @@ export default function EditProduct() {
                 style={{ marginLeft: '30px', marginRight: '30px' }}
               >
                 <TextField
-                  id="filled-select-currency-native"
+                  id="category"
                   name="category"
                   select
-                  label="Select Category"
+                  placeholder="Select Category"
                   fullWidth
                   value={category}
                   onChange={handleSelectChange}
@@ -147,9 +180,9 @@ export default function EditProduct() {
                 style={{ marginLeft: '30px', marginRight: '30px' }}
               >
                 <TextField
-                  id="filled-multiline-flexible"
+                  id="description"
                   name="description"
-                  label="Description"
+                  placeholder="Description"
                   multiline
                   rows={4}
                   fullWidth
@@ -164,9 +197,9 @@ export default function EditProduct() {
               >
                 <TextField
                   required
-                  id="stock"
+                  id="stocks"
                   name="stocks"
-                  label="Stock"
+                  placeholder="Stock"
                   fullWidth
                   inputRef={register}
                   variant="outlined"
@@ -181,7 +214,7 @@ export default function EditProduct() {
                   required
                   id="price"
                   name="price"
-                  label="Price"
+                  placeholder="Price"
                   fullWidth
                   inputRef={register}
                   variant="outlined"
