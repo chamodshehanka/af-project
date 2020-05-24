@@ -125,20 +125,6 @@ export default function AddCategory() {
       </select>
       </FormControl> 
 
-        {/* <FormControl className={classes.formControl}>
-        <InputLabel>Featured Category</InputLabel>
-        <Select
-          labelId="demo-simple-select-placeholder-label-label"
-          id="demo-simple-select-placeholder-label"  
-          displayEmpty
-          className={classes.selectEmpty}
-          name="featured" 
-          ref={register}
-        >
-          <MenuItem value={true}>True</MenuItem>
-          <MenuItem value={false}>False</MenuItem>
-        </Select>
-      </FormControl> */}
           <br /><br /><br /><br />
         <Button
           type="submit"
