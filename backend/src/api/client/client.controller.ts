@@ -164,7 +164,6 @@ export default class ClientController {
    */
   public signIn = async (req: Request, res: Response): Promise<any> => {
     const collection: any = getCollection();
-    console.log(req.body);
     collection
       .findOne({ email: req.body.email })
       .then(async (user) => {
