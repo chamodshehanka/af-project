@@ -20,6 +20,7 @@ export default class CommentController {
 
    public addComment = async (req: Request, res: Response): Promise<any> => {
        const requestData = req.body;
+       console.log(requestData);
        const collection: any = getCollection();
        const comment = new CommentSchema(requestData);
 
@@ -117,5 +118,30 @@ export default class CommentController {
   };
    
 
+     /**
+   * Get Comment
+   * @param productId id of the product
+   * @param clientId id of the client
+   * @returns success or failure message
+   */
+  public getCommentsByUser = async (req: Request, res: Response): Promise<any> => {
+    const { clientId, productId} = req.body;
+    const collection: any = getCollection();
+
+    collection
+      .findOne(
+        {
+          clientId: clientId,
+          productId:productId
+        }
+      )
+      .then((comment) => {
+        res.send(comment);
+      })
+      .catch((err) => {
+        res.send({ message: "Unable to Fetch" });
+        console.error(err);
+      });
+   }
 }
 

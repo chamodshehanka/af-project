@@ -12,6 +12,7 @@ import WishList from '../pages/WishList/WishList';
 import ShopPage from '../pages/Shop/Shop';
 import ProductView from '../pages/ProductView/ProductView';
 import AdminLogin from '../pages/AdminLogin/AdminLogin';
+import ProductPage from '../pages/StoreManager/ProductPage';
 
 export const routes = [
   { path: '/', component: HomePage },
@@ -28,4 +29,5 @@ export const routes = [
   { path: '/shop', component: ShopPage },
   { path: '/productView', component: ProductView },
   { path: '/adminLogin', component: AdminLogin },
+  { path: '/productPage', component: ProductPage },
 ];

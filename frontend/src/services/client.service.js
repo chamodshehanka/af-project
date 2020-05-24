@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
 import Axios from 'axios';
-import HomePage from '../pages/home/HomePage';
 // import FormData from 'form-data';
 import { environment } from '../configs/environment';
 // Create new client
 // TODO: Need add Client object as a param
-export function createNewClient(data, image) {
+export function createNewClient(data) {
+  console.log(data);
   // const fd = new FormData();
   // fd.append('image', image, image.name);
   // fd.append('firstName', data.firstName);
@@ -14,18 +14,22 @@ export function createNewClient(data, image) {
   // for (var key of fd.entries()) {
   //   console.log('form data : ', key[0], key[1]);
   // }
-  console.log(image);
+  //console.log(image);
 
-  Axios.post(environment.baseURL + 'client/add', data, {
-    onUploadProgress: (progressEvent) => {
-      console.log(
-        'Upload Progress : ' +
-          Math.round((progressEvent.loaded / progressEvent.total) * 100) +
-          '%'
-      );
-    },
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-  })
+  Axios.post(
+    environment.baseURL + 'client/add',
+    data
+    //, {
+    // onUploadProgress: (progressEvent) => {
+    //   console.log(
+    //     'Upload Progress : ' +
+    //       Math.round((progressEvent.loaded / progressEvent.total) * 100) +
+    //       '%'
+    //   );
+    // },
+    // headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    // }
+  )
     .then((res) => {
       console.log(res);
     })
@@ -63,13 +67,29 @@ export function getAllClients() {
 }
 
 //login function
-export function login(data) {
-  console.log(data);
+/*eslint-disable */
+export function login(data, history) {
   Axios.post(environment.baseURL + 'client/login', data)
-    .then((e) => {
-      console.log(e.data);
+    .then((res) => {
+      if (res) {
+        if (res.data) {
+          localStorage.setItem('user', JSON.stringify(res.data));
+
+          history.push(`/`);
+        }
+      }
     })
     .catch((err) => console.error(err));
-
-  return HomePage;
 }
+//get current user
+
+export function getCurrentUser() {
+  return JSON.parse(localStorage.getItem('user'));
+}
+
+//logout
+
+export function logout() {
+  localStorage.removeItem('user');
+}
+/*eslint-enable */

@@ -16,5 +16,8 @@ ratings.post("/delete", controller.deleteRating);
 //Get Ratings by Product Id
 ratings.get("/get/:id", controller.getRatingsById);
 
+//Get Ratings by Product Id and Client Id
+ratings.post("/getByUser", controller.getRatingsByUser);
+
 
 export default ratings;

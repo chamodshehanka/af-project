@@ -33,35 +33,32 @@ export default class ClientController {
     const requestData = req.body;
     const collection: any = getCollection();
 
-    console.log(req.body);
-    res.send({ message: 'Successfully Added' });
+    if (await collection.findOne({ email: requestData.email })) {
+      res.send({ message: 'User Alredy Registered' });
+    } else {
+      const hashedPassword = await bcrypt.hash(requestData.password, 10);
+      requestData.password = hashedPassword;
+      const client = new ClientSchema(requestData);
 
-    // if(await collection.findOne({email:requestData.email})){
-    //   res.send({message: 'User Alredy Registered'})
-    // }else{
-    //   const hashedPassword = await bcrypt.hash(requestData.password,10);
-    //   requestData.password = hashedPassword;
-    //   const client = new ClientSchema(requestData);
+      storage
+        .getBuckets()
+        .then((e) => console.log(e))
+        .catch((err) => console.error(err));
 
-    // storage
-    //   .getBuckets()
-    //   .then((e) => console.log(e))
-    //   .catch((err) => console.error(err));
+      const malbayBucket = storage.bucket('malbay-bucket');
+      console.log(malbayBucket);
 
-    // const malbayBucket = storage.bucket('malbay-bucket');
-    // console.log(malbayBucket)
-
-    // collection
-    //   .insertOne(client)
-    //   .then(() => {
-    //     res.send({ message: 'Successfully Added' });
-    //     res.end();
-    //   })
-    //   .catch((err) => {
-    //     res.send({ message: 'Unable to Add' });
-    //     console.error(err);
-    //   });
-    // }
+      collection
+        .insertOne(client)
+        .then(() => {
+          res.send({ message: 'Successfully Added' });
+          res.end();
+        })
+        .catch((err) => {
+          res.send({ message: 'Unable to Add' });
+          console.error(err);
+        });
+    }
   };
 
   /**
@@ -178,17 +175,16 @@ export default class ClientController {
     collection
       .findOne({ email: req.body.email })
       .then(async (user) => {
-        console.log(user.password === req.body.password);
         if (user != null) {
           if (await bcrypt.compareSync(req.body.password, user.password)) {
             const payload = {
-              id: user.id,
               email: user.email,
             };
-            console.log(payload);
+
             let token = jwt.sign(payload, process.env.SECRET_KEY, {
               expiresIn: 1140,
             });
+            console.log(token);
             res.status(200).send(token);
           } else {
             res.status(400).json({ error: 'Incorrect Password' });

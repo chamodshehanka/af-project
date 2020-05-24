@@ -7,6 +7,7 @@ import wishLists from './wishlist/wishlist.route';
 import carts from './cart/cart.route';
 import comments from './comment/comment.route';
 import ratings from './rating/rating.route';
+import orders from './order/order.route';
 
 const router: Router = Router();
 
@@ -16,11 +17,12 @@ router.get('/', (_req, res) => {
 
 router.use('/client', client);
 router.use('/product', product);
-router.use('/category',category);
-router.use('/storeManager',storeManager);
-router.use('/wishList',wishLists);
+router.use('/category', category);
+router.use('/storeManager', storeManager);
+router.use('/wishList', wishLists);
 router.use('/cart', carts);
-router.use('/comment',comments);
-router.use('/rating',ratings);
+router.use('/comment', comments);
+router.use('/rating', ratings);
+router.use('/order', orders);
 
 export default router;

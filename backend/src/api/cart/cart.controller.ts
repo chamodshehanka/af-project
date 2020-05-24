@@ -11,7 +11,7 @@ export default class CartController {
    * Add Cart
    * @param cartId id of the cart
    *
-   * @returns sucess or error message
+   * @returns success or error message
    */
   public addCart = async (req: Request, res: Response): Promise<any> => {
     const { clientId, productId, productPrice, quantity } = req.body;
