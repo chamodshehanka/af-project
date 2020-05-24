@@ -25,5 +25,5 @@ export const routes = [
   { path: '/category', component: Category },
   { path: '/delivery', component: DeliveryPage },
   { path: '/shop', component: ShopPage },
-  { path: '/adminLogin', component: AdminLogin }
+  { path: '/adminLogin', component: AdminLogin },
 ];
