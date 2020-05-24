@@ -126,12 +126,12 @@ export default class ProductController {
         } else {
           items = items.map((item) => {
             return {
-              id: item._id,
+              productId: item.productId,
               name: item.name,
               category: item.category,
               description: item.description,
               stocks: item.stocks,
-              imageGallery: item.imageGallery
+              imageUrl: item.imageUrl
             };
           });
           res.json(items);

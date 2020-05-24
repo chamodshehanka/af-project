@@ -22,9 +22,8 @@ import {
   mainListItems,
   secondaryListItems,
 } from '../../components/admin/listItems';
-import Chart from '../../components/admin/Chart';
-import Deposits from '../../components/admin/Deposits';
-import Orders from '../../components/admin/Orders';
+import AddCategory from '../../components/admin/AddCategory';
+import StoreManagerList from '../../components/admin/StoreManagerList';
 
 function Copyright() {
   return (
@@ -116,11 +115,11 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   fixedHeight: {
-    height: 240,
+    height: 420,
   },
 }));
 
-export default function Dashboard() {
+export default function Category() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -186,28 +185,22 @@ export default function Dashboard() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
+        <h1>Category List Details</h1>
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            {/* Chart */}
-            <Grid item xs={12} md={8} lg={9}>
+            {/* Category */}
+            <Grid item xs={12} md={8} lg={6}>
               <Paper className={fixedHeightPaper}>
-                <Chart />
+                <AddCategory />
               </Paper>
             </Grid>
-            {/* Recent Deposits */}
-            <Grid item xs={12} md={4} lg={3}>
+            {/* StoreManagerList */}
+            <Grid item xs={12} md={8} lg={8}>
               <Paper className={fixedHeightPaper}>
-                <Deposits />
-              </Paper>
-            </Grid>
-            {/* Recent Orders */}
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                <Orders />
+                <StoreManagerList />
               </Paper>
             </Grid>
           </Grid>
-
           <Box pt={4}>
             <Copyright />
           </Box>

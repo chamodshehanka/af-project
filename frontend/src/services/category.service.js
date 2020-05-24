@@ -1,7 +1,14 @@
-/* eslint-disable no-console */
 import Axios from 'axios';
-// import FormData from 'form-data';
 import { environment } from '../configs/environment';
+
+export function addCategory(data) {
+  Axios.post(environment.baseURL + 'category/add', data)
+    .then((res) => {
+      console.log(res);
+      console.log(res.data);
+    })
+    .catch((err) => console.error(err));
+}
 
 // Get all categories
 export function getAllCategories() {
