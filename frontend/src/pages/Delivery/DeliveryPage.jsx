@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Grid,
   Container,
@@ -16,6 +16,9 @@ import { useForm } from 'react-hook-form';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import './DeliveryPage.css';
+import Axios from 'axios';
+import { environment } from '../../configs/environment';
+import { reactLocalStorage } from 'reactjs-localstorage';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,11 +47,18 @@ const DeliveryPage = () => {
   const classes = useStyles();
   //   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [discountCode, setDiscountCode] = useState('');
+  const [subTotal, setSubTotal] = useState( 'g'+localStorage.getItem('subTotal'));
+  const [deliveryFee, setDeliveryFee] = useState(1000);
+  const [total, setTotal] = useState(0);
 
   const onSubmit = (data) => {
     console.log(data);
   };
   const { register, handleSubmit } = useForm();
+
+  // const getSubTotal = () => {
+  //   return reactLocalStorage.get('subTotal');
+  // };
 
   return (
     <>
@@ -190,7 +200,7 @@ const DeliveryPage = () => {
                   <br />
                   <Grid container spacing={2}>
                     <Grid item xs={6}>
-                      <Button variant="outlined" color="primary">
+                      <Button variant="outlined" color="primary" href="/cart">
                         <ShoppingCartIcon />
                         Return to Cart
                       </Button>
@@ -235,11 +245,11 @@ const DeliveryPage = () => {
                   </Grid>
 
                   <Grid item xs={4} style={{ textAlign: 'right' }}>
-                    <h5>5000 LKR</h5>
+                    <h5>{subTotal} LKR</h5>
 
-                    <h5>1000 LKR</h5>
+                    <h5>{deliveryFee} LKR</h5>
                     <Divider />
-                    <h4>6000 LKR</h4>
+                    <h4>{total} LKR</h4>
                   </Grid>
                   <Grid item xs={2} />
                 </Grid>
