@@ -7,6 +7,7 @@ export const ProductSchema = new mongoose.Schema({
   category: { type: String, required: true },
   description: { type: String, required: true },
   stocks: { type: Number, required: true },
+  price: { type: Number, required: true },
   imageGallery: { type: String, required: true },
 });
 
