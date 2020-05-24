@@ -6,7 +6,7 @@ export const CommentSchema = new mongoose.Schema({
         ref:"Client"},
     productId:{   type:mongoose.Schema.Types.String,
             ref:"Product"},
-    rating:{type:String,required:true}
+    comment:{type:String,required:true}
 });
 
 const Comment = mongoose.model<IComment>("Comment",CommentSchema);
