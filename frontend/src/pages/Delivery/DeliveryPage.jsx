@@ -16,10 +16,9 @@ import { useForm } from 'react-hook-form';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import './DeliveryPage.css';
-import Axios from 'axios';
-import { environment } from '../../configs/environment';
-import { reactLocalStorage } from 'reactjs-localstorage';
-import { CartService } from '../../services';
+import { CartService, DeliveryService, OrderService } from '../../services';
+import CreditCardIcon from '@material-ui/icons/CreditCard';
+import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 
 function handleClick(event) {
   event.preventDefault();
-  console.info('You clicked a breadcrumb.');
+  DeliveryService.subscribeNewsLetter('C001');
 }
 
 const DeliveryPage = () => {
@@ -52,7 +51,7 @@ const DeliveryPage = () => {
   const [total, setTotal] = useState(0);
 
   const onSubmit = (data) => {
-    console.log(data);
+    OrderService.createOrder('C001', data)
   };
   const { register, handleSubmit } = useForm();
 
@@ -62,6 +61,7 @@ const DeliveryPage = () => {
     });
 
     setTotal(subTotal + deliveryFee);
+    setDeliveryFee(1000);
   });
 
   return (
@@ -78,20 +78,19 @@ const DeliveryPage = () => {
           >
             Delivery
           </Link>
-          {/* <Typography color="textPrimary">Payment</Typography> */}
         </Breadcrumbs>
 
-        <h1 className="title">Delivery Details</h1>
+        <h1 className="title">Delivery & Payment Details</h1>
 
         <div className={classes.root}>
-          <Grid container spacing={3}>
-            <Grid item xs={6}>
-              <Paper className={classes.paper}>
-                <form
-                  className={classes.form}
-                  onSubmit={handleSubmit(onSubmit)}
-                  noValidate
-                >
+          <form
+            className={classes.form}
+            onSubmit={handleSubmit(onSubmit)}
+            noValidate
+          >
+            <Grid container spacing={3}>
+              <Grid item xs={6}>
+                <Paper className={classes.paper}>
                   <p className="form-sub-caption">Contact Information</p>
                   <TextField
                     label="Email"
@@ -209,57 +208,62 @@ const DeliveryPage = () => {
                         Return to Cart
                       </Button>
                     </Grid>
+                  </Grid>
+                </Paper>
+              </Grid>
+              <Grid item xs={6}>
+                <Paper className={classes.paper}>
+                  <TextField
+                    label="Gift Card or Discount Code"
+                    variant="outlined"
+                    onChange={(e) => {
+                      setDiscountCode(e.target.value);
+                    }}
+                  />
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    disabled={discountCode === ''}
+                  >
+                    Apply
+                  </Button>
+                  <br /> <br />
+                  <Divider />
+                  <Grid container spacing={2}>
+                    <Grid item xs={2} />
+                    <Grid item xs={4} style={{ textAlign: 'left' }}>
+                      <h5>Sub Total</h5>
 
-                    <Grid item xs={6}>
-                      <Button variant="contained" color="primary">
-                        <AttachMoneyIcon />
-                        Continue to Payment
-                      </Button>
+                      <h5>Delivery Fee</h5>
+                      <Divider />
+                      <h4>Total </h4>
                     </Grid>
+
+                    <Grid item xs={4} style={{ textAlign: 'right' }}>
+                      <h5>{subTotal} LKR</h5>
+
+                      <h5>{deliveryFee} LKR</h5>
+                      <Divider />
+                      <h4>{total} LKR</h4>
+                    </Grid>
+                    <Grid item xs={2} />
                   </Grid>
-                </form>
-              </Paper>
+                </Paper>
+
+                <Paper className={classes.paper}>
+                  <p className="form-sub-caption">Payment Information</p>
+                  <Button variant="outlined" color="primary" type="submit">
+                    <AirportShuttleIcon />
+                    Cash on Delivery
+                  </Button>{' '}
+                  <Button variant="contained" color="primary">
+                    <CreditCardIcon />
+                    Pay Now
+                  </Button>
+                </Paper>
+              </Grid>
             </Grid>
-            <Grid item xs={6}>
-              <Paper className={classes.paper}>
-                <TextField
-                  label="Gift Card or Discount Code"
-                  variant="outlined"
-                  onChange={(e) => {
-                    setDiscountCode(e.target.value);
-                  }}
-                />
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  disabled={discountCode === ''}
-                >
-                  Apply
-                </Button>
-                <br /> <br />
-                <Divider />
-                <Grid container spacing={2}>
-                  <Grid item xs={2} />
-                  <Grid item xs={4} style={{ textAlign: 'left' }}>
-                    <h5>Sub Total</h5>
-
-                    <h5>Delivery Fee</h5>
-                    <Divider />
-                    <h4>Total </h4>
-                  </Grid>
-
-                  <Grid item xs={4} style={{ textAlign: 'right' }}>
-                    <h5>{subTotal} LKR</h5>
-
-                    <h5>{deliveryFee} LKR</h5>
-                    <Divider />
-                    <h4>{total} LKR</h4>
-                  </Grid>
-                  <Grid item xs={2} />
-                </Grid>
-              </Paper>
-            </Grid>
-          </Grid>
+          </form>
         </div>
       </Container>
     </>

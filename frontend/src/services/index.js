@@ -5,6 +5,7 @@ import * as AdminService from './admin.service';
 import * as CartService from './cart.service';
 import * as WishListService from './wishList.service';
 import * as DeliveryService from './delivery.service';
+import * as OrderService from './order.service';
 
 export {
   ClientService,
@@ -14,4 +15,5 @@ export {
   CartService,
   WishListService,
   DeliveryService,
+  OrderService,
 };
