@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', 
+    width: '100%',
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -76,7 +76,7 @@ export default function AdminLogin() {
             color: 'white',
             fontSize: '55px',
             textShadow: '2px 2px 1px #111111',
-            marginTop:'30%'
+            marginTop: '30%',
           }}
         >
           MalBay Admin Login

@@ -10,6 +10,7 @@ import StoreManagerDetails from '../pages/Admin/StoreManagerDetails';
 import Category from '../pages/Admin/Category';
 import WishList from '../pages/WishList/WishList';
 import ShopPage from '../pages/Shop/Shop';
+import ProductView from '../pages/ProductView/ProductView';
 import AdminLogin from '../pages/AdminLogin/AdminLogin';
 
 export const routes = [
@@ -25,5 +26,6 @@ export const routes = [
   { path: '/category', component: Category },
   { path: '/delivery', component: DeliveryPage },
   { path: '/shop', component: ShopPage },
-  { path: '/adminLogin', component: AdminLogin }
+  { path: '/productView', component: ProductView },
+  { path: '/adminLogin', component: AdminLogin },
 ];

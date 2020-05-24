@@ -37,6 +37,9 @@ class CartPage extends Component {
     this.state.items.map(
       (item) => (subTotal += item.productPrice * item.quantity)
     );
+
+    localStorage.setItem('subTotal', subTotal);
+
     return subTotal;
   };
 
