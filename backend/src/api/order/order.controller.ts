@@ -26,9 +26,10 @@ export default class OrderController {
     const clientId = reqData.clientId;
 
     let cart = await cartCollection.findOne({ clientId });
+    let orderId = Math.random().toString(36).substring(7);
 
     const order = new OrderSchema({
-      orderId: 'O002',
+      orderId: orderId,
       clientId: clientId,
       orderDetails: cart.items,
       date: new Date(),
@@ -40,20 +41,20 @@ export default class OrderController {
     collection
       .insertOne(order)
       .then(() => {
-        // TODO:Add Auto remove cart
         if (cart !== null) {
-          // await collection
-          // .findOneAndUpdate(
-          //   { clientId: clientId },
-          //   {
-          //     $set: {
-          //       items: [],
-          //     },
-          //   }
-          // )
-          // .then(() => {
-          //   res.send(cart);
-          // });
+          collection
+            .findOneAndUpdate(
+              { clientId: clientId },
+              {
+                $set: {
+                  items: [],
+                },
+              }
+            )
+            .then(() => {
+              // res.send(cart);
+              console.log('cart reset');
+            });
         }
         // move
         res.send({ message: 'Successfully Added' });
