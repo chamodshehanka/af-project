@@ -10,6 +10,7 @@ import StoreManagerDetails from '../pages/Admin/StoreManagerDetails';
 import Category from '../pages/Admin/Category';
 import WishList from '../pages/WishList/WishList';
 import ShopPage from '../pages/Shop/Shop';
+import AdminLogin from '../pages/AdminLogin/AdminLogin';
 
 export const routes = [
   { path: '/', component: HomePage },
@@ -19,9 +20,10 @@ export const routes = [
   { path: '/clients', component: ClientPage },
   { path: '/clientAccount', component: ClientAccount },
   { path: '/dashboard', component: Dashboard },
-  { path: '/StoreManagerDetails', component: StoreManagerDetails },
+  { path: '/storeManagerDetails', component: StoreManagerDetails },
   { path: '/wishList', component: WishList },
-  { path: '/Category', component: Category },
+  { path: '/category', component: Category },
   { path: '/delivery', component: DeliveryPage },
   { path: '/shop', component: ShopPage },
+  { path: '/adminLogin', component: AdminLogin }
 ];
