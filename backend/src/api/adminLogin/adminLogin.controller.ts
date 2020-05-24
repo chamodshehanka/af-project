@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import * as mongodb from 'mongodb';
 import { MongoHelper } from '../../config/mongodb.config';
-import adminLoginSchema from './adminLogin.class';
 
 const getCollection = () => {
   return MongoHelper.client.db('ShopDB').collection('admin');
