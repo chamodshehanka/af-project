@@ -10,6 +10,7 @@ import StoreManagerDetails from '../pages/Admin/StoreManagerDetails';
 import Category from '../pages/Admin/Category';
 import WishList from '../pages/WishList/WishList';
 import ShopPage from '../pages/Shop/Shop';
+import ProductView from '../pages/ProductView/ProductView';
 
 export const routes = [
   { path: '/', component: HomePage },
@@ -24,4 +25,5 @@ export const routes = [
   { path: '/Category', component: Category },
   { path: '/delivery', component: DeliveryPage },
   { path: '/shop', component: ShopPage },
+  { path: '/productView', component: ProductView },
 ];
