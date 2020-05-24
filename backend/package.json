@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@google-cloud/storage": "^5.0.0",
+    "@google-cloud/storage": "^5.0.1",
     "axios": "^0.19.2",
     "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
@@ -27,8 +27,6 @@
     "mongodb": "^3.5.5",
     "mongoose": "^5.9.7",
     "node-fetch": "^2.6.0",
-    "nodemailer": "^6.4.6",
-    "nodemailer-mailgun-transport": "^2.0.0",
     "react-scripts": "^3.4.1"
   },
   "devDependencies": {

@@ -1,8 +1,16 @@
 import Axios from 'axios';
 import { environment } from '../configs/environment';
+import { ProductService } from '.';
 
-export function createCart() {
-  Axios.post(environment.baseURL)
+export function createCart(clientId, productId) {
+  let product = ProductService.getProductById(productId);
+
+  Axios.post(environment.baseURL + 'cart/add', {
+    clientId: clientId,
+    productId: productId,
+    productPrice: product.price,
+    quantity: 1,
+  })
     .then((res) => {
       console.log(res);
     })

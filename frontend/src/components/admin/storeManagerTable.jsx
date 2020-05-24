@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-
 class storeManagerTable extends Component {
   constructor(props) {
     super(props);
@@ -11,7 +10,8 @@ class storeManagerTable extends Component {
   delete() {
     axios
       .get(
-        'http://localhost:4000/api/storeManager/delete/' + this.props.obj.storeManagerId
+        'http://localhost:4000/api/storeManager/delete/' +
+          this.props.obj.storeManagerId
       )
       .then(console.log('Deleted'))
       .catch((err) => console.log(err));
