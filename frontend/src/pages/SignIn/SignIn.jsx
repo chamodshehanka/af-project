@@ -60,10 +60,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+const SignIn = (props) => {
   const classes = useStyles();
   const onSubmit = (data) => {
-    ClientService.login(data);
+    const { history } = props;
+    ClientService.login(data, history);
   };
 
   const { register, handleSubmit } = useForm();
@@ -150,4 +151,6 @@ export default function SignIn() {
       </Grid>
     </Grid>
   );
-}
+};
+
+export default SignIn;
