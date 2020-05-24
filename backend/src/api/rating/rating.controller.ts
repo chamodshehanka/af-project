@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import * as mongodb from "mongodb";
 import { MongoHelper } from "../../config/mongodb.config";
 import RatingSchema from "./rating.class";
-import ratings from "./rating.route";
 
 const getCollection = () => {
     return MongoHelper.client.db("ShopDB").collection("ratings");
@@ -60,6 +59,31 @@ export default class RatingController {
       })
       .catch((err) => {
         res.send({ message: "Unable to Update" });
+        console.error(err);
+      });
+   }
+
+   /**
+   * Get Rating
+   * @param productId id of the product
+   * @param clientId id of the client
+   * @returns success or failure message
+   */
+  public getRatingsByUser = async (req: Request, res: Response): Promise<any> => {
+    const requestData = req.body;
+    const collection: any = getCollection();
+    collection
+      .findOne(
+        {
+          clientId: requestData.clientId,
+          productId:requestData.productId
+        }
+      )
+      .then((rating) => {
+        res.send(rating);
+      })
+      .catch((err) => {
+        res.send({ message: "Unable to Fetch" });
         console.error(err);
       });
    }

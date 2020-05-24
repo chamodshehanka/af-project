@@ -4,6 +4,8 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
+import { Button } from '@material-ui/core';
+import { WishListService } from '../../services';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,9 +28,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ProdcutDetails = () => {
+const ProdcutDetails = (props) => {
   const classes = useStyles();
 
+  const handleWishList = () => {
+    WishListService.addToWishList(props.clientId, props.product.productId);
+  };
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
@@ -38,7 +43,7 @@ const ProdcutDetails = () => {
               <img
                 className={classes.img}
                 alt="complex"
-                src="/static/images/grid/complex.jpg"
+                src={props.product.imageUrl}
               />
             </ButtonBase>
           </Grid>
@@ -46,23 +51,45 @@ const ProdcutDetails = () => {
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
                 <Typography gutterBottom variant="subtitle1">
-                  Standard license
+                  {props.product.name}
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  Full resolution 1920x1080 • JPEG
-                </Typography>
-                <Typography variant="body2" color="textSecondary">
-                  ID: 1030114
+                  {props.product.description}
                 </Typography>
               </Grid>
               <Grid item>
-                <Typography variant="body2" style={{ cursor: 'pointer' }}>
-                  Remove
-                </Typography>
+                <Button
+                  color="primary"
+                  style={{
+                    cursor: 'pointer',
+                    backgroundColor: 'green',
+                    color: 'white',
+                    width: '10rem',
+                  }}
+                  onClick={handleWishList()}
+                >
+                  Add To Cart
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button
+                  color="primary"
+                  style={{
+                    cursor: 'pointer',
+                    backgroundColor: 'purple',
+                    color: 'white',
+                    width: '10rem',
+                  }}
+                  onClick={handleWishList()}
+                >
+                  WishList Product
+                </Button>
               </Grid>
             </Grid>
             <Grid item>
-              <Typography variant="subtitle1">$19.00</Typography>
+              <Typography variant="subtitle1">
+                ${props.product.price}
+              </Typography>
             </Grid>
           </Grid>
         </Grid>

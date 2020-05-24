@@ -14,3 +14,16 @@ export function getWishListItems(clientId) {
     .catch((err) => console.error(err));
   return array;
 }
+
+// Add to Wish List Items
+export function addToWishList(clientId, productId) {
+  const data = {
+    clientId: clientId,
+    productId: productId,
+  };
+  Axios.post(environment.baseURL + 'wishList/add', data)
+    .then((e) => {
+      console.log(e.data);
+    })
+    .catch((err) => console.error(err));
+}
