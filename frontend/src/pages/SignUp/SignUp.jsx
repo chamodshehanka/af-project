@@ -12,7 +12,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { useForm } from 'react-hook-form';
 import { ClientService } from '../../services';
-import { Hidden } from '@material-ui/core';
+import { Hidden, Input } from '@material-ui/core';
+import storage from '../../services/firebase/config';
 
 function Copyright() {
   return (
@@ -53,18 +54,35 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
-  const onSubmit = (data) => {
-    console.log(data);
-    ClientService.createNewClient(data);
+  const onSubmit = async (data) => {
+    const uploadTask = storage.ref('clients/' + imageFile.name).put(imageFile);
+    uploadTask.on(
+      'state_changed',
+      (snapshot) => {},
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref('clients')
+          .child(imageFile.name)
+          .getDownloadURL()
+          .then((url) => {
+            ClientService.createNewClient(data, url);
+          });
+        console.log(imageUrl);
+      }
+    );
   };
 
   const { register, handleSubmit } = useForm();
   const [profileImage, setProfileImage] = useState();
   const [imageFile, setImageFile] = useState();
+  const [imageUrl, setUrl] = useState();
 
   const chooseImage = (e) => {
-    setProfileImage(URL.createObjectURL(e.target.files[0]));
     setImageFile(e.target.files[0]);
+    setProfileImage(URL.createObjectURL(e.target.files[0]));
   };
 
   return (
@@ -81,7 +99,7 @@ export default function SignUp() {
         >
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <input
+              <Input
                 id="filePicker"
                 type="file"
                 name="image"

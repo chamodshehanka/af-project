@@ -33,9 +33,6 @@ export default class ClientController {
     const requestData = req.body;
     const collection: any = getCollection();
 
-    console.log(req.body);
-    res.send({ message: 'Successfully Added' });
-
     if(await collection.findOne({email:requestData.email})){
       res.send({message: 'User Alredy Registered'})
     }else{
@@ -43,15 +40,8 @@ export default class ClientController {
       requestData.password = hashedPassword;
       const client = new ClientSchema(requestData);
 
-    // storage
-    //   .getBuckets()
-    //   .then((e) => console.log(e))
-    //   .catch((err) => console.error(err));
 
-    // const malbayBucket = storage.bucket('malbay-bucket');
-    // console.log(malbayBucket)
-
-    collection
+   collection
       .insertOne(client)
       .then(() => {
         res.send({ message: 'Successfully Added' });
@@ -61,7 +51,7 @@ export default class ClientController {
         res.send({ message: 'Unable to Add' });
         console.error(err);
       });
-    }
+   }
   };
 
   /**
