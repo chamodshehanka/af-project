@@ -19,6 +19,7 @@ import './DeliveryPage.css';
 import Axios from 'axios';
 import { environment } from '../../configs/environment';
 import { reactLocalStorage } from 'reactjs-localstorage';
+import { CartService } from '../../services';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,12 +46,8 @@ function handleClick(event) {
 
 const DeliveryPage = () => {
   const classes = useStyles();
-  //   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [discountCode, setDiscountCode] = useState('');
-  // TODO: Local Storage
-  const [subTotal, setSubTotal] = useState(
-    'g' + localStorage.getItem('subTotal')
-  );
+  const [subTotal, setSubTotal] = useState(0);
   const [deliveryFee, setDeliveryFee] = useState(1000);
   const [total, setTotal] = useState(0);
 
@@ -59,9 +56,13 @@ const DeliveryPage = () => {
   };
   const { register, handleSubmit } = useForm();
 
-  // const getSubTotal = () => {
-  //   return reactLocalStorage.get('subTotal');
-  // };
+  useEffect(() => {
+    CartService.getSubTotal('C001').then((data) => {
+      setSubTotal(data);
+    });
+
+    setTotal(subTotal + deliveryFee);
+  });
 
   return (
     <>
