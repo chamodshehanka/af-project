@@ -23,7 +23,7 @@ import {
   secondaryListItems,
 } from '../../components/admin/listItems';
 import AddCategory from '../../components/admin/AddCategory';
-import categoryList from '../../components/admin/categoryList';
+import categoryList from '../../components/admin/categoryList'
 
 function Copyright() {
   return (
@@ -192,12 +192,13 @@ export default function Category() {
             <Grid item xs={12} md={8} lg={6}>
               <Paper className={fixedHeightPaper}>
                 <AddCategory />
+                
               </Paper>
             </Grid>
             {/* categoryList */}
             <Grid item xs={12} md={8} lg={8}>
               <Paper className={fixedHeightPaper}>
-                <categoryList />
+              <categoryList />
               </Paper>
             </Grid>
           </Grid>
