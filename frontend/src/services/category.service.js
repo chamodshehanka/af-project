@@ -1,15 +1,14 @@
 import Axios from 'axios';
 import { environment } from '../configs/environment';
 
-export function addCategory(data, image) {
-   
-    Axios.post(environment.baseURL + 'category/add', data)
+export function addCategory(data) {
+  Axios.post(environment.baseURL + 'category/add', data)
     .then((res) => {
       console.log(res);
       console.log(res.data);
     })
     .catch((err) => console.error(err));
-  }
+}
 
 // Get all categories
 export function getAllCategories() {

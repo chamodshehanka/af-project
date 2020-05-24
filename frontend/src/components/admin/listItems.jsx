@@ -16,15 +16,20 @@ function refreshPage() {
 }
 
 export const mainListItems = (
-  
   <div>
-    <ListItem button onClick={() =>{ history.push('/Dashboard'); refreshPage();}} >
+    <ListItem
+      button
+      onClick={() => {
+        history.push('/Dashboard');
+        refreshPage();
+      }}
+    >
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItem>
-    <ListItem button >
+    <ListItem button>
       <ListItemIcon>
         <ShoppingCartIcon />
       </ListItemIcon>
@@ -36,13 +41,25 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Customers" />
     </ListItem>
-    <ListItem button onClick={() =>{ history.push('/Category'); refreshPage();}}>
+    <ListItem
+      button
+      onClick={() => {
+        history.push('/Category');
+        refreshPage();
+      }}
+    >
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
       <ListItemText primary="Category" />
     </ListItem>
-    <ListItem button onClick={() =>{ history.push('/StoreManagerDetails'); refreshPage();}}>
+    <ListItem
+      button
+      onClick={() => {
+        history.push('/StoreManagerDetails');
+        refreshPage();
+      }}
+    >
       <ListItemIcon>
         <LayersIcon />
       </ListItemIcon>

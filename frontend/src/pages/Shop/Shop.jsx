@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { Container, Grid, Paper } from '@material-ui/core';
 import CategoryList from '../../components/client/CategoryList';
 import Axios from 'axios';
+import ProductList from '../../components/client/productList';
 
 class ShopPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       categoryList: [],
+      productList: [],
     };
   }
 
@@ -16,7 +18,13 @@ class ShopPage extends Component {
       .then((e) => {
         var array = e.data;
         this.setState({ categoryList: array });
-        console.log(array);
+      })
+      .catch((err) => console.error(err));
+
+    await Axios.get('http://localhost:4000/api/product/list')
+      .then((e) => {
+        var array = e.data;
+        this.setState({ productList: array });
       })
       .catch((err) => console.error(err));
   }
@@ -45,7 +53,9 @@ class ShopPage extends Component {
             </Paper>
           </Grid>
           <Grid item xs={9}>
-            <Paper>xs</Paper>
+            <Paper>
+              <ProductList products={this.state.productList} />
+            </Paper>
           </Grid>
         </Grid>
       </Container>
