@@ -12,7 +12,7 @@ export default function Discount() {
 
   const handleSearch = () => {
     ProductService.getProductById(productId);
-    console.log(data);
+    // console.log(data);
   };
 
   //const { register, handleSubmit, reset } = useForm();
