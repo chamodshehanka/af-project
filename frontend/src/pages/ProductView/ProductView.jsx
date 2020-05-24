@@ -3,6 +3,7 @@ import { Grid, Paper } from '@material-ui/core';
 import ProdcutDetails from '../../components/client/ProductDetails';
 import RatingComponent from '../../components/client/Rating';
 import Axios from 'axios';
+import CommentSection from '../../components/client/CommentSection';
 
 class ProductView extends Component {
   constructor(props) {
@@ -42,7 +43,7 @@ class ProductView extends Component {
 
     await Axios.post('http://localhost:4000/api/comment/get', data)
       .then((e) => {
-        this.setState({ comment: e });
+        this.setState({ comment: e.data.comment });
       })
       .catch((err) => console.error(err));
   }
@@ -65,6 +66,11 @@ class ProductView extends Component {
               clientId={this.state.clientId}
               productId={this.state.productId}
               rating={this.state.rating}
+            />
+            <CommentSection
+              clientId={this.state.clientId}
+              productId={this.state.productId}
+              comment={this.state.comment}
             />
           </Paper>
         </Grid>

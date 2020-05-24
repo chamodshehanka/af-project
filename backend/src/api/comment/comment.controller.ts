@@ -20,6 +20,7 @@ export default class CommentController {
 
    public addComment = async (req: Request, res: Response): Promise<any> => {
        const requestData = req.body;
+       console.log(requestData);
        const collection: any = getCollection();
        const comment = new CommentSchema(requestData);
 
