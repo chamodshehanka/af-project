@@ -152,28 +152,26 @@ export default class storeManagerController {
 
 
   /**
-   * Login Admin and storemanager
+   * SignIn admin
    * @param email
    * @returns token or failure message
    */
   public login = async (req: Request, res: Response): Promise<any> => {
-
     const collection: any = getCollection();
     console.log(req.body);
     collection
       .findOne({ email: req.body.email })
       .then(async (user) => {
-        console.log(user.password === req.body.password);
         if (user != null) {
           if (await bcrypt.compareSync(req.body.password, user.password)) {
             const payload = {
-              id: user.id,
               email: user.email,
             };
-            console.log(payload);
+
             let token = jwt.sign(payload, process.env.SECRET_KEY, {
               expiresIn: 1140,
             });
+            console.log(token);
             res.status(200).send(token);
           } else {
             res.status(400).json({ error: 'Incorrect Password' });
@@ -187,8 +185,7 @@ export default class storeManagerController {
         console.error(err);
       });
   };
-
-
-
-  
 }
+
+
+

@@ -8,6 +8,7 @@ import carts from './cart/cart.route';
 import comments from './comment/comment.route';
 import ratings from './rating/rating.route';
 import orders from './order/order.route';
+import adminLogin from './adminLogin/adminLogin.route';
 
 const router: Router = Router();
 
@@ -24,5 +25,6 @@ router.use('/cart', carts);
 router.use('/comment', comments);
 router.use('/rating', ratings);
 router.use('/order', orders);
+router.use('/login', adminLogin);
 
 export default router;
