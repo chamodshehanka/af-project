@@ -10,6 +10,7 @@ import ratings from './rating/rating.route';
 import orders from './order/order.route';
 import adminLogin from './adminLogin/adminLogin.route';
 
+
 const router: Router = Router();
 
 router.get('/', (_req, res) => {

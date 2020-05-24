@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import TableRow from './storeManagerTable';
 import { environment } from '../../configs/environment';
+import './tableStyle.css';
 
 export default class storeManagerList extends Component {
   constructor(props) {
