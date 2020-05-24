@@ -10,26 +10,26 @@ import { Link } from 'react-router-dom';
 
 export const mainListItems = (
   <div>
-    <Link to='/addProduct' style={{textDecoration:'none', color: 'grey'}}>
+    <Link to="/addProduct" style={{ textDecoration: 'none', color: 'grey' }}>
       <ListItem button>
         <ListItemIcon>
-        <AddCircleIcon />
+          <AddCircleIcon />
         </ListItemIcon>
         <ListItemText primary="Add Product" />
       </ListItem>
     </Link>
-    <Link to='editProduct' style={{textDecoration:'none', color: 'grey'}}>
+    <Link to="editProduct" style={{ textDecoration: 'none', color: 'grey' }}>
       <ListItem button>
         <ListItemIcon>
           <EditIcon />
         </ListItemIcon>
         <ListItemText primary="Edit Product" />
       </ListItem>
-      </Link>
-      <Link to='deleteProduct' style={{textDecoration:'none', color: 'grey'}}>
+    </Link>
+    <Link to="deleteProduct" style={{ textDecoration: 'none', color: 'grey' }}>
       <ListItem button>
         <ListItemIcon>
-         <DeleteSharpIcon />
+          <DeleteSharpIcon />
         </ListItemIcon>
         <ListItemText primary="Delete Product" />
       </ListItem>
@@ -39,7 +39,7 @@ export const mainListItems = (
 
 export const secondaryListItems = (
   <div>
-    <Link to='discounts' style={{textDecoration:'none', color: 'grey'}}>  
+    <Link to="discounts" style={{ textDecoration: 'none', color: 'grey' }}>
       <ListItem button>
         <ListItemIcon>
           <AttachMoneyIcon />
