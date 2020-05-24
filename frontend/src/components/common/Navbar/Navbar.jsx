@@ -226,7 +226,11 @@ export default function NavBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new items" color="inherit" href='/cart'>
+            <IconButton
+              aria-label="show 4 new items"
+              color="inherit"
+              href="/cart"
+            >
               <Badge badgeContent={4} color="secondary">
                 <ShoppingCartIcon />
               </Badge>

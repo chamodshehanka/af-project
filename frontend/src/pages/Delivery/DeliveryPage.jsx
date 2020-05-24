@@ -47,7 +47,10 @@ const DeliveryPage = () => {
   const classes = useStyles();
   //   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [discountCode, setDiscountCode] = useState('');
-  const [subTotal, setSubTotal] = useState( 'g'+localStorage.getItem('subTotal'));
+  // TODO: Local Storage
+  const [subTotal, setSubTotal] = useState(
+    'g' + localStorage.getItem('subTotal')
+  );
   const [deliveryFee, setDeliveryFee] = useState(1000);
   const [total, setTotal] = useState(0);
 
