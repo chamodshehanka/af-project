@@ -19,10 +19,7 @@ export default class categoryEdit extends Component {
 
   componentDidMount() {
     axios
-      .get(
-        environment.baseURL + 'category/delete' +
-          this.props.match.params.id
-      )
+      .get(environment.baseURL + 'category/delete' + this.props.match.params.id)
       .then((response) => {
         this.setState({
           name: response.data.name,
@@ -42,7 +39,7 @@ export default class categoryEdit extends Component {
   }
   onChangeDescription(e) {
     this.setState({
-        description: e.target.value,
+      description: e.target.value,
     });
   }
   onChangeFeatured(e) {
@@ -60,8 +57,7 @@ export default class categoryEdit extends Component {
     };
     axios
       .post(
-        environment.baseURL + 'category/update' +
-          this.props.match.params.id,
+        environment.baseURL + 'category/update' + this.props.match.params.id,
         obj
       )
       .then((res) => console.log(res.data));

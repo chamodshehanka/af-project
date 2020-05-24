@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import axios from 'axios';
 import TableRow from './storeManagerTable';
@@ -26,7 +25,6 @@ export default class storeManagerList extends Component {
     });
   }
 
-  
   render() {
     return (
       <div>

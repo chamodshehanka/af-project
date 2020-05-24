@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
 export default function StoreManager() {
   const classes = useStyles();
 
-
   const onSubmit = (data) => {
     console.log(data);
     AdminService.addStoreManager(data);
@@ -33,10 +32,9 @@ export default function StoreManager() {
     });
   };
   const [id] = useState(_uniqueId('prefix-'));
-  
+
   const { reset, errors, register, handleSubmit } = useForm();
   return (
-    
     <div>
       <h2>Add new Manager</h2>
 
@@ -47,14 +45,13 @@ export default function StoreManager() {
       >
         <TextField
           id="storeManagerId"
-          type="hidden" 
+          type="hidden"
           name="storeManagerId"
           margin="normal"
           value={id}
           inputRef={register({
             required: 'Required',
           })}
-          
         />
 
         <TextField
@@ -65,7 +62,7 @@ export default function StoreManager() {
           required
           style={{ margin: 8 }}
           placeholder="Enter full Name"
-          fullWidth    
+          fullWidth
           margin="normal"
           inputRef={register({
             required: 'Required',
@@ -145,7 +142,6 @@ export default function StoreManager() {
           }}
         />
         {errors.password && errors.password.message}
-       
 
         <Button
           type="submit"
