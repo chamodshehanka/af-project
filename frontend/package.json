@@ -14,8 +14,8 @@
     "axios": "^0.19.2",
     "chartist": "^0.11.4",
     "classnames": "^2.2.6",
-    "firebase": "^7.14.5",
     "express": "^4.17.1",
+    "firebase": "^7.14.5",
     "form-data": "^3.0.0",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
@@ -31,6 +31,7 @@
     "reactjs-localstorage": "^1.0.1",
     "recharts": "^1.8.5",
     "shortid": "^2.2.15",
+    "sweetalert2": "^9.13.1",
     "typeface-roboto": "0.0.75"
   },
   "scripts": {

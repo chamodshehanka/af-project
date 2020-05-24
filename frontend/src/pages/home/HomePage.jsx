@@ -24,7 +24,6 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <h1>{this.state.email}</h1>
         <LandingContainer />
         <Chat />
         <NewArrivalsContainer />

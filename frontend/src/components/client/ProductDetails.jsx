@@ -32,7 +32,12 @@ const ProdcutDetails = (props) => {
   const classes = useStyles();
 
   const handleWishList = () => {
-    WishListService.addToWishList(props.clientId, props.product.productId);
+    const { history } = props;
+    WishListService.addToWishList(
+      props.clientId,
+      props.product.productId,
+      props
+    );
   };
   return (
     <div className={classes.root}>

@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+const SignUp = (props) => {
   const classes = useStyles();
   const onSubmit = async (data) => {
     const uploadTask = storage.ref('clients/' + imageFile.name).put(imageFile);
@@ -68,7 +68,8 @@ export default function SignUp() {
           .child(imageFile.name)
           .getDownloadURL()
           .then((url) => {
-            ClientService.createNewClient(data, url);
+            const { history } = props;
+            ClientService.createNewClient(data, url, history);
           });
         console.log(imageUrl);
       }
@@ -161,6 +162,18 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                name="contactNo"
+                variant="outlined"
+                required
+                fullWidth
+                id="contactNo"
+                label="Contact No"
+                autoFocus
+                inputRef={register}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
                 variant="outlined"
                 required
                 fullWidth
@@ -207,4 +220,6 @@ export default function SignUp() {
       </Box>
     </Container>
   );
-}
+};
+
+export default SignUp;

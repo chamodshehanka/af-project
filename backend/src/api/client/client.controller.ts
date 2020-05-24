@@ -171,6 +171,11 @@ export default class ClientController {
           if (await bcrypt.compareSync(req.body.password, user.password)) {
             const payload = {
               email: user.email,
+              clientId:user.clientId,
+              name:user.name,
+              profileImage:user.profileImage,
+              contactNo:user.contactNo,
+              type:'Client'
             };
 
             let token = jwt.sign(payload, process.env.SECRET_KEY, {
