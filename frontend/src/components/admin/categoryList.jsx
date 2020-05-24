@@ -25,7 +25,6 @@ export default class categoryList extends Component {
     });
   }
 
-  
   render() {
     return (
       <div>

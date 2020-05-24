@@ -1,5 +1,4 @@
 import Axios from 'axios';
-import dashboard from '../pages/Admin/dashboard';
 import { environment } from '../configs/environment';
 
 //add store manager
@@ -11,4 +10,3 @@ export function addStoreManager(data) {
     })
     .catch((err) => console.error(err));
 }
-
