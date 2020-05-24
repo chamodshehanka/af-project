@@ -20,6 +20,7 @@
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
     "lint-staged": "^10.2.2",
+    "nodemailer": "^6.4.6",
     "react": "^16.13.1",
     "react-chartist": "^0.14.3",
     "react-chat-window": "^1.2.1",
