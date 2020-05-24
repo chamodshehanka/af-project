@@ -16,5 +16,8 @@ comments.post("/delete", controller.deleteComment);
 //Get Comments by Product Id
 comments.get("/get/:id", controller.getCommentsById);
 
+//Get Comment by Product Id and Client Id
+comments.post("/get", controller.getCommentsByUser);
+
 
 export default comments;
