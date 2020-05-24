@@ -24,4 +24,7 @@ storeManager.get("/get", controller.getStoreManagerByID);
 //Get storeManager List
 storeManager.get("/list", controller.getStoreManager);
 
+// Client Login
+storeManager.post("/login",controller.login);
+
 export default storeManager;

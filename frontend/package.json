@@ -23,6 +23,7 @@
     "react-owl-carousel": "^2.3.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
+    "reactjs-localstorage": "^1.0.1",
     "recharts": "^1.8.5",
     "typeface-roboto": "0.0.75"
   },
