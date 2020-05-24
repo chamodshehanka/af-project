@@ -19,7 +19,7 @@ export default class storeManagerEdit extends Component {
   componentDidMount() {
     axios
       .get(
-        'http://localhost:4000/api/storeManager/update/' +
+        'http://localhost:4000/api/storeManager/get/' +
           this.props.match.params.id
       )
       .then((response) => {
