@@ -35,16 +35,18 @@ export function updateCartItem(clientId, productId, value) {
     .catch((err) => console.error(err));
 }
 
-export function getCart(clientId) {
-  console.log(clientId);
-  // let data = 'hi';
-  // Axios.get(environment.baseURL + 'cart/get/' + clientId)
-  //   .then((cartData) => {
-  //     // console.log(cartData);
+export async function getSubTotal(clientId) {
+  let items = [];
+  const res = await Axios.get(environment.baseURL + 'cart/get/' + clientId);
+  items = res.data.items;
 
-  //     // data = cartData;
-  //   })
-  //   .catch((err) => console.error(err));
+  let subTotal = 0;
 
-  // return data;
+  for (let i = 0; i < items.length; i++) {
+    const item = items[i];
+
+    subTotal += item.quantity * item.productPrice;
+  }
+
+  return subTotal;
 }
