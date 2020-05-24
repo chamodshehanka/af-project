@@ -9,8 +9,11 @@ import IconButton from '@material-ui/core/IconButton';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import { mainListItems, secondaryListItems } from '../../components/storemanager/listItems';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  mainListItems,
+  secondaryListItems,
+} from '../../components/storemanager/listItems';
 import AddProduct from '../../components/storemanager/AddProduct';
 import EditProduct from '../../components/storemanager/EditProduct';
 import DeleteProduct from '../../components/storemanager/DeleteProduct';
@@ -75,7 +78,6 @@ const useStyles = makeStyles((theme) => ({
   fixedHeight: {
     height: 650,
   },
-
 }));
 
 export default function ProductPage() {
@@ -85,51 +87,50 @@ export default function ProductPage() {
     setOpen(false);
   };
 
-
   return (
-  <Router>  
-    <div className={classes.root}>
-      <CssBaseline />
-      <Drawer
-        variant="permanent"
-        classes={{
-          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-        }}
-        open={open}
-      >
-      <div className={classes.toolbarIcon}>
-        <IconButton onClick={handleDrawerClose}>
-          <ChevronLeftIcon />
-        </IconButton>
+    <Router>
+      <div className={classes.root}>
+        <CssBaseline />
+        <Drawer
+          variant="permanent"
+          classes={{
+            paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+          }}
+          open={open}
+        >
+          <div className={classes.toolbarIcon}>
+            <IconButton onClick={handleDrawerClose}>
+              <ChevronLeftIcon />
+            </IconButton>
+          </div>
+
+          <Divider />
+          <List>{mainListItems}</List>
+          <Divider />
+          <List>{secondaryListItems}</List>
+        </Drawer>
+
+        <main className={classes.content}>
+          <Container maxWidth="lg" className={classes.container}>
+            <Grid container spacing={3}>
+              <Switch>
+                <Route exact path="/addProduct">
+                  <AddProduct />
+                </Route>
+                <Route exact path="/editProduct">
+                  <EditProduct />
+                </Route>
+                <Route exact path="/deleteProduct">
+                  <DeleteProduct />
+                </Route>
+                <Route exact path="/discounts">
+                  <Discount />
+                </Route>
+              </Switch>
+            </Grid>
+          </Container>
+        </main>
       </div>
-        
-        <Divider />
-        <List>{mainListItems}</List>
-        <Divider />
-        <List>{secondaryListItems}</List>
-      </Drawer>
-      
-      <main className={classes.content}>
-        <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
-            <Switch>
-             <Route exact path = '/addProduct'>
-               <AddProduct />
-             </Route>
-             <Route exact path = '/editProduct'>
-               <EditProduct />
-             </Route>
-             <Route exact path = '/deleteProduct'>
-               <DeleteProduct />
-             </Route>
-             <Route exact path = '/discounts'>
-              <Discount />
-             </Route>
-            </Switch>
-          </Grid>
-        </Container>
-      </main>
-    </div>
-  </Router>
+    </Router>
   );
 }
