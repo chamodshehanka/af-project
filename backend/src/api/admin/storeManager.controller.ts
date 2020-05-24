@@ -7,6 +7,10 @@ const getCollection = () => {
   return MongoHelper.client.db('ShopDB').collection('storeManager');
 };
 
+const webtoken = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
 export default class storeManagerController {
   /**
    * Add storeManager
@@ -139,6 +143,45 @@ export default class storeManagerController {
       })
       .catch((err) => {
         res.send('Unable to get storeManagers');
+        console.error(err);
+      });
+  };
+
+
+
+  /**
+   * Login Admin and storemanager
+   * @param email
+   * @returns token or failure message
+   */
+  public login = async (req: Request, res: Response): Promise<any> => {
+
+    const collection: any = getCollection();
+    console.log(req.body);
+    collection
+      .findOne({ email: req.body.email })
+      .then(async (user) => {
+        console.log(user.password === req.body.password);
+        if (user != null) {
+          if (await bcrypt.compareSync(req.body.password, user.password)) {
+            const payload = {
+              id: user.id,
+              email: user.email,
+            };
+            console.log(payload);
+            let token = jwt.sign(payload, process.env.SECRET_KEY, {
+              expiresIn: 1140,
+            });
+            res.status(200).send(token);
+          } else {
+            res.status(400).json({ error: 'Incorrect Password' });
+          }
+        } else {
+          res.status(400).json({ error: 'User Does Not Exists' });
+        }
+      })
+      .catch((err) => {
+        res.send('Something Went Wrong');
         console.error(err);
       });
   };

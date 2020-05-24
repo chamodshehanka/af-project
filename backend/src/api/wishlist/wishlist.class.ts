@@ -1,6 +1,5 @@
 import * as mongoose from 'mongoose';
 import {IWishList} from './wishlist.interface';
-import Product from '../product/product.class';
 
 export const WishListSchema = new mongoose.Schema({
     clientId:{   type:mongoose.Schema.Types.String,

@@ -54,7 +54,8 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp() {
   const classes = useStyles();
   const onSubmit = (data) => {
-    ClientService.createNewClient(data, imageFile);
+    console.log(data);
+    ClientService.createNewClient(data);
   };
 
   const { register, handleSubmit } = useForm();

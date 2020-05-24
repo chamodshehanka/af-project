@@ -11,7 +11,7 @@ export default class CartController {
    * Add Cart
    * @param cartId id of the cart
    *
-   * @returns sucess or error message
+   * @returns success or error message
    */
   public addCart = async (req: Request, res: Response): Promise<any> => {
     const { clientId, productId, productPrice, quantity } = req.body;
@@ -75,6 +75,28 @@ export default class CartController {
 
       if (cart !== null) {
         let itemIndex = cart.items.findIndex((p) => p.productId === productId);
+        let item = cart.items[itemIndex];
+        const productPrice = item.productPrice;
+        const quantity = item.quantity + value;
+
+        let updatedItem = { productId, productPrice, quantity };
+
+        cart.items[itemIndex] = updatedItem;
+
+        await collection
+          .findOneAndUpdate(
+            {
+              clientId: clientId,
+            },
+            {
+              $set: {
+                items: cart.items,
+              },
+            }
+          )
+          .then(() => {
+            res.send(true);
+          });
       }
     } catch (err) {
       console.error(err);

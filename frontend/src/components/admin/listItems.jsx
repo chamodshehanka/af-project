@@ -9,10 +9,21 @@ import PeopleIcon from '@material-ui/icons/People';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import history from './history';
+
+function refreshPage() {
+  window.location.reload(false);
+}
 
 export const mainListItems = (
   <div>
-    <ListItem button>
+    <ListItem
+      button
+      onClick={() => {
+        history.push('/Dashboard');
+        refreshPage();
+      }}
+    >
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
@@ -30,13 +41,25 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Customers" />
     </ListItem>
-    <ListItem button>
+    <ListItem
+      button
+      onClick={() => {
+        history.push('/Category');
+        refreshPage();
+      }}
+    >
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
-      <ListItemText primary="Reports" />
+      <ListItemText primary="Category" />
     </ListItem>
-    <ListItem button>
+    <ListItem
+      button
+      onClick={() => {
+        history.push('/StoreManagerDetails');
+        refreshPage();
+      }}
+    >
       <ListItemIcon>
         <LayersIcon />
       </ListItemIcon>

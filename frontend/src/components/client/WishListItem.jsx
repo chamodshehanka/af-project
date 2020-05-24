@@ -3,11 +3,7 @@ import Axios from 'axios';
 import { environment } from '../../configs/environment';
 import {
   Card,
-  CardContent,
   Typography,
-  CardMedia,
-  CardActionArea,
-  Hidden,
   Grid,
   ButtonBase,
   IconButton,
@@ -53,7 +49,7 @@ class WishListItem extends Component {
               <ButtonBase className="productImage">
                 <img
                   className="imgProduct"
-                  alt="Product Image"
+                  alt={this.state.productId}
                   src={this.state.image}
                 />
               </ButtonBase>
