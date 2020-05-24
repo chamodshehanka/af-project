@@ -1,39 +1,36 @@
 /* eslint-disable no-console */
 import Axios from 'axios';
-// import FormData from 'form-data';
 import { environment } from '../configs/environment';
+import Swal from 'sweetalert2';
+
 // Create new client
-// TODO: Need add Client object as a param
-export function createNewClient(data) {
-  console.log(data);
-  // const fd = new FormData();
-  // fd.append('image', image, image.name);
-  // fd.append('firstName', data.firstName);
-  // fd.append('lastName', data.lastName);
+export function createNewClient(data, url, history) {
+  function generateId() {
+    var num = Math.floor(Math.random() * 90000) + 10000;
+    return 'CL' + num;
+  }
+  const reqData = {
+    clientId: generateId(),
+    name: data.firstName + ' ' + data.lastName,
+    email: data.email,
+    contactNo: data.contactNo,
+    password: data.password,
+    profileImage: url,
+  };
 
-  // for (var key of fd.entries()) {
-  //   console.log('form data : ', key[0], key[1]);
-  // }
-  //console.log(image);
-
-  Axios.post(
-    environment.baseURL + 'client/add',
-    data
-    //, {
-    // onUploadProgress: (progressEvent) => {
-    //   console.log(
-    //     'Upload Progress : ' +
-    //       Math.round((progressEvent.loaded / progressEvent.total) * 100) +
-    //       '%'
-    //   );
-    // },
-    // headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    // }
-  )
-    .then((res) => {
-      console.log(res);
+  Axios.post(environment.baseURL + 'client/add', reqData)
+    .then(() => {
+      Swal.fire('Good job!', 'Welcome To MalBay!', 'success');
+      history.push(`/signIn`);
     })
-    .catch((err) => console.error(err));
+    .catch((err) => {
+      console.error(err);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+      });
+    });
 }
 
 // Need to impl
@@ -74,7 +71,7 @@ export function login(data, history) {
       if (res) {
         if (res.data) {
           localStorage.setItem('user', JSON.stringify(res.data));
-
+          alert('Success');
           history.push(`/`);
         }
       }

@@ -33,32 +33,25 @@ export default class ClientController {
     const requestData = req.body;
     const collection: any = getCollection();
 
-    if (await collection.findOne({ email: requestData.email })) {
-      res.send({ message: 'User Alredy Registered' });
-    } else {
-      const hashedPassword = await bcrypt.hash(requestData.password, 10);
+    if(await collection.findOne({email:requestData.email})){
+      res.send({message: 'User Alredy Registered'})
+    }else{
+      const hashedPassword = await bcrypt.hash(requestData.password,10);
       requestData.password = hashedPassword;
       const client = new ClientSchema(requestData);
 
-      storage
-        .getBuckets()
-        .then((e) => console.log(e))
-        .catch((err) => console.error(err));
 
-      const malbayBucket = storage.bucket('malbay-bucket');
-      console.log(malbayBucket);
-
-      collection
-        .insertOne(client)
-        .then(() => {
-          res.send({ message: 'Successfully Added' });
-          res.end();
-        })
-        .catch((err) => {
-          res.send({ message: 'Unable to Add' });
-          console.error(err);
-        });
-    }
+   collection
+      .insertOne(client)
+      .then(() => {
+        res.send({ message: 'Successfully Added' });
+        res.end();
+      })
+      .catch((err) => {
+        res.send({ message: 'Unable to Add' });
+        console.error(err);
+      });
+   }
   };
 
   /**
@@ -171,7 +164,6 @@ export default class ClientController {
    */
   public signIn = async (req: Request, res: Response): Promise<any> => {
     const collection: any = getCollection();
-    console.log(req.body);
     collection
       .findOne({ email: req.body.email })
       .then(async (user) => {
@@ -179,6 +171,11 @@ export default class ClientController {
           if (await bcrypt.compareSync(req.body.password, user.password)) {
             const payload = {
               email: user.email,
+              clientId:user.clientId,
+              name:user.name,
+              profileImage:user.profileImage,
+              contactNo:user.contactNo,
+              type:'Client'
             };
 
             let token = jwt.sign(payload, process.env.SECRET_KEY, {

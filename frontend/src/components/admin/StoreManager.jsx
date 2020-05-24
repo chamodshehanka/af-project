@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { useForm } from 'react-hook-form';
 import { AdminService } from '../../services';
+import _uniqueId from 'lodash/uniqueId';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,9 +31,9 @@ export default function StoreManager() {
       password: '',
     });
   };
+  const [id] = useState(_uniqueId('prefix-'));
 
   const { reset, errors, register, handleSubmit } = useForm();
-
   return (
     <div>
       <h2>Add new Manager</h2>
@@ -42,6 +43,17 @@ export default function StoreManager() {
         onSubmit={handleSubmit(onSubmit)}
         noValidate
       >
+        <TextField
+          id="storeManagerId"
+          type="hidden"
+          name="storeManagerId"
+          margin="normal"
+          value={id}
+          inputRef={register({
+            required: 'Required',
+          })}
+        />
+
         <TextField
           id="name"
           label="Name"

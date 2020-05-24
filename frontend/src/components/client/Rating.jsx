@@ -3,6 +3,7 @@ import Rating from '@material-ui/lab/Rating';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Card } from '@material-ui/core';
 import Axios from 'axios';
+import Swal from 'sweetalert2';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,7 +30,13 @@ const RatingComponent = (props) => {
     };
     Axios.push('http://localhost:4000/api/rating/add', data)
       .then((e) => {
-        console.log(e);
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your Rating has been saved',
+          showConfirmButton: false,
+          timer: 1500,
+        });
       })
       .catch((err) => console.error(err));
   };
@@ -43,7 +50,13 @@ const RatingComponent = (props) => {
     console.log(data);
     Axios.put('http://localhost:4000/api/rating/update', data)
       .then((e) => {
-        console.log(e);
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your Rating has been saved',
+          showConfirmButton: false,
+          timer: 1500,
+        });
       })
       .catch((err) => console.error(err));
   };

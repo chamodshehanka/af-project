@@ -14,10 +14,13 @@
     "axios": "^0.19.2",
     "chartist": "^0.11.4",
     "classnames": "^2.2.6",
+    "express": "^4.17.1",
+    "firebase": "^7.14.5",
     "form-data": "^3.0.0",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
     "lint-staged": "^10.2.2",
+    "nodemailer": "^6.4.6",
     "react": "^16.13.1",
     "react-chartist": "^0.14.3",
     "react-chat-window": "^1.2.1",
@@ -28,6 +31,8 @@
     "react-scripts": "3.4.1",
     "reactjs-localstorage": "^1.0.1",
     "recharts": "^1.8.5",
+    "shortid": "^2.2.15",
+    "sweetalert2": "^9.13.1",
     "typeface-roboto": "0.0.75"
   },
   "scripts": {

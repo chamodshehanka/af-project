@@ -1,5 +1,6 @@
 import Axios from 'axios';
 import { environment } from '../configs/environment';
+import Swal from 'sweetalert2';
 
 // Get Wish List Items
 export function getWishListItems(clientId) {
@@ -16,14 +17,25 @@ export function getWishListItems(clientId) {
 }
 
 // Add to Wish List Items
-export function addToWishList(clientId, productId) {
+export function addToWishList(clientId, productId, history) {
   const data = {
     clientId: clientId,
     productId: productId,
   };
   Axios.post(environment.baseURL + 'wishList/add', data)
-    .then((e) => {
-      console.log(e.data);
+    .then(() => {
+      Swal.fire({
+        title: 'Successfully Added',
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Go To Wish List',
+      }).then((result) => {
+        if (result.value) {
+          history.push(`/wishList`);
+        }
+      });
     })
     .catch((err) => console.error(err));
 }

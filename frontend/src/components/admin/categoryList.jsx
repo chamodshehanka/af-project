@@ -1,27 +1,26 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import TableRow from './storeManagerTable';
+import TableRow from './categoryTable';
 import { environment } from '../../configs/environment';
-import './tableStyle.css';
 
-export default class storeManagerList extends Component {
+export default class categoryList extends Component {
   constructor(props) {
     super(props);
-    this.state = { storeManagerList: [] };
+    this.state = { categoryList: [] };
   }
 
   componentDidMount() {
     axios
-      .get(environment.baseURL + 'storeManager/list')
+      .get(environment.baseURL + 'category/list')
       .then((response) => {
-        this.setState({ storeManagerList: response.data });
+        this.setState({ categoryList: response.data });
       })
       .catch(function (error) {
         console.log(error);
       });
   }
   tabRow() {
-    return this.state.storeManagerList.map(function (object, i) {
+    return this.state.categoryList.map(function (object, i) {
       return <TableRow obj={object} key={i} />;
     });
   }
@@ -29,13 +28,13 @@ export default class storeManagerList extends Component {
   render() {
     return (
       <div>
-        <h3 align="center">Store Manager List</h3>
+        <h3 align="center">Category List</h3>
         <table className="table table-striped" style={{ marginTop: 20 }}>
           <thead>
             <tr>
               <th>Name</th>
-              <th>Email</th>
-              <th>Contact Number</th>
+              <th>description</th>
+              <th>featured</th>
               <th colSpan="2">Action</th>
             </tr>
           </thead>

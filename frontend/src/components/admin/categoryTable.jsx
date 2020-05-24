@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { environment } from '../../configs/environment';
 
-class storeManagerTable extends Component {
+class categoryTable extends Component {
   constructor(props) {
     super(props);
     this.delete = this.delete.bind(this);
@@ -10,8 +11,7 @@ class storeManagerTable extends Component {
   delete() {
     axios
       .get(
-        'http://localhost:4000/api/storeManager/delete/' +
-          this.props.obj.storeManagerId
+        environment.baseURL + 'category/delete' + this.props.obj.storeManagerId
       )
       .then(console.log('Deleted'))
       .catch((err) => console.log(err));
@@ -21,8 +21,8 @@ class storeManagerTable extends Component {
     return (
       <tr>
         <td>{this.props.obj.name}</td>
-        <td>{this.props.obj.email}</td>
-        <td>{this.props.obj.contactNo}</td>
+        <td>{this.props.obj.description}</td>
+        <td>{this.props.obj.featured}</td>
         <td>
           <Link to={'/edit/' + this.props.obj._id} className="btn btn-primary">
             Edit
@@ -38,4 +38,4 @@ class storeManagerTable extends Component {
   }
 }
 
-export default storeManagerTable;
+export default categoryTable;
