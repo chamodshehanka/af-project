@@ -269,6 +269,63 @@ const DeliveryPage = () => {
                     // Card Form
                     <div>
                       <p className="form-sub-caption">Card Information</p>
+
+                      <Grid container spacing={2}>
+                        <Grid item xs={12}>
+                          <TextField
+                            label="Name on Card"
+                            variant="outlined"
+                            fullWidth
+                            name="nameOnCard"
+                          />
+                        </Grid>
+
+                        <br />
+
+                        <Grid item xs={12}>
+                          <TextField
+                            label="Card Number"
+                            variant="outlined"
+                            fullWidth
+                            name="cardNumber"
+                          />
+                        </Grid>
+
+                        <Grid container spacing={2}>
+                          <Grid item xs={4} sm={4}>
+                            <TextField
+                              label="Month"
+                              variant="outlined"
+                              fullWidth
+                            />
+                          </Grid>
+                          <Grid item xs={4} sm={4}>
+                            <TextField
+                              label="Year"
+                              variant="outlined"
+                              fullWidth
+                            />
+                          </Grid>
+                          <Grid item xs={4} sm={4}>
+                            <TextField
+                              label="CVC"
+                              variant="outlined"
+                              fullWidth
+                            />
+                          </Grid>
+                        </Grid>
+
+                        <Grid item xs={12}>
+                          <Button
+                            variant="contained"
+                            color="primary"
+                            type="submit"
+                          >
+                            <AttachMoneyIcon />
+                            Pay
+                          </Button>
+                        </Grid>
+                      </Grid>
                     </div>
                   ) : (
                     <div></div>
