@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import * as mongodb from "mongodb";
 import { MongoHelper } from "../../config/mongodb.config";
 import ProductSchema from "./product.class";
-import products from "./product.route";
 
 const getCollection = () => {
     return MongoHelper.client.db("ShopDB").collection("products");
@@ -17,6 +16,7 @@ export default class ProductController {
    * @param category category of the product
    * @param description description of the product
    * @param stocks stocks of the product
+   * @param price price of the product
    * @param imageGallery images of products
    * @returns success or failure message
    */
@@ -42,11 +42,12 @@ export default class ProductController {
    * @param category category of the product
    * @param description description of the product
    * @param stocks stocks of the product
+   * @param price price of the product
    * @param imageGallery images of products
    * @returns success or failure message
    */
    public updateProduct = async (req: Request, res: Response): Promise<any> => {
-    const { productID, name, category, description, stocks, imageGallery } = req.body;
+    const { productID, name, category, description, stocks, price, imageGallery } = req.body;
     const collection: any = getCollection();
 
     collection
@@ -60,6 +61,7 @@ export default class ProductController {
             category: category,
             description: description,
             stocks: stocks,
+            price: price,
             imageGallery: imageGallery,
           },
         }
@@ -93,7 +95,7 @@ export default class ProductController {
 
    /**
    * Get Product by Id
-   * @param productId id of the product
+   * @param productID id of the product
    * @returns product json
    */
   public getProductByID = async (req: Request, res: Response): Promise<any> => {
@@ -126,12 +128,13 @@ export default class ProductController {
         } else {
           items = items.map((item) => {
             return {
-              productId: item.productId,
+              id: item._id,
               name: item.name,
               category: item.category,
               description: item.description,
               stocks: item.stocks,
-              imageUrl: item.imageUrl
+              price: item.price,
+              imageGallery: item.imageGallery
             };
           });
           res.json(items);

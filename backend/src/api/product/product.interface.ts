@@ -6,5 +6,6 @@ export interface IProduct extends mongoose.Document {
   category: string;
   description: string;
   stocks: number;
+  price: number;
   imageGallery: string;
 }
