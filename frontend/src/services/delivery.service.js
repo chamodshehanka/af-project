@@ -2,8 +2,7 @@ import Axios from 'axios';
 import { environment } from '../configs/environment';
 
 export function addDelivery(data) {
-
-  console.log(data)
+  console.log(data);
   // Axios.post(environment.baseURL + 'delivery/add', data)
   //   .then((res) => {
   //     console.log(res);

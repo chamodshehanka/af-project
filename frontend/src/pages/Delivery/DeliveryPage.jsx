@@ -51,7 +51,7 @@ const DeliveryPage = () => {
   const [total, setTotal] = useState(0);
 
   const onSubmit = (data) => {
-    OrderService.createOrder('C001', data)
+    OrderService.createOrder('C001', data);
   };
   const { register, handleSubmit } = useForm();
 
