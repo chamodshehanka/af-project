@@ -49,9 +49,11 @@ const DeliveryPage = () => {
   const [subTotal, setSubTotal] = useState(0);
   const [deliveryFee, setDeliveryFee] = useState(1000);
   const [total, setTotal] = useState(0);
+  const [paymentMethod, setPaymentMethod] = useState('CASH');
+  const [showCardForm, setShowCardForm] = useState(false);
 
   const onSubmit = (data) => {
-    OrderService.createOrder('C001', data);
+    OrderService.createOrder('C001', data, total, paymentMethod);
   };
   const { register, handleSubmit } = useForm();
 
@@ -83,11 +85,7 @@ const DeliveryPage = () => {
         <h1 className="title">Delivery & Payment Details</h1>
 
         <div className={classes.root}>
-          <form
-            className={classes.form}
-            onSubmit={handleSubmit(onSubmit)}
-            noValidate
-          >
+          <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
             <Grid container spacing={3}>
               <Grid item xs={6}>
                 <Paper className={classes.paper}>
@@ -256,10 +254,25 @@ const DeliveryPage = () => {
                     <AirportShuttleIcon />
                     Cash on Delivery
                   </Button>{' '}
-                  <Button variant="contained" color="primary">
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => {
+                      setPaymentMethod('CARD');
+                      setShowCardForm(true);
+                    }}
+                  >
                     <CreditCardIcon />
                     Pay Now
                   </Button>
+                  {showCardForm ? (
+                    // Card Form
+                    <div>
+                      <p className="form-sub-caption">Card Information</p>
+                    </div>
+                  ) : (
+                    <div></div>
+                  )}
                 </Paper>
               </Grid>
             </Grid>
