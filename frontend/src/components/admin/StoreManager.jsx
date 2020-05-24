@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { useForm } from 'react-hook-form';
 import { AdminService } from '../../services';
+import _uniqueId from 'lodash/uniqueId';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
 export default function StoreManager() {
   const classes = useStyles();
 
+
   const onSubmit = (data) => {
     console.log(data);
     AdminService.addStoreManager(data);
@@ -30,10 +32,11 @@ export default function StoreManager() {
       password: '',
     });
   };
-
+  const [id] = useState(_uniqueId('prefix-'));
+  
   const { reset, errors, register, handleSubmit } = useForm();
-
   return (
+    
     <div>
       <h2>Add new Manager</h2>
 
@@ -43,6 +46,18 @@ export default function StoreManager() {
         noValidate
       >
         <TextField
+          id="storeManagerId"
+          type="hidden" 
+          name="storeManagerId"
+          margin="normal"
+          value={id}
+          inputRef={register({
+            required: 'Required',
+          })}
+          
+        />
+
+        <TextField
           id="name"
           label="Name"
           name="name"
@@ -50,7 +65,7 @@ export default function StoreManager() {
           required
           style={{ margin: 8 }}
           placeholder="Enter full Name"
-          fullWidth
+          fullWidth    
           margin="normal"
           inputRef={register({
             required: 'Required',
@@ -130,6 +145,7 @@ export default function StoreManager() {
           }}
         />
         {errors.password && errors.password.message}
+       
 
         <Button
           type="submit"

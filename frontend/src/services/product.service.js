@@ -1,7 +1,8 @@
 import Axios from 'axios';
+import { environment } from '../configs/environment';
 
 export function createNewProduct(data) {
-  Axios.post('http://localhost:4000/api/product/add', data)
+  Axios.post(environment.baseURL + 'product/add', data)
     .then((res) => {
       console.log(res);
     })
@@ -9,7 +10,7 @@ export function createNewProduct(data) {
 }
 
 export function editProduct(data) {
-  Axios.post('http://localhost:4000/api/product/update', data)
+  Axios.post(environment.baseURL + 'product/update', data)
     .then((res) => {
       console.log(res);
       console.log(res.data);
@@ -18,7 +19,7 @@ export function editProduct(data) {
 }
 
 export function deleteProduct(data) {
-  Axios.delete('http://localhost:4000/api/product/delete', data)
+  Axios.delete(environment.baseURL + 'product/delete', data)
     .then((res) => {
       console.log(res);
     })
@@ -26,7 +27,7 @@ export function deleteProduct(data) {
 }
 
 export function getProductById(data) {
-  Axios.get('http://localhost:4000/api/product/get', data)
+  Axios.get(environment.baseURL + 'product/get', data)
     .then((res) => {
       console.log(res);
     })
@@ -36,7 +37,7 @@ export function getProductById(data) {
 export function getAllProducts() {
   var array;
 
-  Axios.get('http://localhost:4000/api/product/list')
+  Axios.get(environment.baseURL + 'product/list')
     .then((e) => {
       console.log(e.data);
 

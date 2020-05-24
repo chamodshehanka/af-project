@@ -173,7 +173,7 @@ export default class ClientController {
             const payload = {
               email: user.email,
             };
-       
+
             let token = jwt.sign(payload, process.env.SECRET_KEY, {
               expiresIn: 1140,
             });

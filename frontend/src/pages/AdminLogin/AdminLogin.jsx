@@ -11,7 +11,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { useForm } from 'react-hook-form';
-import { AdminService } from '../../services';
+import { AdminLoginService } from '../../services';
 
 function Copyright() {
   return (
@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
 export default function AdminLogin() {
   const classes = useStyles();
   const onSubmit = (data) => {
-    AdminService.login(data);
+    AdminLoginService.login(data);
   };
 
   const { register, handleSubmit } = useForm();
