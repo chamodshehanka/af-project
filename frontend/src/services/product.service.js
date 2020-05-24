@@ -10,44 +10,42 @@ export function createNewProduct(data) {
 }
 
 export function editProduct(data) {
-    Axios.post(environment.baseURL + 'product/update', data)
-        .then((res) => {
-            console.log(res);
-            console.log(res.data);
-          })
-          .catch((err) => console.error(err));
+  Axios.post(environment.baseURL + 'product/update', data)
+    .then((res) => {
+      console.log(res);
+      console.log(res.data);
+    })
+    .catch((err) => console.error(err));
 }
 
 export function deleteProduct(data) {
-    Axios.delete(environment.baseURL + 'product/delete', data)
-         .then((res) => {
-             console.log(res);
-         })
-         .catch((err) => console.log(err));
+  Axios.delete(environment.baseURL + 'product/delete', data)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => console.log(err));
 }
 
 export function getProductById(data) {
-    Axios.get(environment.baseURL + 'product/get', data)
-        .then((res) => {
-            console.log(res);
- 
-        })
-        .catch((err) => console.log(err));
-
+  Axios.get(environment.baseURL + 'product/get', data)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => console.log(err));
 }
 
 export function getAllProducts() {
-    var array;
-  
-    Axios.get(environment.baseURL + 'product/list')
-      .then((e) => {
-        console.log(e.data);
-  
-        array = e.data;
-  
-        return e.data;
-      })
-      .catch((err) => console.error(err));
-  
-    return array;
-  }
+  var array;
+
+  Axios.get(environment.baseURL + 'product/list')
+    .then((e) => {
+      console.log(e.data);
+
+      array = e.data;
+
+      return e.data;
+    })
+    .catch((err) => console.error(err));
+
+  return array;
+}
