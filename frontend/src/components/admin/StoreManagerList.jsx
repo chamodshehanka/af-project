@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import TableRow from './storeManagerTable';
+import { environment } from '../../configs/environment';
 
 export default class storeManagerList extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ export default class storeManagerList extends Component {
 
   componentDidMount() {
     axios
-      .get('http://localhost:4000/api/storeManager/list')
+      .get(environment.baseURL + 'storeManager/list')
       .then((response) => {
         this.setState({ storeManagerList: response.data });
       })
