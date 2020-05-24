@@ -7,7 +7,6 @@ import { CategoryService } from '../../services';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -35,8 +34,8 @@ export default function AddCategory() {
     CategoryService.addCategory(data);
     reset({
       name: '',
-      description:'',
-      image:'',
+      description: '',
+      image: '',
       featured: '',
       productCount: '',
     });
@@ -83,7 +82,7 @@ export default function AddCategory() {
           fullWidth
           margin="normal"
           inputRef={register({
-            required: 'Required'
+            required: 'Required',
           })}
           InputLabelProps={{
             shrink: true,
@@ -102,7 +101,7 @@ export default function AddCategory() {
           fullWidth
           margin="normal"
           inputRef={register({
-            required: 'Required'
+            required: 'Required',
           })}
           InputLabelProps={{
             shrink: true,
@@ -110,22 +109,25 @@ export default function AddCategory() {
         />
         {errors.image && errors.image.message}
 
-      <InputLabel>Featured Category</InputLabel>
-      <FormControl className={classes.formControl}>   
-        <select 
-        name="featured"
-        labelId="demo-simple-select-placeholder-label-label"
-        id="demo-simple-select-placeholder-label"  
-        displayEmpty
-        className={classes.selectEmpty} 
-        ref={register}
-        >
-        <option value={true}>True</option>
-        <option value={false}>False</option>
-      </select>
-      </FormControl> 
+        <InputLabel>Featured Category</InputLabel>
+        <FormControl className={classes.formControl}>
+          <select
+            name="featured"
+            labelId="demo-simple-select-placeholder-label-label"
+            id="demo-simple-select-placeholder-label"
+            displayEmpty
+            className={classes.selectEmpty}
+            ref={register}
+          >
+            <option value={true}>True</option>
+            <option value={false}>False</option>
+          </select>
+        </FormControl>
 
-          <br /><br /><br /><br />
+        <br />
+        <br />
+        <br />
+        <br />
         <Button
           type="submit"
           fullWidth
