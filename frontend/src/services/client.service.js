@@ -4,32 +4,17 @@ import Axios from 'axios';
 import { environment } from '../configs/environment';
 // Create new client
 // TODO: Need add Client object as a param
-export function createNewClient(data) {
-  console.log(data);
-  // const fd = new FormData();
-  // fd.append('image', image, image.name);
-  // fd.append('firstName', data.firstName);
-  // fd.append('lastName', data.lastName);
+export function createNewClient(data, url) {
+  const reqData = {
+    clientId: 'C00001091813',
+    name: data.firstName + ' ' + data.lastName,
+    email: data.email,
+    contactNo: '0714331418',
+    password: data.password,
+    profileImage: url,
+  };
 
-  // for (var key of fd.entries()) {
-  //   console.log('form data : ', key[0], key[1]);
-  // }
-  //console.log(image);
-
-  Axios.post(
-    environment.baseURL + 'client/add',
-    data
-    //, {
-    // onUploadProgress: (progressEvent) => {
-    //   console.log(
-    //     'Upload Progress : ' +
-    //       Math.round((progressEvent.loaded / progressEvent.total) * 100) +
-    //       '%'
-    //   );
-    // },
-    // headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    // }
-  )
+  Axios.post(environment.baseURL + 'client/add', reqData)
     .then((res) => {
       console.log(res);
     })
