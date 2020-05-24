@@ -46,7 +46,7 @@ export default function Discount() {
               <Grid item xs={12} style={{marginLeft:'30px', marginRight:'30px'}}>
                 <Typography align="left" color="textSecondary" variant="h6">Searched Product</Typography>
               </Grid>
-              <form onSubmit={handleSubmit(onSubmit)>
+  
               <Grid item xs={12} style={{marginLeft:'30px', marginRight:'30px'}}>
                 <TextField
                   id="discount"
@@ -60,7 +60,7 @@ export default function Discount() {
               <Grid item xs={12} align="left" style={{marginLeft:'30px', marginRight:'30px'}}>
                   <Button variant="outlined" color="secondary">Add Discount</Button>
               </Grid>
-              </form>
+
             </Grid>
           </Paper>
         </Grid>
